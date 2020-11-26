@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      event: 稽古
     attributes:
         user:
           id: ID
@@ -11,3 +12,14 @@ ja:
           password_confirmation: パスワード再入力
           created_at: 作成日
           updated_at: 更新日
+        event:
+          event_day: 稽古日
+          start_time: 開始時間
+          finish_time: 終了時間
+          prefecture: 都道府県
+          place: 場所
+          latitude: 緯度
+          longitude: 軽度
+          estimate_people: 想定人数
+          level: レベル
+          comment: コメント
