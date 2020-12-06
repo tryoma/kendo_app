@@ -15,12 +15,11 @@
 </div>
 <div id="div">
   <h2>情報</h2>
-  <h2><%= link_to "新規作成",  "#", method: :get %></h2>
-  <% @events.each do |event| %>
-    <p><%= event.place %>の稽古会</p>
-    <p><%= event.event_day %></p>
-    <p><%= event.start_time %></p>
-    <p><%= event.finish_time %></p>
+  <h2><%= link_to "新規作成",  new_information_path, method: :get %></h2>
+  <% @informations.each do |information| %>
+    <p><%= information.title %></p>
+    <p><%= information.body %></p>
+    <p>更新:<%= information.updated_at %></p>
   <% end %>
 </div>
 <div id="header">
