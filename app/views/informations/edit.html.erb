@@ -1,0 +1,28 @@
+<% provide(:title, '情報編集') %>
+<% provide(:class_text, 'edit') %>
+<% provide(:button_text, '編集') %>
+<h1>情報編集</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @information, url: information_path, method: :patch) do |f| %>
+    <%= render 'shared/error_messages', object: @information %>
+
+    <%= f.label :title, class: "label-#{yield(:class_text)}" %>
+    <%= f.text_field :title, class: "form-control" %>
+
+    <%= f.label :body, class: "label-#{yield(:class_text)}" %>
+    <%= f.text_field :body, class: "form-control" %>
+
+    <%= f.label :until, class: "label-#{yield(:class_text)}" %>
+    <%= f.date_field :until, class: "form-control" %>
+
+    <%= f.label :attachment, class: "label-#{yield(:class_text)}" %>
+    <%= f.text_field :attachment, class: "form-control" %>
+
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+
+    <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+  <% end %>
+  </div>
+</div>
