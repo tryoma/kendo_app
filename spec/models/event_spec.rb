@@ -72,4 +72,9 @@ RSpec.describe Event, type: :model do
     event.valid?
     expect(event.errors[:comment]).to include(I18n.t('errors.messages.blank'))
   end
+
+  it "イベントファクトリで関連するデータを生成できること" do
+    event = FactoryBot.create(:event)
+    puts "This event's project is #{event.owner.inspect}"
+  end
 end
