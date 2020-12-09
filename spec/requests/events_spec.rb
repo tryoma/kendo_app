@@ -5,7 +5,6 @@ RSpec.describe "Events_controller", type: :request do
 
   before do
     @user = FactoryBot.create(:user)
-    sign_in @user
     @event = FactoryBot.create(:event)
   end
 
@@ -20,6 +19,7 @@ RSpec.describe "Events_controller", type: :request do
   #show
   describe "GET /events/:id" do
     it "個別イベントページに遷移する" do
+      sign_in @user
       get events_path(@event.id)
       expect(response).to have_http_status(200)
     end
@@ -28,31 +28,17 @@ RSpec.describe "Events_controller", type: :request do
   #new
   describe "GET /events/new" do
     it "新規作成ページに遷移する" do
+      sign_in @user
       get new_event_path
       expect(response).to have_http_status(200)
     end
   end
   
-  #create
-  describe "POST /events/:id" do
-    it "イベントを作成できる" do
-      post edit_event_path(@event.id)
-      expect(response).to have_http_status(200)
-    end
-  end
-
   #edit
   describe "GET /events/:id" do
     it "個別イベント編集ページに遷移する" do
+      sign_in @user
       get events_path(@event.id)
-      expect(response).to have_http_status(200)
-    end
-  end
-
-  #update
-  describe "PATCH /events/:id" do
-    it "個別イベントページを更新できる" do
-      patch events_path(@event.id)
       expect(response).to have_http_status(200)
     end
   end
@@ -60,8 +46,9 @@ RSpec.describe "Events_controller", type: :request do
   #destroy
   describe "DELETE /events/:id" do
     it "個別イベントページを削除できる" do
-      delete events_path(@event.id)
-      expect(response).to have_http_status(200)
+      sign_in @user
+      delete event_path(@event.id)
+      expect(response).to have_http_status(204)
     end
   end
 end
