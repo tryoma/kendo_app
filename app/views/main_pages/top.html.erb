@@ -6,22 +6,45 @@
 <div>
   <h2>稽古会</h2>
   <h2><%= link_to "新規作成",  new_event_path, method: :get %></h2>
-  <% @events.each do |event| %>
-    <p><%= event.place %>の稽古会</p>
-    <p><%= event.event_day %></p>
-    <p><%= event.start_time %></p>
-    <p><%= event.finish_time %></p>
-  <% end %>
+  <div class="container">
+    <div class="row">
+      <% @events.each do |event| %>
+        <div class="col-sm-3">
+          <p><%= event.place %>の稽古会</p>
+          <p><%= event.event_day %></p>
+          <p><%= event.start_time %></p>
+          <p><%= event.finish_time %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 <div id="div">
   <h2>情報</h2>
   <h2><%= link_to "新規作成",  new_information_path, method: :get %></h2>
-  <% @informations.each do |information| %>
-    <p><%= information.title %></p>
-    <p><%= information.body %></p>
-    <p>更新:<%= information.updated_at %></p>
-  <% end %>
+  <div class="container">
+    <div class="row">
+      <% @informations.each do |information| %>
+        <div class="col-sm-3">
+          <p><%= information.title %></p>
+          <p><%= information.body %></p>
+          <p>更新:<%= information.updated_at %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 <div id="header">
   <h2>ユーザー日記更新</h2>
+  <div class="container">
+    <div class="row">
+      <% @users.each do |user| %>
+        <div class="col-sm-3">
+          <p><%= user.id %></p>
+          <p><%= user.user_name %></p>
+          <p>更新:<%= user.updated_at %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
