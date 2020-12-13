@@ -79,3 +79,21 @@ p {
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
+
+/* 入力フォーム */
+
+.label-form {
+  margin-top: 5px;
+}
+
+.btn-form {
+  margin-top: 10px;
+}
+
+/* 一覧ページ */
+
+#table-main {
+  td {
+    vertical-align: middle;
+  }  
+}
