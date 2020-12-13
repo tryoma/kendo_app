@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    @events = Event.paginate(page: params[:page])
   end
 
   def show
@@ -37,6 +37,10 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    flash[:success] = "#{@event.event_day}のデータを削除しました。"
+    redirect_to events_url
   end
 
   private

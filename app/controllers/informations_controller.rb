@@ -1,7 +1,7 @@
 class InformationsController < ApplicationController
 
   def index
-    @informations = Information.all
+    @informations = Information.paginate(page: params[:page])
   end
 
   def show
@@ -37,6 +37,10 @@ class InformationsController < ApplicationController
   end
 
   def destroy
+    @information = Information.find(params[:id])
+    @information.destroy
+    flash[:success] = "#{@information.title}のデータを削除しました。"
+    redirect_to informations_url
   end
 
   private

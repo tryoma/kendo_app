@@ -1,5 +1,4 @@
 <% provide(:title, '新規作成') %>
-<% provide(:class_text, 'new') %>
 <% provide(:button_text, '新規作成') %>
 <h1>情報新規作成</h1>
 
@@ -8,21 +7,21 @@
     <%= form_with(model: @information, url: informations_path) do |f| %>
     <%= render 'shared/error_messages', object: @information %>
 
-    <%= f.label :title, class: "label-#{yield(:class_text)}" %>
+    <%= f.label :title, class: "label-form" %>
     <%= f.text_field :title, class: "form-control" %>
 
-    <%= f.label :body, class: "label-#{yield(:class_text)}" %>
+    <%= f.label :body, class: "label-form" %>
     <%= f.text_field :body, class: "form-control" %>
 
-    <%= f.label :until, class: "label-#{yield(:class_text)}" %>
+    <%= f.label :until, class: "label-form" %>
     <%= f.date_field :until, class: "form-control" %>
 
-    <%= f.label :attachment, class: "label-#{yield(:class_text)}" %>
+    <%= f.label :attachment, class: "label-form" %>
     <%= f.text_field :attachment, class: "form-control" %>
 
     <%= f.hidden_field :user_id, :value => current_user.id %>
 
-    <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+    <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-form" %>
   <% end %>
   </div>
 </div>

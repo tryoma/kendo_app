@@ -1,31 +1,31 @@
 <%= form_with(model: @event, local: true) do |f| %>
   <%= render 'shared/error_messages', object: @event %>
 
-  <%= f.label :event_day, class: "label-#{yield(:class_text)}" %>
+  <%= f.label :event_day, class: "label-form" %>
   <%= f.date_field :event_day, class: "form-control" %>
 
-  <%= f.label :start_time, class: "label-#{yield(:class_text)}" %>
+  <%= f.label :start_time, class: "label-form" %>
   <%= f.time_field :start_time, class: "form-control" %>
 
-  <%= f.label :finish_time, class: "label-#{yield(:class_text)}" %>
+  <%= f.label :finish_time, class: "label-form" %>
   <%= f.time_field :finish_time, class: "form-control" %>
 
-  <%= f.label :prefecture, class: "label-#{yield(:class_text)}" %>
+  <%= f.label :prefecture, class: "label-form" %>
   <%= f.text_field :prefecture, class: "form-control" %>
 
-  <%= f.label :place, class: "label-#{yield(:class_text)}" %>
+  <%= f.label :place, class: "label-form" %>
   <%= f.text_field :place, class: "form-control" %>
 
-  <%= f.label :estimate_people, class: "label-#{yield(:class_text)}" %>
+  <%= f.label :estimate_people, class: "label-form" %>
   <%= f.text_field :estimate_people, class: "form-control" %>
 
-  <%= f.label :level, class: "label-#{yield(:class_text)}" %>
+  <%= f.label :level, class: "label-form" %>
   <%= f.text_field :level, class: "form-control" %>
 
-  <%= f.label :comment, class: "label-#{yield(:class_text)}" %>
+  <%= f.label :comment, class: "label-form" %>
   <%= f.text_field :comment, class: "form-control" %>
 
   <%= f.hidden_field :user_id, :value => current_user.id %>
 
-  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-form" %>
 <% end %>
