@@ -3,6 +3,8 @@ ja:
     models:
       user: ユーザー
       event: 稽古
+      information: 情報
+      record: 記録
     attributes:
         user:
           id: ID
@@ -23,3 +25,14 @@ ja:
           estimate_people: 想定人数
           level: レベル
           comment: コメント
+        information:
+          title: タイトル
+          body: 内容
+          until: 期限
+          attachment: 添付データ
+        record: 
+          worked_on: 日付
+          diary: 日記
+          practice: 稽古
+        
+        
