@@ -1,2 +1,14 @@
 <% provide(:title, "情報") %>
-<h1>情報</h1>
+<h1><%= @information.title %></h1>
+
+<div class="information-show">
+  <div class="information-map">
+  </div>
+  <div class="information-information-list">
+    <p><%= @information.body %></p>
+    <p><%= @information.until %></p>
+  </div>
+  <div class="information-confirmation">
+    <%= link_to 'お気に入り', "#", class: 'btn-default blue-btn' %>
+  </div>
+</div>

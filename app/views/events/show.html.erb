@@ -1,7 +1,15 @@
 <% provide(:title, "稽古会") %>
-<h1>稽古会</h1>
+<h1><%= @event.place %>の稽古会</h1>
 
-<p><%= @event.place %>の稽古会</p>
-<p><%= @event.event_day %></p>
-<p><%= @event.start_time %></p>
-<p><%= @event.finish_time %></p>
+<div class="event-show">
+  <div class="event-map">
+  </div>
+  <div class="event-information-list">
+    <p><%= @event.event_day %></p>
+    <p><%= @event.start_time %></p>
+    <p><%= @event.finish_time %></p>
+  </div>
+  <div class="event-confirmation">
+    <%= link_to '参加しますか？', "#", class: 'btn-default blue-btn' %>
+  </div>
+</div>
