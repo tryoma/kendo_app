@@ -5,6 +5,7 @@ ja:
       event: 稽古
       information: 情報
       record: 記録
+      profile: プロフィール
     attributes:
         user:
           id: ID
@@ -34,5 +35,12 @@ ja:
           worked_on: 日付
           diary: 日記
           practice: 稽古
+        profile:
+          name: 名前
+          avatar: プロフィール画像
+          grade: 段位・級
+          birthday: 誕生日
+          dojo: 道場
+          description: 自己紹介 
         
         
