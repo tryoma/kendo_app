@@ -6,26 +6,23 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-        if @profile.update(profile_params)
-            format.html {
-                redirect_to account_path,
-                notice: "Profile was successfully updated."
-            }
-        else
-            format.html {
-                render :edit
-            }
-        end
+    if @profile.update(profile_params)
+        redirect_to @user
+        flash[:alert] ="#{@profile.name}のプロフィールを更新しました。"
+    else
+        flash[:alert] ="だめでした。"
+        render :edit
     end
-end
+  end
 
 private
-def set_profile
-    @profile = current_user.profile
-end
 
-def profile_params
-    params.require(:profile).permit(:name, :avatar, :grade, :birthday, :dojo, :description)
-end
+  def set_profile
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
+  end
+
+  def profile_params
+    params.require(:user).permit(profile: [:name, :avatar, :grade, :birthday, :dojo, :description, :user_id])[:profile]
+  end
 end
