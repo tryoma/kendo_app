@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :users do
     resource :profile, :only => [:edit, :update]
   end
-  resources :events
+  resources :events do
+    resources :member, :only => [:create, :update, :destroy]
+  end
   resources :informations
 end
