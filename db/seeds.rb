@@ -1,14 +1,24 @@
-User.create!(user_name: "Sample User",
+user = User.create!(user_name: "Sample User",
   email: "sample@email.com",
   password: "password",
   password_confirmation: "password",
   admin: true)
 
-User.create!(user_name: "Sample User1",
+user.build_profile
+user.profile.name = user.user_name
+user.save
+
+
+user = User.create!(user_name: "Sample User1",
   email: "sample1@email.com",
   password: "password",
   password_confirmation: "password",
   admin: false)
+
+user.build_profile
+user.profile.name = user.user_name
+user.save
+
 
 4.times do
   date  = Faker::Date.between(from: '2020-12-25', to: '2021-12-25')
