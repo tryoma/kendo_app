@@ -8,5 +8,6 @@ class CreateMembers < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :members, [:user_id, :event_id], unique: true
   end
 end
