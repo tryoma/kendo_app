@@ -1,5 +1,6 @@
 class InformationsController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def index
     @informations = Information.paginate(page: params[:page])
   end

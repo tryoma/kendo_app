@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_105402) do
+ActiveRecord::Schema.define(version: 2020_12_16_120244) do
 
   create_table "events", force: :cascade do |t|
     t.date "event_day"
@@ -38,6 +38,18 @@ ActiveRecord::Schema.define(version: 2020_12_15_105402) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_information_on_user_id"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "user_id"
+    t.boolean "first_agree"
+    t.boolean "second_agree"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_members_on_event_id"
+    t.index ["user_id", "event_id"], name: "index_members_on_user_id_and_event_id", unique: true
+    t.index ["user_id"], name: "index_members_on_user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -78,5 +90,7 @@ ActiveRecord::Schema.define(version: 2020_12_15_105402) do
 
   add_foreign_key "events", "users"
   add_foreign_key "information", "users"
+  add_foreign_key "members", "events"
+  add_foreign_key "members", "users"
   add_foreign_key "records", "users"
 end
