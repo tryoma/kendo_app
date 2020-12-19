@@ -65,8 +65,9 @@ ActiveRecord::Schema.define(version: 2020_12_16_120244) do
   end
 
   create_table "records", force: :cascade do |t|
-    t.date "worked_on"
-    t.string "diary"
+    t.date "start_time"
+    t.string "title"
+    t.text "content"
     t.boolean "practice", default: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

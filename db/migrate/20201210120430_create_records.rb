@@ -1,8 +1,9 @@
 class CreateRecords < ActiveRecord::Migration[6.0]
   def change
     create_table :records do |t|
-      t.date :worked_on
-      t.string :diary
+      t.date :start_time
+      t.string :title
+      t.text :content
       t.boolean :practice, default: false
       t.references :user, null: false, foreign_key: true
 

@@ -1,0 +1,18 @@
+<% provide(:title, "稽古日記") %>
+
+<h2><%= @record.start_time %>の日記</h2>
+<div class="container">
+  <div class="">
+    <p>タイトル：<%= @record.title %></p>
+    <p>内容：<%= @record.content %></p>
+    <%= link_to "編集", 
+      edit_user_record_path(user_id: @user, id: @record.id), 
+      method: :get,
+      class: "btn btn-primary" %>
+    <%= link_to "削除", 
+      user_record_path(user_id: @user, id: @record.id), 
+      method: :delete,
+      data: { confirm: "日記を削除しますか？" },
+      class: "btn btn-danger" %>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<% provide(:title, "稽古日記カレンダー") %>
+
+<div class=''>
+  <h2>稽古日記カレンダー</h2>
+  <% if current_user == @user %>
+    <%= link_to '稽古日記を入力',new_user_record_path(@user),class: 'btn-default btn-lg blue-btn'%>
+  <% end %>
+</div>
+
+<%= month_calendar events: @records do |date, records| %>
+  <%= date.day %>
+
+  <% records.each do |record| %>
+    <div>
+      <%= link_to user_record_path(user_id: @user, id: record.id) do %>
+        <p class='calendar-main-target'><%= record.title %></p>
+        <%#= image_tag('default.png', class: 'record-logo' )%>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
