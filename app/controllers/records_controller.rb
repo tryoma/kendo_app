@@ -7,11 +7,20 @@ class RecordsController < ApplicationController
   end
 
   def show
-    @record = current_user.record.find(params[:id])
+    @record = @user.records.find(params[:id])
   end
 
   def new
-    @record = current_user.record
+    @record = @user.records.new
+  end
+
+  def create
+    @record = @user.records.new(record_params)
+    if @record.save
+      redirect_to user_records_path(@user.id)
+    else
+      redirect_to new_user_record_path(@user.id)
+    end
   end
 
   def edit
@@ -24,14 +33,6 @@ class RecordsController < ApplicationController
     redirect_to record_path(@user.id)
   end
 
-  def create
-    @record = current_user.record.new(record_memo)
-    if @record.save
-      redirect_to record_path(@user.id)
-    else
-      redirect_to new_record_path
-    end
-  end
 
   def destroy
     @record = current_user.record.find(params[:id])
@@ -41,8 +42,8 @@ class RecordsController < ApplicationController
 
 
   private
-  def record_memo
-    params.permit(:start_time,:title, :content,:user_id)
+  def record_params
+    params.require(:record).permit(:start_time, :title, :content)
   end
 
   def set_user
