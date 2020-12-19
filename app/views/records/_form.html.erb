@@ -9,11 +9,13 @@
           <%= f.date_field :start_time, value: Date.today%>
         <% end %>
       </div>
-      <%= f.label :title, class: "label-form" %>
-      <%= f.text_field :title, class: "form-control" %>
+      <div>
+        <%= f.label :title, class: "label-form" %>
+        <%= f.text_field :title, class: "form-control" %>
 
-      <%= f.label :content, class: "label-form" %>
-      <%= f.text_field :content, class: "form-control" %>
+        <%= f.label :content, class: "label-form" %>
+        <%= f.text_field :content, class: "form-control" %>
+      </div>
 
     <div class="actions text-right">
       <%= link_to 'キャンセル', :back, class: 'btn-default cancel-round-btn' %>

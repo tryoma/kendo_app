@@ -10,11 +10,15 @@
     <p><%= @event.finish_time %></p>
   </div>
   <div class="event-confirmation">
-    <%= link_to '参加しますか？', event_members_path(@event), method: :post,
-                    data: { confirm: "このイベントに参加しますか？" },
-                    class: "btn btn-primary" %>
-    <%= link_to '参加取りやめ', event_member_path(@event), method: :delete,
-                    data: { confirm: "このイベントを参加取りやめますか？" },
-                    class: "btn btn-danger" %>
+    <%= link_to '参加しますか？', 
+      event_members_path(@event),
+      method: :post,
+      data: { confirm: "このイベントに参加しますか？" },
+      class: "btn btn-primary" %>
+    <%= link_to '参加取りやめ',
+      event_member_path(@event),
+      method: :delete,
+      data: { confirm: "このイベントを参加取りやめますか？" },
+      class: "btn btn-danger" %>
   </div>
 </div>

@@ -18,26 +18,32 @@ class RecordsController < ApplicationController
     @record = @user.records.new(record_params)
     if @record.save
       redirect_to user_records_path(@user.id)
+      flash[:success] = "OK"
     else
-      redirect_to new_user_record_path(@user.id)
+      render new_user_record_path(@user.id)
+      flash[:success] = "NG"
     end
   end
 
   def edit
-    @record = current_user.record.find(params[:id])
+    @record = @user.records.find(params[:id])
   end
 
   def update
-    @record = current_user.record.find(params[:id])
-    @record.update(update_params)
-    redirect_to record_path(@user.id)
+    @record = @user.records.find(params[:id])
+    if @record.update(record_params)
+       redirect_to user_records_path(@user.id)
+       flash[:success] = "OK"
+    else
+      render edit_user_record_path(@user.id)
+      flash[:success] = "NG"
+    end
   end
 
-
   def destroy
-    @record = current_user.record.find(params[:id])
+    @record = @user.records.find(params[:id])
     @record.destroy
-    redirect_to record_path(@user.id)
+    redirect_to user_records_path(@user.id)
   end
 
 
@@ -50,7 +56,4 @@ class RecordsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
-  def update_params
-    params.require(:record).permit(:worked_on,:title, :content,:user_id)
-  end
 end

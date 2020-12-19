@@ -1,6 +1,11 @@
 <% provide(:title, "稽古日記カレンダー") %>
 
-<h2>稽古日記カレンダー</h2>
+<div class=''>
+  <h2>稽古日記カレンダー</h2>
+  <% if current_user == @user %>
+    <%= link_to '稽古日記を入力',new_user_record_path(@user),class: 'btn-default btn-lg blue-btn'%>
+  <% end %>
+</div>
 
 <%= month_calendar events: @records do |date, records| %>
   <%= date.day %>
@@ -14,8 +19,3 @@
     </div>
   <% end %>
 <% end %>
-<div class='float-right'>
-  <% if current_user == @user %>
-    <%= link_to 'を記録する',new_user_record_path(@user),class: 'btn-default btn-lg blue-btn'%>
-  <% end %>
-</div>
