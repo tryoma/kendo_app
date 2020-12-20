@@ -21,4 +21,25 @@
       data: { confirm: "このイベントを参加取りやめますか？" },
       class: "btn btn-danger" %>
   </div>
+  <div class="event-comment">
+    <%= form_with(model:[@event, @comment]) do |f| %>
+      <p>
+        <%= f.label :body,"コメント" %>
+        <%= f.text_field :body %>
+      </p>
+      <%= f.submit %>
+    <% end %>
+    <% @comments.each do |comment| %>
+      <hr>
+      <p>
+        <span><%= comment.user.profile.name %>: </span>
+        <%= comment.body %>
+        <% if comment.user == current_user %>
+          <%= link_to "削除", event_comment_path(@event.id, comment.id), method: :delete,
+                  data: { confirm: "削除してよろしいですか？" },
+                  class: "btn btn-danger" %>
+        <% end %>
+      </p>
+    <% end %>
+  </div>
 </div>

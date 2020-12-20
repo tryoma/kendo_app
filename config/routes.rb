@@ -7,9 +7,12 @@ Rails.application.routes.draw do
     resource :profile, :only => [:edit, :update]
     resources :records
   end
+
   resources :events do
     resources :members, :only => [:create, :update, :destroy]
+    resources :comments, :only => [:create, :destroy]
   end
+  
   resources :informations do
     resource :favorites, only: [:create, :destroy] 
   end

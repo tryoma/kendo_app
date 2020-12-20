@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :events, through: :members
+  has_many :comments, dependent: :destroy
   has_many :members
   has_many :records, dependent: :destroy
   has_many :informations, dependent: :destroy

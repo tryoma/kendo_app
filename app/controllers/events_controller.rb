@@ -2,11 +2,13 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @events = Event.paginate(page: params[:page])
+    @events = Event.includes(:user).paginate(page: params[:page])
   end
 
   def show
     @event = Event.find(params[:id])
+    @comment = Comment.new
+    @comments = @event.comments.includes(:user).order(created_at: :desc)
   end
   
   def new
