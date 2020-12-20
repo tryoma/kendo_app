@@ -6,6 +6,10 @@ ja:
       information: 情報
       record: 記録
       profile: プロフィール
+      member: メンバー
+      favorite: お気に入り
+      comment: コメント
+      relationship: フォロー
     attributes:
         user:
           id: ID
@@ -41,6 +45,24 @@ ja:
           grade: 段位・級
           birthday: 誕生日
           dojo: 道場
-          description: 自己紹介 
+          description: 自己紹介
+        member:
+          event_id: 稽古ID
+          user_id: ユーザーID
+          first_agree: 予定
+          second_agree: 実績
+        favorites:
+          user_id: ユーザーID
+          information_id: 情報ID
+        comment: 
+          user_id: ユーザーID
+          event_id: 稽古ID
+          comment: コメント
+        relationship: 
+          user_id: ユーザーID
+          follow_id: ユーザーID
+
+
+          
         
         
