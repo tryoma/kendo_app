@@ -9,6 +9,14 @@
     <p><%= @information.until %></p>
   </div>
   <div class="information-confirmation">
-    <%= link_to 'お気に入り', "#", class: 'btn-default blue-btn' %>
+    <% if user_signed_in? %>
+      <% if @information.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
+          <p><span>お気に入り解除: </span><%=link_to @information.favorites.count, information_favorites_path(@information.id), method: :delete %></p>
+      <% else %>
+          <p><span>お気に入り登録: </span><%=link_to @information.favorites.count, information_favorites_path(@information.id), method: :post %></p>
+      <% end %>
+    <% else %>
+      <p><span>お気に入り数: </span><%= @information.favorites.count %></p>
+    <% end %>
   </div>
 </div>

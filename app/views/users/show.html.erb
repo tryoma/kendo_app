@@ -29,6 +29,14 @@
   <%= link_to 'お気に入り情報', "#", class: 'btn-default blue-btn' %>
 </div>
 
+<div class="favorite-information">
+  <% @favorite_informations.each do |information| %>
+    <hr>
+    <p><span>情報内容: </span><%=link_to information.body, information_path(information.id) %></p>
+  <% end %>
+</div>
+
+
 
 <h2>主催予定の稽古</h2>
 <div class="event-list">

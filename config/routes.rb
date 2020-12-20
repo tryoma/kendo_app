@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   resources :events do
     resources :members, :only => [:create, :update, :destroy]
   end
-  resources :informations
+  resources :informations do
+    resource :favorites, only: [:create, :destroy] 
+  end
+  
 end
