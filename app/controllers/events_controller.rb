@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @events = Event.includes(:user).paginate(page: params[:page])
+    @events = Event.paginate(page: params[:page])
   end
 
   def show

@@ -26,8 +26,9 @@ ActiveRecord::Schema.define(version: 2020_12_20_080628) do
     t.datetime "finish_time"
     t.string "prefecture"
     t.string "place"
-    t.string "latitude"
-    t.string "longitude"
+    t.string "address", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.integer "estimate_people"
     t.integer "level"
     t.string "comment"
