@@ -29,6 +29,8 @@ gem 'carrierwave'
 
 gem 'simple_calendar', '~> 2.0'
 
+gem 'geocoder'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
