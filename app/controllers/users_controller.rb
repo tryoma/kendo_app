@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @events = Event.all
     @favorite_informations = @user.favorite_informations
+    @users = @user.followings
   end
 
   def destroy
