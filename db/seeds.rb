@@ -20,21 +20,21 @@ user.profile.name = user.user_name
 user.save
 
 
-4.times do
-  date  = Faker::Date.between(from: '2020-12-25', to: '2021-12-25')
-  Event.create!(event_day: date,
-                start_time: "11:00",
-                finish_time: "12:00",
-                prefecture: "千葉県",
-                place: "ディズニーランド",
-                address: "千葉県浦安市舞浜",
-                latitude: "35.6308022",
-                longitude: "139.8828549",
-                estimate_people: "5",
-                level: "10",
-                comment: "ミッキーと一緒に稽古しよう！",
-                user_id: 2 )
-end
+# 4.times do
+#   date  = Faker::Date.between(from: '2020-12-25', to: '2021-12-25')
+#   Event.create!(event_day: date,
+#                 start_time: "11:00",
+#                 finish_time: "12:00",
+#                 prefecture: "千葉県",
+#                 place: "ディズニーランド",
+#                 address: "千葉県浦安市舞浜",
+#                 latitude: "35.6308022",
+#                 longitude: "139.8828549",
+#                 estimate_people: "5",
+#                 level: "10",
+#                 comment: "ミッキーと一緒に稽古しよう！",
+#                 user_id: 2 )
+# end
 
 4.times do |n|
   date  = Faker::Date.between(from: '2020-12-25', to: '2021-12-25')

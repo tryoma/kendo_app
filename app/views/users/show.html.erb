@@ -1,19 +1,22 @@
 <% provide(:title, @user.user_name) %>
 <div class="profile-head">
   <div class="profile-img">
-    <%# if @user.image? %>
-        <%#= image_tag @user.image.url, class: 'avatar-img big-img' %>
-      <%# else %>
-        <%= image_tag "/assets/default.png", class: 'avatar-img big-img' %>
-      <%# end %>
+    <% if @user.profile.avatar? %>                                                              
+      <%= image_tag @user.profile.avatar.url %>
+    <% else %>
+      <%= image_tag "/assets/default.png", class: 'avatar-img big-img' %>
+    <% end %>
   </div>
   <div class="profile-info">
     <div class="profile-name">
       <p><%= @user.profile.name %></p>
     </div>
     <div class="profile-detail">
-      <p><%= @user.profile.name %></p>
-      <p><%= @user.user_name %></p>
+      <p><%= @user.profile.grade %></p>
+      <p><%= @user.profile.birthday %></p>
+      <p><%= @user.profile.prefecture %></p>
+      <p><%= @user.profile.dojo %></p>
+      <p><%= @user.profile.description %></p>
       <%= link_to "編集", edit_user_profile_path(@user.id) %>
     </div>
     <div class="profile-menu">

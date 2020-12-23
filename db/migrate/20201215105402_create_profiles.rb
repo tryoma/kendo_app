@@ -5,6 +5,7 @@ class CreateProfiles < ActiveRecord::Migration[6.0]
       t.string :avatar
       t.string :grade
       t.date :birthday
+      t.string :prefecture
       t.string :dojo
       t.text :description
       t.integer :user_id

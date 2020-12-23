@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_080628) do
     t.string "avatar"
     t.string "grade"
     t.date "birthday"
+    t.string "prefecture"
     t.string "dojo"
     t.text "description"
     t.integer "user_id"
