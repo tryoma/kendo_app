@@ -33,7 +33,7 @@ ja:
         information:
           title: タイトル
           body: 内容
-          until: 期限
+          limited: 期限
           attachment: 添付データ
         record: 
           worked_on: 日付

@@ -6,7 +6,7 @@
   </div>
   <div class="information-information-list">
     <p><%= @information.body %></p>
-    <p><%= @information.until %></p>
+    <p><%= @information.limited %></p>
   </div>
   <div class="information-confirmation">
     <% if user_signed_in? %>
@@ -17,6 +17,14 @@
       <% end %>
     <% else %>
       <p><span>お気に入り数: </span><%= @information.favorites.count %></p>
+    <% end %>
+  </div>
+  <div class="information-editing">
+    <% if @information.user == current_user %>
+      <%= link_to "編集", edit_information_path(@information) %>
+      <%= link_to "削除", information_path(@information), method: :delete,
+                data: { confirm: "削除してよろしいですか？" },
+                class: "btn btn-danger" %>
     <% end %>
   </div>
 </div>

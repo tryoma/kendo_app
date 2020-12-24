@@ -47,6 +47,6 @@ class InformationsController < ApplicationController
   private
 
     def information_params
-      params.require(:information).permit(:title, :body, :until, :attachment, :user_id)
+      params.require(:information).permit(:title, :body, :limited, :attachment, :user_id)
     end
 end

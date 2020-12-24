@@ -3,7 +3,7 @@ class CreateInformation < ActiveRecord::Migration[6.0]
     create_table :information do |t|
       t.string :title
       t.string :body
-      t.date :until
+      t.date :limited
       t.string :attachment
       t.references :user, null: false, foreign_key: true
 

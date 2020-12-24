@@ -43,6 +43,6 @@ user.save
   date2  = Faker::Date.between(from: '2020-12-25', to: '2021-12-25')
   Information.create!(title: title,
                       body: body,
-                      until: date2,
+                      limited: date2,
                       user_id: 1 )
 end
