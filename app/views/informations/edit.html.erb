@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @information, url: information_path, method: :patch) do |f| %>
+    <%= form_with(model: @information, url: information_path, local: true,method: :patch) do |f| %>
     <%= render 'shared/error_messages', object: @information %>
 
     <%= f.label :title, class: "label-form" %>
@@ -16,8 +16,8 @@
     <%= f.label :limited, class: "label-form" %>
     <%= f.date_field :limited, class: "form-control" %>
 
-    <%= f.label :attachment, class: "label-form" %>
-    <%= f.text_field :attachment, class: "form-control" %>
+    <%= f.label :youtube_url, class: "label-form" %>
+    <%= f.text_field :youtube_url, class: "form-control" %>
 
     <%= f.hidden_field :user_id, :value => current_user.id %>
 

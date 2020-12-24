@@ -15,6 +15,9 @@ class InformationsController < ApplicationController
 
   def create
     @information = Information.new(information_params)
+    url = params[:information][:youtube_url]
+    url = url.last(11) #Youtubeのurlの下11文字を取得する
+    @information.youtube = url
     if @information.save
       flash[:success] = '新規作成に成功しました。'
       redirect_to @information
@@ -29,7 +32,11 @@ class InformationsController < ApplicationController
 
   def update
     @information = Information.find(params[:id])
-    if @information.update_attributes(information_params)
+    @information.update_attributes(information_params)
+    url = params[:information][:youtube_url]
+    url = url.last(11) #Youtubeのurlの下11文字を取得する
+    @information.youtube = url
+    if @information.save
       flash[:success] = "稽古会情報を更新しました。"
       redirect_to @information
     else
@@ -47,6 +54,6 @@ class InformationsController < ApplicationController
   private
 
     def information_params
-      params.require(:information).permit(:title, :body, :limited, :attachment, :user_id)
+      params.require(:information).permit(:title, :body, :limited, :youtube_url, :user_id)
     end
 end

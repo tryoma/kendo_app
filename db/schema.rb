@@ -49,7 +49,8 @@ ActiveRecord::Schema.define(version: 2020_12_20_080628) do
     t.string "title"
     t.string "body"
     t.date "limited"
-    t.string "attachment"
+    t.string "youtube"
+    t.string "youtube_url"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

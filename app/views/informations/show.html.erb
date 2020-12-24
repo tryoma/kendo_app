@@ -8,6 +8,11 @@
     <p><%= @information.body %></p>
     <p><%= @information.limited %></p>
   </div>
+  <div class="information-video">
+  <% unless @information.youtube.nil? %>
+    <iframe width="750" height="500" src="https://www.youtube.com/embed/<%= @information.youtube %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <% end %>
+  </div>
   <div class="information-confirmation">
     <% if user_signed_in? %>
       <% if @information.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->

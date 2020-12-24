@@ -34,7 +34,7 @@ ja:
           title: タイトル
           body: 内容
           limited: 期限
-          attachment: 添付データ
+          youtube_url: Youtube_URL
         record: 
           worked_on: 日付
           diary: 日記
