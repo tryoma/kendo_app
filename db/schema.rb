@@ -24,13 +24,13 @@ ActiveRecord::Schema.define(version: 2020_12_20_080628) do
     t.date "event_day"
     t.datetime "start_time"
     t.datetime "finish_time"
-    t.string "prefecture"
+    t.integer "prefecture", default: 0, null: false
     t.string "place"
     t.string "address", null: false
     t.float "latitude"
     t.float "longitude"
     t.integer "estimate_people"
-    t.integer "level"
+    t.integer "level", default: 0, null: false
     t.string "comment"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

@@ -49,7 +49,7 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:event_day, :start_time, :finish_time, :prefecture, :place, :estimate_people, :level, :comment, :user_id)
+      params.require(:event).permit(:event_day, :start_time, :finish_time, :prefecture, :place, :estimate_people, :address, :level, :comment, :user_id)
     end
 
 end

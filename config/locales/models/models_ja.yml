@@ -25,6 +25,7 @@ ja:
           finish_time: 終了時間
           prefecture: 都道府県
           place: 場所
+          address: 住所
           latitude: 緯度
           longitude: 軽度
           estimate_people: 想定人数
