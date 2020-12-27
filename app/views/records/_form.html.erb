@@ -3,6 +3,7 @@
   <%= render 'shared/error_messages', object: @record %>
     <div class="record-form">
       <div>
+        <%= f.label :start_time, class: "label-form" %>
         <% if @record.start_time.present? %>
           <%= f.date_field :start_time %>
         <% else %>
@@ -14,7 +15,12 @@
         <%= f.text_field :title, class: "form-control" %>
 
         <%= f.label :content, class: "label-form" %>
-        <%= f.text_field :content, class: "form-control" %>
+        <%= f.text_area :content, class: "form-control" %>
+
+        <%= f.hidden_field :practice, :value => false %>
+        <%= f.check_box :practice, {} ,true, false %>
+        <%= f.label :practice, "稽古しました！" %>
+
       </div>
 
     <div class="actions text-right">

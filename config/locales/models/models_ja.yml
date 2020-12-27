@@ -37,9 +37,10 @@ ja:
           limited: 期限
           youtube_url: Youtube_URL
         record: 
-          worked_on: 日付
-          diary: 日記
-          practice: 稽古
+          start_time: 日付
+          title: タイトル
+          content: 本文
+          practice: 稽古の有無
         profile:
           name: 名前
           avatar: プロフィール画像
