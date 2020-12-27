@@ -25,6 +25,7 @@ ja:
           finish_time: 終了時間
           prefecture: 都道府県
           place: 場所
+          address: 住所
           latitude: 緯度
           longitude: 軽度
           estimate_people: 想定人数
@@ -33,8 +34,8 @@ ja:
         information:
           title: タイトル
           body: 内容
-          until: 期限
-          attachment: 添付データ
+          limited: 期限
+          youtube_url: Youtube_URL
         record: 
           worked_on: 日付
           diary: 日記
@@ -44,6 +45,7 @@ ja:
           avatar: プロフィール画像
           grade: 段位・級
           birthday: 誕生日
+          prefecture: 出身地
           dojo: 道場
           description: 自己紹介
         member:

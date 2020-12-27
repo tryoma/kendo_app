@@ -1,19 +1,22 @@
 <% provide(:title, @user.user_name) %>
 <div class="profile-head">
   <div class="profile-img">
-    <%# if @user.image? %>
-        <%#= image_tag @user.image.url, class: 'avatar-img big-img' %>
-      <%# else %>
-        <%= image_tag "/assets/default.png", class: 'avatar-img big-img' %>
-      <%# end %>
+    <% if @user.profile.avatar? %>                                                              
+      <%= image_tag @user.profile.avatar.url %>
+    <% else %>
+      <%= image_tag "/assets/default.png", class: 'avatar-img big-img' %>
+    <% end %>
   </div>
   <div class="profile-info">
     <div class="profile-name">
       <p><%= @user.profile.name %></p>
     </div>
     <div class="profile-detail">
-      <p><%= @user.profile.name %></p>
-      <p><%= @user.user_name %></p>
+      <p><%= @user.profile.grade %></p>
+      <p><%= @user.profile.birthday %></p>
+      <p><%= @user.profile.prefecture %></p>
+      <p><%= @user.profile.dojo %></p>
+      <p><%= @user.profile.description %></p>
       <%= link_to "編集", edit_user_profile_path(@user.id) %>
     </div>
     <div class="profile-menu">
@@ -47,31 +50,43 @@
 <h2>主催予定の稽古</h2>
 <div class="event-list">
   <div class="container">
-    <div class="row">
-      <% @events.each do |event| %>
-        <div class="col-sm-4">
-          <p><%= link_to event.place, event_path(event.id) %>の稽古会</p>
-          <p><%= event.event_day %></p>
-          <p><%= event.start_time %></p>
-          <p><%= event.finish_time %></p>
-        </div>
-      <% end %>
-    </div>
+    <% if @owner_events.count > 0 %>
+      <div class="row">
+        <% @owner_events.each do |event| %>
+          <div class="col-sm-4">
+            <p><%= link_to event.place, event_path(event.id) %>の稽古会</p>
+            <p><%= event.event_day %></p>
+            <p><%= event.start_time %></p>
+            <p><%= event.finish_time %></p>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="event__list-comment">
+        <p>主催予定の稽古はありません</p>
+      </div>
+    <% end %>
   </div>
 </div>
 
 <h2>参加予定の稽古</h2>
 <div class="event-list">
   <div class="container">
-    <div class="row">
-      <% @events.each do |event| %>
-        <div class="col-sm-4">
-          <p><%= link_to event.place, event_path(event.id) %>の稽古会</p>
-          <p><%= event.event_day %></p>
-          <p><%= event.start_time %></p>
-          <p><%= event.finish_time %></p>
-        </div>
-      <% end %>
-    </div>
+    <% if @member_events.count > 0 %>
+      <div class="row">
+        <% @member_events.each do |event| %>
+          <div class="col-sm-4">
+            <p><%= link_to event.place, event_path(event.id) %>の稽古会</p>
+            <p><%= event.event_day %></p>
+            <p><%= event.start_time %></p>
+            <p><%= event.finish_time %></p>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="event__list-comment">
+        <p>参加予定の稽古はありません</p>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -11,19 +11,22 @@
   <%= f.time_field :finish_time, class: "form-control" %>
 
   <%= f.label :prefecture, class: "label-form" %>
-  <%= f.text_field :prefecture, class: "form-control" %>
+  <%= f.select :prefecture, Event.prefectures.keys, {}, class: "form-control" %>
 
   <%= f.label :place, class: "label-form" %>
-  <%= f.text_field :place, class: "form-control" %>
+  <%= f.text_field :place, class: "form-control", placeholder: "例)日本武道館" %>
+
+  <%= f.label :address, class: "label-form" %>
+  <%= f.text_field :address, class: "form-control", placeholder: "例)東京都千代田区北の丸公園2番3号" %>
 
   <%= f.label :estimate_people, class: "label-form" %>
-  <%= f.text_field :estimate_people, class: "form-control" %>
+  <%= f.number_field :estimate_people, class: "form-control", placeholder: "  人", min: 1 %>
 
   <%= f.label :level, class: "label-form" %>
-  <%= f.text_field :level, class: "form-control" %>
+  <%= f.select :level, Event.levels.keys, {}, class: "form-control" %>
 
   <%= f.label :comment, class: "label-form" %>
-  <%= f.text_field :comment, class: "form-control" %>
+  <%= f.text_field :comment, class: "form-control", placeholder: "例)初開催です！どなたでも！楽しくやりましょう！"%>
 
   <%= f.hidden_field :user_id, :value => current_user.id %>
 

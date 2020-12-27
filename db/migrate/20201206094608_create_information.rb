@@ -3,8 +3,9 @@ class CreateInformation < ActiveRecord::Migration[6.0]
     create_table :information do |t|
       t.string :title
       t.string :body
-      t.date :until
-      t.string :attachment
+      t.date :limited
+      t.string :youtube
+      t.string :youtube_url
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

@@ -24,13 +24,13 @@ ActiveRecord::Schema.define(version: 2020_12_20_080628) do
     t.date "event_day"
     t.datetime "start_time"
     t.datetime "finish_time"
-    t.string "prefecture"
+    t.integer "prefecture", default: 0, null: false
     t.string "place"
     t.string "address", null: false
     t.float "latitude"
     t.float "longitude"
     t.integer "estimate_people"
-    t.integer "level"
+    t.integer "level", default: 0, null: false
     t.string "comment"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -48,8 +48,9 @@ ActiveRecord::Schema.define(version: 2020_12_20_080628) do
   create_table "information", force: :cascade do |t|
     t.string "title"
     t.string "body"
-    t.date "until"
-    t.string "attachment"
+    t.date "limited"
+    t.string "youtube"
+    t.string "youtube_url"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_080628) do
     t.string "avatar"
     t.string "grade"
     t.date "birthday"
+    t.string "prefecture"
     t.string "dojo"
     t.text "description"
     t.integer "user_id"

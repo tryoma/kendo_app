@@ -43,13 +43,17 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event.destroy
     flash[:success] = "#{@event.event_day}のデータを削除しました。"
-    redirect_to events_url
+    if current_user.admin?
+      redirect_to events_url
+    else
+      redirect_to user_url(current_user)
+    end
   end
 
   private
 
     def event_params
-      params.require(:event).permit(:event_day, :start_time, :finish_time, :prefecture, :place, :estimate_people, :level, :comment, :user_id)
+      params.require(:event).permit(:event_day, :start_time, :finish_time, :prefecture, :place, :estimate_people, :address, :level, :comment, :user_id)
     end
 
 end

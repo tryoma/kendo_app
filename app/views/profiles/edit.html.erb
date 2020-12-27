@@ -17,12 +17,18 @@
 
       <%= t.label :birthday, class: "label-form" %>
       <%= t.date_field :birthday, class: "form-control" %>
+      
+      <%= t.label :prefecture, class: "label-form" %>
+      <%= t.text_field :prefecture, class: "form-control" %>
 
       <%= t.label :dojo, class: "label-form" %>
       <%= t.text_field :dojo, class: "form-control" %>
 
       <%= t.label :description, class: "label-form" %>
       <%= t.text_field :description, class: "form-control" %>
+
+      <%= t.label :avatar, class: "label-form"  %>
+      <%= t.file_field :avatar, class: "form-control" %>
 
       <%= t.hidden_field :user_id, :value => current_user.id %>
 

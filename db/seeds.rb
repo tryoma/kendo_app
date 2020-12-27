@@ -25,13 +25,13 @@ user.save
   Event.create!(event_day: date,
                 start_time: "11:00",
                 finish_time: "12:00",
-                prefecture: "千葉県",
+                prefecture: 0,
                 place: "ディズニーランド",
                 address: "千葉県浦安市舞浜",
-                latitude: "35.6308022",
-                longitude: "139.8828549",
-                estimate_people: "5",
-                level: "10",
+                latitude: 35.6308022 ,
+                longitude: 139.8828549,
+                estimate_people: 5 ,
+                level: 0 ,
                 comment: "ミッキーと一緒に稽古しよう！",
                 user_id: 2 )
 end
@@ -43,6 +43,6 @@ end
   date2  = Faker::Date.between(from: '2020-12-25', to: '2021-12-25')
   Information.create!(title: title,
                       body: body,
-                      until: date2,
+                      limited: date2,
                       user_id: 1 )
 end

@@ -3,7 +3,7 @@
 
 <div class="event-show">
   <div class="event-map">
-  <script type="text/javascript">
+    <script type="text/javascript">
       function initMap() {
         let test ={lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
         let map = new google.maps.Map(document.getElementById('map'), {
@@ -22,40 +22,62 @@
                       position:test,
                       map: map,
                       title: contentString
-                     });
+                    });
     
-         marker.addListener('click', function() {
-           infowindow.open(map, marker);
-         });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
       }
     </script>
     
     <script async defer
-                  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyA9u1aAUZeLUxkwQ95Wok82cO1NEaGsY94&callback=initMap">
+                  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLEMAP'] %>&callback=initMap">
     </script>
     <style type="text/css">
       #map { height: 500px;
-             width: 100%;}
+            width: 100%;}
     </style>
     <div id="map"></div>
-
   </div>
   <div class="event-information-list">
-    <p><%= @event.event_day %></p>
-    <p><%= @event.start_time %></p>
-    <p><%= @event.finish_time %></p>
+    <ul>
+      <li><%= l @event.event_day, format: :long %></li>
+      <li><%= l @event.start_time, format: :time %></li>
+      <li><%= l @event.finish_time, format: :time %></li>
+      <li><%= @event.prefecture %></li>
+      <li><%= @event.place %></li>
+      <li><%= @event.address %></li>
+      <li><%= @event.level %></li>
+      <li><%= @event.comment %></li>
+      <li><%= @event.owner.profile.name %></li>
+      <li><%= @event.members.count %>人/<%= @event.estimate_people %>人 あと<%= @event.estimate_people -  @event.members.count %>人参加可能です</li>
+    </ul>
   </div>
   <div class="event-confirmation">
-    <%= link_to '参加しますか？', 
-      event_members_path(@event),
-      method: :post,
-      data: { confirm: "このイベントに参加しますか？" },
-      class: "btn btn-primary" %>
-    <%= link_to '参加取りやめ',
-      event_member_path(@event),
-      method: :delete,
-      data: { confirm: "このイベントを参加取りやめますか？" },
-      class: "btn btn-danger" %>
+    <% unless @event.owner == current_user %>
+      <% unless current_user.members.find_by(event_id: @event.id)%>
+        <%= link_to '参加しますか？', 
+          event_members_path(@event),
+          method: :post,
+          data: { confirm: "このイベントに参加しますか？" },
+          class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to '参加取りやめ',
+          event_member_path(@event),
+          method: :delete,
+          data: { confirm: "このイベントを参加取りやめますか？" },
+          class: "btn btn-danger" %>
+      <% end %>
+    <% else %>
+      <%= link_to "編集",
+        edit_event_path(@event),
+        class: "btn btn-primary" %>
+      <%= link_to "削除",
+        event_path(@event),
+        method: :delete,
+        data: { confirm: "削除してよろしいですか？" },
+        class: "btn btn-danger" %>
+    <% end %>
   </div>
   <div class="event-comment">
     <%= form_with(model:[@event, @comment]) do |f| %>
@@ -65,6 +87,8 @@
       </p>
       <%= f.submit %>
     <% end %>
+  </div>
+  <div class="event__comment-list">
     <% @comments.each do |comment| %>
       <hr>
       <p>
