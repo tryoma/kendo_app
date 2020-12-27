@@ -6,7 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @events = Event.all
+    @owner_events = Event.where(owner:@user)
+    @member_events = @user.members.map{|member| member.event}
     @favorite_informations = @user.favorite_informations
     @users = @user.followings
   end
