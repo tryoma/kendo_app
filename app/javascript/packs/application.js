@@ -8,15 +8,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-require ('scripts/vendors/swiper.min')
-require ('scripts/vendors/TweenMax.min')
-require ('scripts/vendors/scroll-polyfill')
-require ('scripts/libs/scroll')
-require ('scripts/libs/text-animation')
-require ('scripts/libs/hero-slider')
-require ('scripts/libs/mobile-menu')
-require ('scripts/main')
-
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
