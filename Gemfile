@@ -16,7 +16,7 @@ gem 'sass-rails', '>= 6'
 gem 'uglifier',     '>= 1.3.0'
 gem 'jquery-rails'
 gem 'webpacker', '~> 4.0'
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
