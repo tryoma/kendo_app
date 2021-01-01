@@ -15,17 +15,47 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p> 
+    <div id="global-container">
+      <div id="container">
+        <%
+=begin%>
+ <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>  
+<%
+=end%>
         <%= render 'layouts/header' %>
 
-    <div class="container">
-      <% flash.each do |message_type, msg| %>
-          <div class="alert alert-<%= message_type %>"><%= msg %></div>
-      <% end %>
-      <%= yield %>
-      <%= debug(params) if Rails.env.development? %>
+        <div class="container">
+          <% flash.each do |message_type, msg| %>
+              <div class="alert alert-<%= message_type %>"><%= msg %></div>
+          <% end %>
+          <%= yield %>
+          <%= debug(params) if Rails.env.development? %>
+        </div>
+          <%= render 'layouts/footer' %> 
+      </div>
+      <nav class="mobile-menu">
+        <ul class="mobile-menue__main">
+          <li class="mobile-menu__item">
+            <a href="">
+              <span class="main-title">Our Service</span>
+              <span class="sub-title">サービスについて</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="">
+              <span class="main-title">Our Service</span>
+              <span class="sub-title">サービスについて</span>
+            </a>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="">
+              <span class="main-title">Our Service</span>
+              <span class="sub-title">サービスについて</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
-      <%= render 'layouts/footer' %> 
   </body>
 </html>

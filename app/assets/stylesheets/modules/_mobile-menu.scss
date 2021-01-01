@@ -4,7 +4,7 @@ $cMenuOpen: $cBlack;
 .mobile-menu {
     position: fixed;
     right: 0;
-    top: 60px;
+    top: 30px;
     width: 300px;
 
     & .logo {
@@ -52,8 +52,8 @@ $cMenuOpen: $cBlack;
     &__item {
         list-style: none;
         display: block;
-        transform: translate3d(0, 0, -1000px);
-        padding: 0 40px;
+        transform: translate3d(0, 0, -800px);
+        padding: 0 20px 0 80px ;
         transition: transform 0.3s, opacity 0.2s;
         opacity: 0;
     }
@@ -67,7 +67,7 @@ $cMenuOpen: $cBlack;
 
 .menu-open {
     & #container {
-        transform: translate(-300px, 60px);
+        transform: translate(-250px, 0px);
         box-shadow: 0 8px 40px -10px rgba(0, 0, 0, 0.8);
     }
     

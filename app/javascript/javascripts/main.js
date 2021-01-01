@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 class Main {
     constructor() {
         this.header = document.querySelector('.header');
-        this.sides = document.querySelectorAll('.side');
+        // this.sides = document.querySelectorAll('.side');
         this._observers = [];
         this._init();
     }
@@ -20,8 +20,8 @@ class Main {
 
     _init() {
         new MobileMenu();
-        this.hero = new HeroSlider('.swiper-container');
-        Pace.on('done', this._paceDone.bind(this));
+        // this.hero = new HeroSlider('.swiper-container');
+        // Pace.on('done', this._paceDone.bind(this));
     }
 
     _paceDone() {
@@ -86,4 +86,30 @@ class Main {
         this.observers = new ScrollObserver('#main-content', this._sideAnimation.bind(this), {once: false, rootMargin: "-300px 0px"});
     }
 }
+
+class MobileMenu {
+    constructor() {
+        this.DOM = {};
+        this.DOM.btn = document.querySelector('.mobile-menu__btn');
+        this.DOM.container = document.querySelector('#global-container');
+        this.eventType = this._getEventType();
+        this._addEvent();
+    }
+
+    _getEventType() {
+        return window.ontouchstart ? 'touchstart' : 'click';
+    }
+
+    _toggle() {
+        this.DOM.container.classList.toggle('menu-open');
+    }
+
+    _addEvent() {
+        if (this.DOM) {
+        this.DOM.btn.addEventListener(this.eventType, this._toggle.bind(this));
+        }
+    }
+}
+
+
 
