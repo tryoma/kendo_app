@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Event, type: :model do
   let(:event){FactoryBot.create(:event)}
 
-  it "テストデータは有効" do
+  it "有効なファクトリを持つこと" do
     expect(event).to be_valid
   end
 
@@ -82,6 +82,28 @@ RSpec.describe Event, type: :model do
     expect(event.errors[:estimate_people]).to include(I18n.t('errors.messages.not_a_number'))
   end
 
+  it "想定人数が2以上でなければ無効" do
+    event.estimate_people = 1
+    event.valid?
+    expect(event.errors[:estimate_people]).to include(I18n.t('errors.messages.greater_than_or_equal_to', count: 2))
+  end
+
+  it "想定人数が2人であれば有効" do
+    event.estimate_people = 2
+    expect(event).to be_valid
+  end
+
+  it "想定人数が100人であれば有効" do
+    event.estimate_people = 100
+    expect(event).to be_valid
+  end
+
+  it "想定人数が100以下でなければ無効" do
+    event.estimate_people = 101
+    event.valid?
+    expect(event.errors[:estimate_people]).to include(I18n.t('errors.messages.less_than_or_equal_to', count: 100))
+  end
+
   it "レベルがなければ無効" do
     event.level = nil
     event.valid?
@@ -92,6 +114,17 @@ RSpec.describe Event, type: :model do
     event.comment = nil
     event.valid?
     expect(event.errors[:comment]).to include(I18n.t('errors.messages.blank'))
+  end
+
+  it "コメントが100文字以下であれば有効" do
+    event.comment = "あ" * 100
+    expect(event).to be_valid
+  end
+
+  it "コメントが100文字以上であれば無効" do
+    event.comment = "あ" * 101
+    event.valid?
+    expect(event.errors[:comment]).to include(I18n.t('errors.messages.too_long',count: 100))
   end
 
   it "ユーザーIDがなければ無効" do
