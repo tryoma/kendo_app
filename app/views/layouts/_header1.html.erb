@@ -1,0 +1,64 @@
+<div class="mobile-menu__cover"></div>
+<header class="header">
+  <div class="header__inner">
+    <div class="logo">
+      <%
+=begin%>
+ <img src="assets/logo.svg" alt="" class="logo__img"> 
+<%
+=end%>
+      <span><%= link_to "Ken App", root_path ,data: {"turbolinks" => false} %></span>
+    </div>
+    <button class="mobile-menu__btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <nav class="header__nav">
+    <ul class="header__ul">
+      <% if user_signed_in? %>
+        <li class="header__li"><%= link_to current_user.user_name, user_path(current_user.id), data: {"turbolinks" => false}  %></li>
+        <%# 管理者ユーザー%>
+        <% if current_user.admin? %>
+          <li class="header__li"><%= link_to "Top", root_path, data: {"turbolinks" => false} %></li>
+          <li class="header__li"><%= link_to "ユーザー一覧", users_path, data: {"turbolinks" => false} %></li>
+          <li class="header__li"><%= link_to "稽古会一覧", events_path, data: {"turbolinks" => false} %></li>
+          <li class="header__li"><%= link_to "情報一覧", informations_path, data: {"turbolinks" => false} %></li>
+          <li class="header__li"><%= link_to "Log out", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}  %></li>
+        <%# ログインユーザー%>  
+        <% else %>
+          <li class="header__li"><%= link_to "Top", root_path, data: {"turbolinks" => false} %></li>
+          <li class="header__li"><%= link_to "Log out", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}  %></li>
+        <% end %>
+      <%# 未ログインユーザー%>    
+      <% else %>
+        <li class="header__li"><%= link_to "Top", root_path, data: {"turbolinks" => false} %></li>
+        <li class="header__li"><%= link_to "Log in", new_user_session_path, data: {"turbolinks" => false} %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>
+
+    <%
+=begin%>
+<footer class="footer">
+  <div class="logo">
+    <img src="images/logo.svg" alt="" class="logo__img">
+    <span class="logo__stay">Stay</span>
+    <span class="logo__world">World</span>
+  </div>
+  <nav class="footer__nav">
+    <ul class="footer__ul">
+      <li class="footer__li"><a href="#">Service</a></li>
+      <li class="footer__li"><a href="#">Contact</a></li>
+      <li class="footer__li"><a href="#">Company</a></li>
+      <li class="footer__li"><a href="#">Map</a></li>
+    </ul>
+    <div class="footer__copyright">
+      &copy; CodeMafia
+    </div>
+  </nav>
+</footer> 
+<%
+=end%>
