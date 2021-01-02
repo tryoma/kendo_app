@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title><%= full_title(yield(:title)) %></title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kameron:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="description" content="This site is a test site.">
@@ -23,7 +25,7 @@
         <p class="alert"><%= alert %></p>  
 <%
 =end%>
-        <%= render 'layouts/header' %>
+        <%= render 'layouts/header1' %>
 
         <div class="container">
           <% flash.each do |message_type, msg| %>
@@ -32,30 +34,9 @@
           <%= yield %>
           <%= debug(params) if Rails.env.development? %>
         </div>
-          <%= render 'layouts/footer' %> 
+        <%= render 'layouts/footer' %> 
       </div>
-      <nav class="mobile-menu">
-        <ul class="mobile-menue__main">
-          <li class="mobile-menu__item">
-            <a href="">
-              <span class="main-title">Our Service</span>
-              <span class="sub-title">サービスについて</span>
-            </a>
-          </li>
-          <li class="mobile-menu__item">
-            <a href="">
-              <span class="main-title">Our Service</span>
-              <span class="sub-title">サービスについて</span>
-            </a>
-          </li>
-          <li class="mobile-menu__item">
-            <a href="">
-              <span class="main-title">Our Service</span>
-              <span class="sub-title">サービスについて</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <%= render 'layouts/header2' %>
     </div>
   </body>
 </html>
