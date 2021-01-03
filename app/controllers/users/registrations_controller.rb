@@ -11,21 +11,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
       super
-      
       resource.build_profile
-      resource.profile.name = resource.username
+      resource.profile.name = resource.user_name
       resource.save
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
 
   # DELETE /resource
   # def destroy

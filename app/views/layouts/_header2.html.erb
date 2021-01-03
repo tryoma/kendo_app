@@ -25,6 +25,10 @@
             <span class="main-title">情報一覧</span>
             <span class="sub-title">サービスについて</span>
           <% end %>
+          <%= link_to edit_user_registration_path(current_user), data: {"turbolinks" => false}  do %>
+            <span class="main-title">ユーザー情報編集</span>
+            <span class="sub-title">サービスについて</span>
+          <% end %>
           <%= link_to destroy_user_session_path, method: :delete, data: {"turbolinks" => false}  do %>
             <span class="main-title">Log out</span>
             <span class="sub-title">サービスについて</span>
@@ -34,6 +38,10 @@
         <li class="mobile-menu__item">
           <%= link_to root_path, data: {"turbolinks" => false}  do %>
             <span class="main-title">Top</span>
+            <span class="sub-title">サービスについて</span>
+          <% end %>
+          <%= link_to edit_user_registration_path(current_user), data: {"turbolinks" => false}  do %>
+            <span class="main-title">ユーザー情報編集</span>
             <span class="sub-title">サービスについて</span>
           <% end %>
           <%= link_to destroy_user_session_path, method: :delete, data: {"turbolinks" => false}  do %>

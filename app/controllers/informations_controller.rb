@@ -1,5 +1,6 @@
 class InformationsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :admin_user, only: [:index, :destroy]
   
   def index
     @informations = Information.paginate(page: params[:page])

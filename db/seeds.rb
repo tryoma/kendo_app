@@ -46,3 +46,13 @@ end
                       limited: date2,
                       user_id: 1 )
 end
+
+4.times do |n|
+  date  = Faker::Date.between(from: '2020-12-25', to: '2021-12-25')
+  title = "投稿します!#{n}" 
+  content = "#{n}回稽古しました"
+  Record.create!(start_time: date,
+                 title: title,
+                 content: content,
+                 user_id: 1 )
+end

@@ -17,10 +17,11 @@
       <p><%= @user.profile.prefecture %></p>
       <p><%= @user.profile.dojo %></p>
       <p><%= @user.profile.description %></p>
-      <%= link_to "編集", edit_user_profile_path(@user.id) %>
     </div>
     <div class="profile-menu">
-      <%= link_to 'プロフィール編集', "#", class: 'btn-default blue-btn' %>
+      <% if @user == current_user %>
+        <%= link_to 'プロフィール編集', edit_user_profile_path(@user.id), class: 'btn-default blue-btn' %>
+      <% end %>
       <%= link_to '稽古日記', user_records_path(@user), class: 'btn-default blue-btn' %>
       <%= render 'relationships/follow_button' , user: @user %>
     </div>

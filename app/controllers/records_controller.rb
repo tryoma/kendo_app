@@ -20,13 +20,12 @@ class RecordsController < ApplicationController
   end
 
   def create
-    debugger
     @record = @user.records.new(record_params)
     if @record.save
       redirect_to user_records_path(@user.id)
       flash[:success] = "稽古日記を投稿しました！"
     else
-      render new_user_record_path(@user.id)
+      render :new
       flash[:denger] = "稽古日記を投稿できませんでした"
     end
   end
@@ -41,7 +40,7 @@ class RecordsController < ApplicationController
        redirect_to user_records_path(@user.id)
        flash[:success] = "稽古日記を編集しました！"
     else
-      render edit_user_record_path(@user.id)
+      render :edit
       flash[:denger] = "稽古日記を投稿できませんでした"
     end
   end

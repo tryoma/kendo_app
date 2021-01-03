@@ -1,12 +1,13 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user, only: [:index]
   
   def index
     @events = Event.paginate(page: params[:page])
   end
 
   def show
-    @event = Event.find(params[:id])
     @comment = Comment.new
     @comments = @event.comments.includes(:user).order(created_at: :desc)
   end
@@ -26,11 +27,9 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
   end
 
   def update
-    @event = Event.find(params[:id])
     if @event.update_attributes(event_params)
       flash[:success] = "稽古会情報を更新しました。"
       redirect_to @event
@@ -40,7 +39,6 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy
     flash[:success] = "#{@event.event_day}のデータを削除しました。"
     if current_user.admin?
@@ -51,6 +49,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+    def set_event
+      @event = Event.find(params[:id])
+    end
 
     def event_params
       params.require(:event).permit(:event_day, :start_time, :finish_time, :prefecture, :place, :estimate_people, :address, :level, :comment, :user_id)
