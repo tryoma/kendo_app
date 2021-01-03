@@ -1,50 +1,43 @@
 <% provide(:title, "Top") %>
-<div class="center jumbotron">
-  <h1>Ken_app</h1>
-  <p>このアプリケーションでは、剣道の稽古会を自ら開催することができます。</p>
-</div>
-<div>
-  <h2>稽古会</h2>
-  <h2><%= link_to "新規作成",  new_event_path, method: :get %></h2>
-  <div class="container">
-    <div class="row">
+  <section class="event">
+    <div>
+      <h2 class="main-title">稽古会</h2>
+      <p class="sub-title">お気に入りの稽古会を見つけましょう</p>
+      <%= link_to "新規作成",  new_event_path, method: :get %>
+    </div>
+    <div class="event__inner">
       <% @events.each do |event| %>
-        <div class="col-sm-3">
+        <div class="event__item">
           <p><%= link_to event.place, event_path(event.id) %>の稽古会</p>
-          <p><%= event.event_day %></p>
-          <p><%= event.start_time %></p>
-          <p><%= event.finish_time %></p>
+          <table class="table_box">
+            <tr>
+              <th>日時</th>
+              <td><%= l event.event_day, format: :long %></td>
+            </tr>
+            <tr>
+              <th>開始時間</th>
+              <td><%= l event.start_time, format: :time %></td>
+            </tr>
+            <tr>
+              <th>開始時間</th>
+              <td><%= l event.finish_time, format: :time %></td>
+            </tr>
+          </table>
         </div>
       <% end %>
     </div>
-  </div>
-</div>
-<div id="div">
+  </section>
+
   <h2>情報</h2>
   <h2><%= link_to "新規作成", new_information_path, method: :get %></h2>
-  <div class="container">
-    <div class="row">
-      <% @informations.each do |information| %>
-        <div class="col-sm-3">
-          <p><%= link_to information.title, information_path(information.id) %></p>
-          <p><%= information.body %></p>
-          <p>更新:<%= information.updated_at %></p>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-<div id="header">
+    <% @informations.each do |information| %>
+      <p><%= link_to information.title, information_path(information.id) %></p>
+      <p><%= information.body %></p>
+      <p>更新:<%= information.updated_at %></p>
+    <% end %>
   <h2>ユーザー日記更新</h2>
-  <div class="container">
-    <div class="row">
-      <% @records.each do |record| %>
-        <div class="col-sm-3">
-          <p><%= link_to record.user.profile.name, user_path(id:record.user_id) %></p>
-          <p><%= record.start_time %></p>
-          <p>更新:<%= record.updated_at %></p>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+  <% @records.each do |record| %>
+    <p><%= link_to record.user.profile.name, user_path(id:record.user_id) %></p>
+    <p><%= record.start_time %></p>
+    <p>更新:<%= record.updated_at %></p>
+  <% end %>
