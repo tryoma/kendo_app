@@ -25,10 +25,12 @@
           <li class="header__li"><%= link_to "ユーザー一覧", users_path, data: {"turbolinks" => false} %></li>
           <li class="header__li"><%= link_to "稽古会一覧", events_path, data: {"turbolinks" => false} %></li>
           <li class="header__li"><%= link_to "情報一覧", informations_path, data: {"turbolinks" => false} %></li>
+          <li class="header__li"><%= link_to "ユーザー情報編集", edit_user_registration_path(current_user), data: {"turbolinks" => false} %></li>
           <li class="header__li"><%= link_to "Log out", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}  %></li>
         <%# ログインユーザー%>  
         <% else %>
           <li class="header__li"><%= link_to "Top", root_path, data: {"turbolinks" => false} %></li>
+          <li class="header__li"><%= link_to "ユーザー情報編集", edit_user_registration_path(current_user), data: {"turbolinks" => false} %></li>
           <li class="header__li"><%= link_to "Log out", destroy_user_session_path, method: :delete, data: {"turbolinks" => false}  %></li>
         <% end %>
       <%# 未ログインユーザー%>    

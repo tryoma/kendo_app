@@ -38,11 +38,11 @@
   <h2>ユーザー日記更新</h2>
   <div class="container">
     <div class="row">
-      <% @users.each do |user| %>
+      <% @records.each do |record| %>
         <div class="col-sm-3">
-          <p><%= link_to user.id, user_path(user.id) %></p>
-          <p><%= user.user_name %></p>
-          <p>更新:<%= user.updated_at %></p>
+          <p><%= link_to record.user.profile.name, user_path(id:record.user_id) %></p>
+          <p><%= record.start_time %></p>
+          <p>更新:<%= record.updated_at %></p>
         </div>
       <% end %>
     </div>
