@@ -47,14 +47,19 @@ img {
 }
 .sub-title {
   @extend .font-sm;
+  @extend .mb-sm;
   color: $cSubTitle;
 }
 .flex {
   display: flex;
   flex-direction: column;
 }
-.purple {
-  color: $cWineRed;
+.blue {
+  color: $cBlue;
+}
+
+.white {
+  color: $cWhite;
 }
 
 #main-content {
@@ -78,13 +83,19 @@ main {
   transition: transform 0.5s, box-shadow 0.5s;
 }
 
+p {
+  margin-bottom: 5px;
+  color: $cSubTitle;
+}
+
+// ヘッダー関連表示 //
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: $navHeight;
-  background-color: white;
+  background-color: rgb(90, 87, 87);
   display: flex;
   align-items: center;
   z-index: 100;
@@ -112,10 +123,11 @@ main {
   }
 
   & .logo {
+    color: $cWhite;
     font-size: 38px;
     justify-content: center;
   }
-
+  
   &__inner {
     display: flex;
     justify-content: space-between;
@@ -124,72 +136,28 @@ main {
   }
 }
 
+// 写真イメージ関連表示 //
+.main_image {
+  height: 500px;
+  overflow: hidden;
 
-.travel {
-  @extend .content-width;
-  @extend .mb-lg;
-
-  &__inner {
-    @extend .flex;
-    justify-content: space-between;
-    padding: 15px;
-    background-color: $cBgGray;
-    position: relative;
-    z-index: 0;
+  & > img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
   }
-
   &__title {
     position: relative;
-
-    @include p-base(
-      $display: none,
-      $width: 100px,
-      $height: 1px,
-      $top: 50%,
-      $left: -120px
-    ) {
-      background-color: $cBlack;
-      transform: translateY(-50%) scaleX(0);
-      transition: transform 0.3s ease 1.6s;
-      transform-origin: right;
-    }
-
-    
-  }
-
-  &__sub {
-    @extend .mb-sm;
-  }
-
-  &__img {
-    height: 300px;
-    @extend .mb-sm;
-    transition: box-shadow 1ms linear 0.8s;
-
-    & > img {
-      position: relative;
-      z-index: -1;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-    }
-
-    &.inview {
-      box-shadow: inset 0 0 30px $cBlack;
-    }
-  }
-
-  &__texts {
-    @extend .pb-sm;
-
-    &.inview {
-      & .travel__title::before {
-        transform: translateY(-50%);
-      }
-    }
+    top: 50%;
+    left: 50%;
+    color: $cBlue;
+    font-size: 25px;
+    z-index: 2;
+    opacity: 1;
   }
 }
-
+// イベント関連表示 //
 .event {
   @extend .content-width;
   @extend .mb-lg;
@@ -201,6 +169,7 @@ main {
   &__title {
     @extend .font-lr;
     @extend .mb-sm;
+    text-align: center;
   }
 
   &__btn {
@@ -209,57 +178,137 @@ main {
   }
 }
 
-.popular {
-  &__inner {
-    position: relative;
-    @include p-base($top: 10%, $height: 90%) {
-      background: $cBgGray;
+// イベントテーブル表示 //
+.event_table {
+  @extend .font-md;
+  border-collapse: collapse;
+  margin: 0 auto;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 15px -6px #00000073;
+  tr {
+    background-color: #fff;
+  }
+  tr,td {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+  }
+  th {
+    width: 40%;
+    padding: 10px 0;
+    padding: 5px;
+    background-color: #99CCFF;
+    color:#fff;
+  }
+  tr {
+    text-align: center;
+    width: 40%;
+    padding: 20px 0;
+    background-color: #fff;
+    color:#3a3a3a;
+    &:hover {
+      background-color: #d4faff;
     }
-    // &::before {
-    //   content: '';
-    //   position: absolute;
-    //   bottom: 0;
-    //   left: 0;
-    //   width: 100%;
-    //   height: 90%;
-    //   background-color: $cBgGray;
-    // }
   }
-  &__header {
-    @extend .content-width;
-  }
-  &__container {
-    position: relative;
-    z-index: 2;
+}
+
+// 情報関連表示 //
+.information {
+  @extend .content-width;
+  @extend .mb-lg;
+  text-decoration: none;
+
+  &__inner {
     @extend .flex;
-    @extend .content-width;
-    @extend .pb-sm;
   }
 
   &__title {
-    @extend .font-md;
+    @extend .font-lr;
     @extend .mb-sm;
+    text-align: center;
   }
 
   &__btn {
     text-align: center;
     flex-basis: 100%;
-    @extend .mb-lg;
+  }
+}
+
+// 情報テーブル表示 //
+.information_table {
+  @extend .font-md;
+  border-collapse: collapse;
+  margin: 0 auto;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 15px -6px #00000073;
+  tr {
+    background-color: #fff;
+  }
+  tr,td {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+  }
+  th {
+    width: 40%;
+    padding: 10px 0;
+    padding: 5px;
+    background-color: #0099FF;
+    color:#fff;
+  }
+  tr {
+    text-align: center;
+    width: 40%;
+    padding: 20px 0;
+    background-color: #fff;
+    color:#3a3a3a;
+    &:hover {
+      background-color: #d4faff;
+    }
+  }
+}
+
+// 稽古関連表示 //
+.record {
+  @extend .content-width;
+  @extend .mb-lg;
+  text-decoration: none;
+
+  &__inner {
+    @extend .flex;
+  }
+
+  &__title {
+    @extend .font-lr;
+    @extend .mb-sm;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: $cBgGray;
+    position: relative;
+    z-index: 0;
+  }
+
+  &__box {
+    position: relative;
   }
 
   &__img {
-    height: 150px;
+    position: relative;
+    width: 120px;
     overflow: hidden;
     margin-bottom: 5px;
 
     & > img {
       object-fit: cover;
-      height: 100%;
       width: 100%;
     }
   }
 }
 
+// ロゴ関連表示 //
 .logo {
   font-size: 42px;
   display: flex;
@@ -273,15 +322,17 @@ main {
   }
 }
 
+// フッダー関連表示 //
 .footer {
-  padding: 60px 0;
   @extend .content-width;
+  @extend .font-sm;
+  padding: 30px 0;
+  text-align: center;
 
   &__nav {
     @extend .flex;
     justify-content: space-between;
     align-items: center;
-    text-align: center;
   }
 
   &__ul {
@@ -369,37 +420,3 @@ main {
   }
 }
 
-table {
-  @extend .content-width;
-  border-collapse: collapse;
-  margin: 0 auto;
-  padding: 0;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 0 15px -6px #00000073;
-  tr {
-    background-color: #fff;
-  }
-  tr,td {
-    padding: 5px 0;
-    border-bottom: 1px solid #eee;
-  }
-  th {
-    width: 40%;
-    padding: 10px 0;
-    font-size: 14px;
-    padding: 5px;
-    background-color: #FFC107;
-    color:#fff;
-  }
-  tr {
-    text-align: center;
-    width: 40%;
-    padding: 20px 0;
-    background-color: #fff;
-    color:#3a3a3a;
-    &:hover {
-      background-color: #d4faff;
-    }
-  }
-}

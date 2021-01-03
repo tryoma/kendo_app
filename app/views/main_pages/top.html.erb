@@ -1,43 +1,103 @@
 <% provide(:title, "Top") %>
-  <section class="event">
-    <div>
-      <h2 class="main-title">稽古会</h2>
-      <p class="sub-title">お気に入りの稽古会を見つけましょう</p>
-      <%= link_to "新規作成",  new_event_path, method: :get %>
-    </div>
-    <div class="event__inner">
-      <% @events.each do |event| %>
-        <div class="event__item">
-          <p><%= link_to event.place, event_path(event.id) %>の稽古会</p>
-          <table class="table_box">
-            <tr>
-              <th>日時</th>
-              <td><%= l event.event_day, format: :long %></td>
-            </tr>
-            <tr>
-              <th>開始時間</th>
-              <td><%= l event.start_time, format: :time %></td>
-            </tr>
-            <tr>
-              <th>開始時間</th>
-              <td><%= l event.finish_time, format: :time %></td>
-            </tr>
-          </table>
+<div id="main-content">
+  <div class="main_image">
+    <div class="main_image__title">Experience</div>
+    <img src="assets/kendo.jpg" alt="" /> 
+  </div>
+  <main>
+    <section class="event">
+      <div>
+        <h2 class="main-title">稽古会</h2>
+        <p class="sub-title">お気に入りの稽古会を見つけよう</p>
+      </div>
+      <div class="event__inner">
+        <% @events.each do |event| %>
+          <div class="event__title">
+            <%= link_to event_path(event.id), data: {"turbolinks" => false} do %>
+              <p><%= event.place %>の稽古会</p>
+              <table class="event_table">
+                <tr>
+                  <th>日時</th>
+                  <td><%= l event.event_day, format: :long %></td>
+                </tr>
+                <tr>
+                  <th>開始時間</th>
+                  <td><%= l event.start_time, format: :time %></td>
+                </tr>
+                <tr>
+                  <th>終了時間</th>
+                  <td><%= l event.finish_time, format: :time %></td>
+                </tr>
+                <tr>
+                  <th>レベル</th>
+                  <td><%= event.level %></td>
+                </tr>
+              </table>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="event__btn">
+          <%= link_to new_event_path, method: :get, data: {"turbolinks" => false}  do %>
+            <button class="btn filled">新規作成</button>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-  </section>
+      </div>
+    </section>
+    <section class="information">
+      <div>
+        <h2 class="main-title">情報</h2>
+        <p class="sub-title">お気に入りの情報を見つけよう</p>
+      </div>
+      <div class="information__inner">
+        <% @informations.each do |information| %>
+          <div class="information__title">
+            <%= link_to information_path(information.id), data: {"turbolinks" => false} do %>
+              <p><%= information.title %></p>
+              <table class="information_table">
+                <tr>
+                  <th>情報源</th>
+                  <td><%= information.user.profile.name %></td>
+                </tr>
+                <tr>
+                  <th>更新日時</th>
+                  <td><%= l information.updated_at, format: :time %></td>
+                </tr>
+                <tr>
+                  <th>掲載期限</th>
+                  <td><%= l information.limited, format: :long %></td>
+                </tr>
+              </table>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="information__btn">
+          <%= link_to new_information_path, method: :get, data: {"turbolinks" => false} do %>
+            <button class="btn filled">新規作成</button>
+          <% end %>
+        </div>
+      </div>
+    </section>
 
-  <h2>情報</h2>
-  <h2><%= link_to "新規作成", new_information_path, method: :get %></h2>
-    <% @informations.each do |information| %>
-      <p><%= link_to information.title, information_path(information.id) %></p>
-      <p><%= information.body %></p>
-      <p>更新:<%= information.updated_at %></p>
-    <% end %>
-  <h2>ユーザー日記更新</h2>
-  <% @records.each do |record| %>
-    <p><%= link_to record.user.profile.name, user_path(id:record.user_id) %></p>
-    <p><%= record.start_time %></p>
-    <p>更新:<%= record.updated_at %></p>
-  <% end %>
+    <section class="record">
+      <div>
+        <h2 class="main-title">稽古日記更新</h2>
+        <p class="sub-title">お気に入りのユーザーを見つけよう</p>
+      </div>
+      <% @records.each do |record| %>
+        <%= link_to user_path(id:record.user_id), data: {"turbolinks" => false} do %>
+          <div class="record__inner">
+            <div class="record__title">
+              <div class="record__img">
+                <img src="assets/default.png" alt="" />
+              </div>
+              <div class="record__box">
+                <p class="blue"><%= record.user.profile.name %></p>
+                <p><%= record.title %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </section>
+  </main>
+</div>
