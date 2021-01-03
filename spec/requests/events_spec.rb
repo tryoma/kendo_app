@@ -12,7 +12,7 @@ RSpec.describe "Events_controller", type: :request do
   describe "GET /events" do
     it "イベント一覧ページに遷移する" do
       get events_path
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(302)
     end
   end
 
@@ -48,7 +48,7 @@ RSpec.describe "Events_controller", type: :request do
     it "個別イベントページを削除できる" do
       sign_in @user
       delete event_path(@event.id)
-      expect(response).to have_http_status(204)
+      expect(response).to have_http_status(302)
     end
   end
 end

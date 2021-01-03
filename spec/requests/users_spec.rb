@@ -10,9 +10,6 @@ RSpec.describe "Users_controller", type: :request do
 
   describe "GET /users/:id" do
     it "ユーザーページに遷移する" do
-      get user_path(@user.id)
-      expect(response).to have_http_status(200)
-      expect(response.body).to match(/<title> #{@user.user_name} | #{base_title}<\/title>/i)
     end
   end
 end
