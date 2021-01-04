@@ -10,7 +10,7 @@
         <h2 class="main-title">稽古会</h2>
         <p class="sub-title">お気に入りの稽古会を見つけよう</p>
       </div>
-      <div class="event__inner">
+      ”<div class="event__inner">
         <% @events.each do |event| %>
           <div class="event__title">
             <%= link_to event_path(event.id), data: {"turbolinks" => false} do %>
@@ -27,6 +27,10 @@
                 <tr>
                   <th>終了時間</th>
                   <td><%= l event.finish_time, format: :time %></td>
+                </tr>
+                <tr>
+                  <th>主催者</th>
+                  <td><%= event.owner.user_name %></td>
                 </tr>
                 <tr>
                   <th>レベル</th>

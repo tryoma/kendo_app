@@ -11,7 +11,7 @@ require("channels")
 // require("javascripts/libs/mobile-menu")
 require("javascripts/main")
 
-
+import "bootstrap"
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -20,3 +20,13 @@ require("javascripts/main")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require_tree . 
+//= require activestorage
+
+
+
+console.log('hoge')

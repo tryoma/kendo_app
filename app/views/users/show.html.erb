@@ -1,93 +1,80 @@
 <% provide(:title, @user.user_name) %>
-<div class="profile-head">
-  <div class="profile-img">
-    <% if @user.profile.avatar? %>                                                              
-      <%= image_tag @user.profile.avatar.url %>
-    <% else %>
-      <%= image_tag "/assets/default.png", class: 'avatar-img big-img' %>
-    <% end %>
-  </div>
-  <div class="profile-info">
-    <div class="profile-name">
-      <p><%= @user.profile.name %></p>
-    </div>
-    <div class="profile-detail">
-      <p><%= @user.profile.grade %></p>
-      <p><%= @user.profile.birthday %></p>
-      <p><%= @user.profile.prefecture %></p>
-      <p><%= @user.profile.dojo %></p>
-      <p><%= @user.profile.description %></p>
-    </div>
-    <div class="profile-menu">
-      <% if @user == current_user %>
-        <%= link_to 'プロフィール編集', edit_user_profile_path(@user.id), class: 'btn-default blue-btn' %>
-      <% end %>
-      <%= link_to '稽古日記', user_records_path(@user), class: 'btn-default blue-btn' %>
-      <%= render 'relationships/follow_button' , user: @user %>
-    </div>
-  </div>
-</div>
+<div id="main-content">
+  <main>
+    <section class="profile">
+      <div class="profile__head">
+        <div class="profile__img">
+          <% if @user.profile.avatar.nil? %>                                                              
+            <%= image_tag @user.profile.avatar.url %>
+          <% else %>
+            <%= image_tag "/assets/default.png", class: 'avatar-img big-img' %>
+          <% end %>
+        </div>
 
-<div class='menu-link'>
-  <%= link_to 'フォロー', "#", class: 'btn-default blue-btn' %>
-  <%= link_to 'フォロワー', "#", class: 'btn-default blue-btn' %>
-  <%= link_to 'お気に入り情報', "#", class: 'btn-default blue-btn' %>
-</div>
+        <div class="profile__detail">
+          <p><%= @user.user_name %></p>
+          <p><%= @user.user_name %></p>
+          <p><%= @user.user_name %></p>
+          <p><%= @user.user_name %></p>
+        </div>
+        <div class="profile__menu">
+          <% if @user == current_user %>
+            <%= link_to edit_user_profile_path(@user.id) do %>
+              <button class="btn filled">プロフィール編集</button>
+            <% end %>
+            <%= link_to user_records_path(@user) do %>
+              <button class="btn filled">稽古日記</button>
+            <% end %>
+          <% else %>
+            <%= link_to user_records_path(@user) do %>
+              <button class="btn filled">稽古日記</button>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="profile__followers">
 
-<div class="favorite-information">
-  <% @favorite_informations.each do |information| %>
-    <hr>
-    <p><span>情報内容: </span><%=link_to information.body, information_path(information.id) %></p>
-  <% end %>
-</div>
-
-<div class="follows-list">
-  <% @users.each do |user| %>
-    <hr>
-    <p><span>名前: </span><%= link_to user.profile.name, user_path(user.id) %></p>
-  <% end %>
-</div>
-
-<h2>主催予定の稽古</h2>
-<div class="event-list">
-  <div class="container">
-    <% if @owner_events.count > 0 %>
-      <div class="row">
-        <% @owner_events.each do |event| %>
-          <div class="col-sm-4">
-            <p><%= link_to event.place, event_path(event.id) %>の稽古会</p>
-            <p><%= event.event_day %></p>
-            <p><%= event.start_time %></p>
-            <p><%= event.finish_time %></p>
+          <div class="tab-area">
+            <div class="tab active">
+              フォロー
+            </div>
+            <div class="tab">
+              フォロワー
+            </div>
+            <div class="tab">
+              お気入り情報
+            </div>
           </div>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="event__list-comment">
-        <p>主催予定の稽古はありません</p>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<h2>参加予定の稽古</h2>
-<div class="event-list">
-  <div class="container">
-    <% if @member_events.count > 0 %>
-      <div class="row">
-        <% @member_events.each do |event| %>
-          <div class="col-sm-4">
-            <p><%= link_to event.place, event_path(event.id) %>の稽古会</p>
-            <p><%= event.event_day %></p>
-            <p><%= event.start_time %></p>
-            <p><%= event.finish_time %></p>
+          <div class="content-area">
+            <div class="content show">
+              タブ１の中身です
+            </div>
+            <div class="content">
+              タブ２の中身です
+            </div>
+            <div class="content">
+              タブ３の中身です
+            </div>
           </div>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="event__list-comment">
-        <p>参加予定の稽古はありません</p>
-      </div>
-    <% end %>
-  </div>
-</div>
+
+        <div>
+          <h2 class="main-title">主催予定の稽古会</h2>
+        </div>
+        <div>
+          <h2 class="main-title">参加予定の稽古会</h2>
+        </div>
+    </section>
+  </main>
+
+
+<script>
+  $(function() {
+    let tabs = $(".tab"); // tabのクラスを全て取得し、変数tabsに配列で定義
+    $(".tab").on("click", function() { // tabをクリックしたらイベント発火
+      $(".active").removeClass("active"); // activeクラスを消す
+      $(this).addClass("active"); // クリックした箇所にactiveクラスを追加
+      const index = tabs.index(this); // クリックした箇所がタブの何番目か判定し、定数indexとして定義
+      $(".content").removeClass("show").eq(index).addClass("show"); // showクラスを消して、contentクラスのindex番目にshowクラスを追加
+    })
+  })
+</script>
+

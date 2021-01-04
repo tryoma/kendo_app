@@ -15,6 +15,7 @@ gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'uglifier',     '>= 1.3.0'
 gem 'jquery-rails'
+gem "jquery-ui-rails"
 gem 'webpacker', '~> 4.0'
 # gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'

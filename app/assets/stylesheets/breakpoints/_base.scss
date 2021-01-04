@@ -35,7 +35,7 @@ img {
   padding-bottom: 80px !important;
 }
 .content-width {
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   max-width: $contentMaxWidth;
 }
@@ -181,6 +181,7 @@ p {
 // イベントテーブル表示 //
 .event_table {
   @extend .font-md;
+  @extend .content-width;
   border-collapse: collapse;
   margin: 0 auto;
   padding: 0;
@@ -238,6 +239,7 @@ p {
 // 情報テーブル表示 //
 .information_table {
   @extend .font-md;
+  @extend .content-width;
   border-collapse: collapse;
   margin: 0 auto;
   padding: 0;
@@ -356,6 +358,39 @@ p {
     justify-content: center;
   }
 }
+
+.tab-area {
+  display: flex;
+  justify-content: space-around;
+  background-color: #222e3e;
+  cursor: pointer;
+  .tab {
+    width: 300px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    border-right: 1px solid #50637b;
+    border-left: 1px solid #222e3e;
+  }
+  .tab.active {
+    background-color: #ccc;
+    color: #222e3e;
+    border: none;
+  }
+}
+.content-area {
+  font-size: 30px;
+  text-align: center;
+  .content {
+    display: none;
+  }
+  .content.show {
+    margin-top: 50px;
+    display: block;
+  }
+}
+
 
 .side {
   display: none;

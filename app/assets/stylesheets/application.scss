@@ -42,7 +42,6 @@
 
 
 
-
 /* universal */
 
 /* debug */
@@ -106,6 +105,9 @@
 }
   
   
-  /*
-   *= require simple_calendar
-   */
+/*
+*= require bootstrap/dist/css/bootstrap.min.css
+*= require_tree .
+*= require_self
+*= require simple_calendar
+*/
