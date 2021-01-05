@@ -11,7 +11,8 @@ class UsersController < ApplicationController
     @owner_events = Event.where(owner:@user)
     @member_events = @user.members.map{|member| member.event}
     @favorite_informations = @user.favorite_informations
-    @users = @user.followings
+    @followings = @user.followings
+    @followers = @user.followers
   end
 
   def destroy

@@ -12,15 +12,28 @@
         </div>
 
         <div class="profile__detail">
-          <p><%= @user.user_name %></p>
-          <p><%= @user.user_name %></p>
-          <p><%= @user.user_name %></p>
-          <p><%= @user.user_name %></p>
+          <% if @user.profile.name.present? %>
+            <p class = "font-lg"><%= @user.profile.name %></p>
+          <% else %>
+            <p class = "font-lg">ユーザー名：未設定</p>
+          <% end %>
+          <% if @user.profile.grade.present? %>
+            <p>段位：<%= @user.profile.grade %></p>
+          <% end %>
+          <% if @user.profile.prefecture.present? %>
+            <p>出身地：<%= @user.profile.prefecture %></p>
+          <% end %>
+          <% if @user.profile.dojo.present? %>
+            <p>出身道場：<%= @user.profile.dojo %></p>
+          <% end %>
+          <% if @user.profile.description.present? %>
+            <p>自己紹介：<%= @user.profile.description %></p>
+          <% end %>
         </div>
         <div class="profile__menu">
           <% if @user == current_user %>
             <%= link_to edit_user_profile_path(@user.id) do %>
-              <button class="btn filled">プロフィール編集</button>
+              <button class="btn filled">PF編集</button>
             <% end %>
             <%= link_to user_records_path(@user) do %>
               <button class="btn filled">稽古日記</button>
@@ -29,10 +42,10 @@
             <%= link_to user_records_path(@user) do %>
               <button class="btn filled">稽古日記</button>
             <% end %>
+            <%= render 'relationships/follow_button' , user: @user %>
           <% end %>
         </div>
-        <div class="profile__followers">
-
+        <div class="profile__tabs">
           <div class="tab-area">
             <div class="tab active">
               フォロー
@@ -46,24 +59,116 @@
           </div>
           <div class="content-area">
             <div class="content show">
-              タブ１の中身です
+              <% if @followings.any? %>
+                  <%= render 'follows', users: @followings %>
+              <% else %>
+                <div class='no-content'>
+                  まだフォローしていません
+                </div>
+              <% end %>
             </div>
             <div class="content">
-              タブ２の中身です
+              <% if @followers.any? %>
+                  <%= render 'follows', users: @followers %>
+              <% else %>
+                <div class='no-content'>
+                  まだフォローされていません
+                </div>
+              <% end %>
             </div>
             <div class="content">
-              タブ３の中身です
+              <% if @favorite_informations.any? %>
+                  <%= render 'informations', users: favorite_informations %>
+              <% else %>
+                <div class='no-content'>
+                  まだお気入り情報はありません
+                </div>
+              <% end %>
             </div>
           </div>
-
-        <div>
-          <h2 class="main-title">主催予定の稽古会</h2>
         </div>
-        <div>
-          <h2 class="main-title">参加予定の稽古会</h2>
-        </div>
+      </div>
+    </section>
+    <section class="record">
+      <div>
+        <h2 class="main-title">主催予定の稽古会</h2>
+      </div>
+      <div class="event__inner">
+        <% if @owner_events.count > 0 %>
+          <% @owner_events.each do |event| %>
+            <div class="event__title">
+              <%= link_to event_path(event.id), data: {"turbolinks" => false} do %>
+                <p><%= event.place %>の稽古会</p>
+                <table class="event_table">
+                  <tr>
+                    <th>日時</th>
+                    <td><%= l event.event_day, format: :long %></td>
+                  </tr>
+                  <tr>
+                    <th>開始時間</th>
+                    <td><%= l event.start_time, format: :time %></td>
+                  </tr>
+                  <tr>
+                    <th>終了時間</th>
+                    <td><%= l event.finish_time, format: :time %></td>
+                  </tr>
+                  <tr>
+                    <th>主催者</th>
+                    <td><%= event.owner.user_name %></td>
+                  </tr>
+                  <tr>
+                    <th>レベル</th>
+                    <td><%= event.level %></td>
+                  </tr>
+                </table>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <p>まだ稽古を主催していません</p>
+        <% end %>
+      </div>
+      <div>
+        <h2 class="main-title">参加予定の稽古会</h2>
+      </div>
+      <div class="event__inner">
+        <% if @member_events.count > 0 %>
+          <% @member_events.each do |event| %>
+            <div class="event__title">
+              <%= link_to event_path(event.id), data: {"turbolinks" => false} do %>
+                <p><%= event.place %>の稽古会</p>
+                <table class="event_table">
+                  <tr>
+                    <th>日時</th>
+                    <td><%= l event.event_day, format: :long %></td>
+                  </tr>
+                  <tr>
+                    <th>開始時間</th>
+                    <td><%= l event.start_time, format: :time %></td>
+                  </tr>
+                  <tr>
+                    <th>終了時間</th>
+                    <td><%= l event.finish_time, format: :time %></td>
+                  </tr>
+                  <tr>
+                    <th>主催者</th>
+                    <td><%= event.owner.user_name %></td>
+                  </tr>
+                  <tr>
+                    <th>レベル</th>
+                    <td><%= event.level %></td>
+                  </tr>
+                </table>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <p>まだ稽古に参加していません</p>
+        <% end %>
+      </div>
     </section>
   </main>
+</div>
 
 
 <script>

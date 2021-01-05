@@ -1,3 +1,16 @@
+// ヘッダー関連表示 //
+// トップページ写真イメージ関連表示 //
+// トップページイベント関連表示 //
+// トップページイベントテーブル表示 //
+// トップページ情報関連表示 //
+// トップページ情報テーブル表示 //
+// トップページユーザー関連表示 //
+// ロゴ関連表示 //
+// フッダー関連表示 //
+// マイページ関連表示 //
+// マイページタブ関連表示 //
+
+
 /******************************************************************
 
 Stylesheet: ベーススタイル
@@ -136,7 +149,7 @@ p {
   }
 }
 
-// 写真イメージ関連表示 //
+// トップページ写真イメージ関連表示 //
 .main_image {
   height: 500px;
   overflow: hidden;
@@ -157,7 +170,7 @@ p {
     opacity: 1;
   }
 }
-// イベント関連表示 //
+// トップページイベント関連表示 //
 .event {
   @extend .content-width;
   @extend .mb-lg;
@@ -178,7 +191,7 @@ p {
   }
 }
 
-// イベントテーブル表示 //
+// トップページイベントテーブル表示 //
 .event_table {
   @extend .font-md;
   @extend .content-width;
@@ -214,7 +227,7 @@ p {
   }
 }
 
-// 情報関連表示 //
+// トップページ情報関連表示 //
 .information {
   @extend .content-width;
   @extend .mb-lg;
@@ -236,7 +249,7 @@ p {
   }
 }
 
-// 情報テーブル表示 //
+// トップページ情報テーブル表示 //
 .information_table {
   @extend .font-md;
   @extend .content-width;
@@ -272,7 +285,7 @@ p {
   }
 }
 
-// 稽古関連表示 //
+// トップページユーザー関連表示 //
 .record {
   @extend .content-width;
   @extend .mb-lg;
@@ -302,6 +315,7 @@ p {
     width: 120px;
     overflow: hidden;
     margin-bottom: 5px;
+    border-radius: 50%;
 
     & > img {
       object-fit: cover;
@@ -359,13 +373,96 @@ p {
   }
 }
 
+// マイページ関連表示 //
+.profile {
+  @extend .content-width;
+  @extend .mb-lg;
+  margin-top: 16px;
+  text-decoration: none;
+
+  // &__head {
+  // }
+
+  &__detail {
+    text-align: center
+  }
+
+  // &__menu {
+  // }
+
+  // &__tabs {
+  // }
+
+  &__follow {
+    @extend .flex;
+  }
+
+  &__group {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: $cBgGray;
+    position: relative;
+    z-index: 0;
+    &__img {
+      width: 120px;
+      overflow: hidden;
+      margin-bottom: 5px;
+      border-radius: 50%;
+    }
+    &__name {
+      position: relative;
+      @extend .font-lr;
+      margin: auto
+    }
+    &__follow {
+      
+    }
+  }
+
+  &__inner {
+    @extend .flex;
+  }
+
+  &__title {
+    @extend .font-lr;
+    @extend .mb-sm;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: $cBgGray;
+    position: relative;
+    z-index: 0;
+  }
+
+  &__box {
+    position: relative;
+  }
+
+  &__img {
+    position: relative;
+    text-align: center;
+    width: 200px;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 5px;
+    border-radius: 50%;
+
+    & > img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+}
+
+// マイページタブ関連表示 //
 .tab-area {
   display: flex;
   justify-content: space-around;
   background-color: #222e3e;
   cursor: pointer;
   .tab {
-    width: 300px;
+    width: 33%;
     height: 30px;
     line-height: 30px;
     text-align: center;
@@ -380,13 +477,13 @@ p {
   }
 }
 .content-area {
-  font-size: 30px;
+  @extend .font-sm;
   text-align: center;
+  margin-top: 25px;
   .content {
     display: none;
   }
   .content.show {
-    margin-top: 50px;
     display: block;
   }
 }
