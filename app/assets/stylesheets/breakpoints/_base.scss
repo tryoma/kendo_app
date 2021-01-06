@@ -9,6 +9,7 @@
 // フッダー関連表示 //
 // マイページ関連表示 //
 // マイページタブ関連表示 //
+// イベント詳細ページ関連表示 //
 
 
 /******************************************************************
@@ -71,6 +72,10 @@ img {
   color: $cBlue;
 }
 
+.red {
+  color: $cRed;
+}
+
 .white {
   color: $cWhite;
 }
@@ -99,6 +104,10 @@ main {
 p {
   margin-bottom: 5px;
   color: $cSubTitle;
+}
+
+.center {
+  text-align: center;
 }
 
 // ヘッダー関連表示 //
@@ -487,6 +496,61 @@ p {
     display: block;
   }
 }
+
+// イベント詳細ページ関連表示 //
+.event_show {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__inner {
+    @extend .flex;
+  }
+
+  &__map {
+    & > #map {
+      height: 300px;
+      width: 100%;
+    }
+  }
+
+  &__title {
+    @extend .font-lr;
+    text-align: center;
+  }
+
+  &__list {
+    @extend .font-sm;
+    @extend .mb-sm;
+    margin-top: 16px;
+    text-align: center;
+    & > tbody {
+      & > tr {
+        & > th,td {
+          padding: 4px;
+        }
+      }
+    }
+  }
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+  }
+  &__comment {
+    @extend .font-sm;
+    text-align: center;
+  }
+  &__comment-list {
+    @extend .font-sm;
+    text-align: left;
+    & > p {
+      margin-bottom: 0px;
+    }
+    & > hr {
+      margin: 5px;
+    }
+  }
+}
+
 
 
 .side {
