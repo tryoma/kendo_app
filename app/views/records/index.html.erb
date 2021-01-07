@@ -1,33 +1,49 @@
 <% provide(:title, "稽古日記カレンダー") %>
-  <h1>稽古日記カレンダー</h1>
-<div class="record__contain">
-  <div class='record__input'>
-    <% if current_user == @user %>
-      <%= link_to '稽古日記を入力',new_user_record_path(@user),class: 'btn-default btn-lg blue-btn'%>
-    <% end %>
-  </div>
-
-  <div class="record__main">
-    <%= month_calendar events: @records do |date, records| %>
-      <%= date.day %>
-
-      <% records.each do |record| %>
-        <div>
-          <%= link_to user_record_path(user_id: @user, id: record.id) do %>
-            <p class='calendar-main-target'><%= record.title %></p>
-            <% if record.practice == true %>
-              <div class="record__img">
-                 <i class="fas fa-check-circle"></i>             
+<div id="main-content">
+  <main>
+    <section class="calender">
+      <div>
+        <h2 class="main-title center">稽古日記カレンダー</h2>
+      </div>
+      <div class="calender__contain">
+        <div class="calender__main">
+          <%= month_calendar events: @records do |date, records| %>
+            <%= date.day %>
+            <% records.each do |record| %>
+              <div>
+                <%= link_to user_record_path(user_id: @user, id: record.id), data: {"turbolinks" => false} do %>
+                  <% if record.title.present? %>
+                    <div class="calender__comment">
+                      <span><%= record.title %></span>             
+                    </div>
+                    <div class="calender__img">
+                      <i class="fas fa-calendar-check blue"></i>
+                    </div>
+                  <% end %>
+                  <% if record.practice == true %>
+                    <div class="calender__img">
+                      <i class="fas fa-check-circle blue"></i>             
+                    </div>
+                  <% end %>
+                <% end %> 
               </div>
             <% end %>
           <% end %>
         </div>
-      <% end %>
-    <% end %>
-  </div>
+        <div class="calender__explain">
+          <span><i class="fas fa-calendar-check blue"></i>:日記OK  <i class="fas fa-check-circle blue"></i>:稽古OK<span>
+        </div>
+        <div class='calender__btn'>
+          <% if current_user == @user %>
+            <%= link_to '稽古日記を入力',new_user_record_path(@user), data: {"turbolinks" => false}, class: "btn"%>
+          <% end %>
+        </div>
 
-  <div class="record__comment">
-    <p>今月の稽古回数 <span><%= @this_month_count %></span> 回</p>
-    <p>今年の稽古回数 <span><%= @this_year_count %></span> 回</p>
-  </div>
+        <div class="calender__title">
+          <p>今月の稽古回数 <span class = "blue"><%= @this_month_count %> 回</span></p>
+          <p>今年の稽古回数 <span class = "blue"><%= @this_year_count %> 回</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>

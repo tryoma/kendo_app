@@ -10,6 +10,7 @@
 // マイページ関連表示 //
 // マイページタブ関連表示 //
 // イベント詳細ページ関連表示 //
+// カレンダーページ関連表示 //
 
 
 /******************************************************************
@@ -551,6 +552,41 @@ p {
   }
 }
 
+// カレンダーページ関連表示 //
+.calender {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  // &__inner {
+  //   @extend .flex;
+  // }
+
+  &__title {
+    @extend .font-lr;
+    text-align: center;
+  }
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+  }
+  &__comment {
+    display: none;;
+  }
+  &__explain {
+    text-align: right;
+    margin-top: 2px;
+  }
+}
+
+.calendar-heading {
+  text-align: center;
+  padding: 5px;
+}
+
+.table-striped {
+  text-align: center;
+  margin-bottom: 0px;
+}
 
 
 .side {

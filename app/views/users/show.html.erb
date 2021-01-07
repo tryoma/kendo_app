@@ -32,10 +32,10 @@
         </div>
         <div class="profile__menu">
           <% if @user == current_user %>
-            <%= link_to edit_user_profile_path(@user.id) do %>
+            <%= link_to edit_user_profile_path(@user.id), data: {"turbolinks" => false} do %>
               <button class="btn filled">PF編集</button>
             <% end %>
-            <%= link_to user_records_path(@user) do %>
+            <%= link_to user_records_path(@user), data: {"turbolinks" => false} do %>
               <button class="btn filled">稽古日記</button>
             <% end %>
           <% else %>
