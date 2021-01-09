@@ -12,6 +12,9 @@
 // イベント詳細ページ関連表示 //
 // カレンダーページ関連表示 //
 // カレンダー詳細ページ関連表示 //
+// 情報詳細ページ関連表示 //
+// 一覧ページ関連表示 //
+// 入力関連表示 //
 
 
 /******************************************************************
@@ -54,6 +57,11 @@ img {
   width: 95%;
   margin: 0 auto;
   max-width: $contentMaxWidth;
+}
+.content-form-width {
+  width: 95%;
+  margin: 0 auto;
+  max-width: $contentformMaxWidth;
 }
 .main-title {
   @extend .font-lg;
@@ -656,7 +664,7 @@ p {
   }
 }
 
-// 情報詳細ページ関連表示 //
+// 一覧ページ関連表示 //
 .mainlist {
   @extend .content-width;
   @extend .mb-lg;
@@ -681,6 +689,31 @@ p {
         }
       }
     }
+  }
+}
+
+// 入力関連表示 //
+.new_edit {
+  @extend .content-form-width;
+  @extend .mb-lg;
+
+  &__form {
+    margin-top: 10px;
+    & > form {
+      & > label {
+        margin-top: 10px;
+      }
+    }
+  }
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+    margin-top: 10px;
+  }
+  &__span {
+    color: $cRed;
+    font-size: 0.9em;
+    
   }
 }
 
