@@ -1,8 +1,10 @@
 <% users.each do |user|%>
   <div class='col-lg-4 col-md-6'>
-    <div class='follows-user'>
+    <%
+=begin%>
+ <div class='follows-user'>
       <div class='prof-img'>
-        <% if user.image? %>
+        <% if user.profile.avatar? %>
           <%= link_to image_tag(user.image.url, class: 'avatar-img middle-img'), user %>
         <% else %>
           <%= link_to image_tag("/assets/default.png", class: 'avatar-img middle-img'), user %>
@@ -16,6 +18,8 @@
           <%= render "relationships/follow_button", user: user %>
         </div>
       </div>
-    </div>
+    </div> 
+<%
+=end%>
   </div>
 <% end %>
