@@ -11,6 +11,7 @@
 // マイページタブ関連表示 //
 // イベント詳細ページ関連表示 //
 // カレンダーページ関連表示 //
+// カレンダー詳細ページ関連表示 //
 
 
 /******************************************************************
@@ -109,6 +110,10 @@ p {
 
 .center {
   text-align: center;
+}
+
+.mb {
+  margin-bottom: 0 !important;
 }
 
 // ヘッダー関連表示 //
@@ -557,10 +562,6 @@ p {
   @extend .content-width;
   @extend .mb-lg;
 
-  // &__inner {
-  //   @extend .flex;
-  // }
-
   &__title {
     @extend .font-lr;
     text-align: center;
@@ -586,6 +587,73 @@ p {
 .table-striped {
   text-align: center;
   margin-bottom: 0px;
+}
+
+// カレンダー詳細ページ関連表示 //
+.calender-show {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__contain {
+    margin-top: 10px;
+  }
+
+  &__subtitle {
+    @extend .mb-sm;
+    & > p {
+      @extend .font-lr;
+      text-align: left;
+      color: $cBlue;
+    }
+    & > span {
+      @extend .font-sm;
+      text-align: left;
+    }
+  }
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+  }
+}
+
+// 情報詳細ページ関連表示 //
+.information-show {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__contain {
+    margin-top: 10px;
+  }
+
+  &__subtitle {
+    @extend .mb-sm;
+    & > p {
+      @extend .font-lr;
+      text-align: left;
+      color: $cBlue;
+    }
+    & > span {
+      @extend .font-sm;
+      text-align: left;
+    }
+  }
+  &__video {
+    text-align: center;
+    flex-basis: 100%;
+    & > iframe {
+      @extend .content-width;
+      width: 100%;
+      height: 200px;
+    }
+  }
+  &__confirmation {
+    text-align: center;
+    flex-basis: 100%;
+  }
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+  }
 }
 
 
