@@ -656,6 +656,34 @@ p {
   }
 }
 
+// 情報詳細ページ関連表示 //
+.mainlist {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__contain {
+    margin-top: 10px;
+    & > table {
+      & > thead {
+        & > tr {
+          & > th {
+            text-align: center;
+          }
+        }
+      }
+      & > tbody {
+        & > tr {
+          & > td {
+            & > a {
+              color: $cBlack;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 
 .side {
   display: none;
