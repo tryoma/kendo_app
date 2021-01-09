@@ -1,3 +1,22 @@
+// ヘッダー関連表示 //
+// トップページ写真イメージ関連表示 //
+// トップページイベント関連表示 //
+// トップページイベントテーブル表示 //
+// トップページ情報関連表示 //
+// トップページ情報テーブル表示 //
+// トップページユーザー関連表示 //
+// ロゴ関連表示 //
+// フッダー関連表示 //
+// マイページ関連表示 //
+// マイページタブ関連表示 //
+// イベント詳細ページ関連表示 //
+// カレンダーページ関連表示 //
+// カレンダー詳細ページ関連表示 //
+// 情報詳細ページ関連表示 //
+// 一覧ページ関連表示 //
+// 入力関連表示 //
+
+
 /******************************************************************
 
 Stylesheet: ベーススタイル
@@ -35,9 +54,14 @@ img {
   padding-bottom: 80px !important;
 }
 .content-width {
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
   max-width: $contentMaxWidth;
+}
+.content-form-width {
+  width: 95%;
+  margin: 0 auto;
+  max-width: $contentformMaxWidth;
 }
 .main-title {
   @extend .font-lg;
@@ -47,14 +71,23 @@ img {
 }
 .sub-title {
   @extend .font-sm;
+  @extend .mb-sm;
   color: $cSubTitle;
 }
 .flex {
   display: flex;
   flex-direction: column;
 }
-.purple {
-  color: $cWineRed;
+.blue {
+  color: $cBlue;
+}
+
+.red {
+  color: $cRed;
+}
+
+.white {
+  color: $cWhite;
 }
 
 #main-content {
@@ -78,13 +111,27 @@ main {
   transition: transform 0.5s, box-shadow 0.5s;
 }
 
+p {
+  margin-bottom: 5px;
+  color: $cSubTitle;
+}
+
+.center {
+  text-align: center;
+}
+
+.mb {
+  margin-bottom: 0 !important;
+}
+
+// ヘッダー関連表示 //
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: $navHeight;
-  background-color: white;
+  background-color: rgb(90, 87, 87);
   display: flex;
   align-items: center;
   z-index: 100;
@@ -112,10 +159,11 @@ main {
   }
 
   & .logo {
+    color: $cWhite;
     font-size: 38px;
     justify-content: center;
   }
-
+  
   &__inner {
     display: flex;
     justify-content: space-between;
@@ -124,16 +172,206 @@ main {
   }
 }
 
+// トップページ写真イメージ関連表示 //
+.main_image {
+  height: 500px;
+  overflow: hidden;
 
-.footer {
-  padding: 60px 0;
+  & > img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+  }
+  &__title {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    color: $cBlue;
+    font-size: 25px;
+    z-index: 2;
+    opacity: 1;
+  }
+}
+// トップページイベント関連表示 //
+.event {
   @extend .content-width;
+  @extend .mb-lg;
+
+  &__inner {
+    @extend .flex;
+  }
+
+  &__title {
+    @extend .font-lr;
+    @extend .mb-sm;
+    text-align: center;
+  }
+
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+  }
+}
+
+// トップページイベントテーブル表示 //
+.event_table {
+  @extend .font-md;
+  @extend .content-width;
+  border-collapse: collapse;
+  margin: 0 auto;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 15px -6px #00000073;
+  tr {
+    background-color: #fff;
+  }
+  tr,td {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+  }
+  th {
+    width: 40%;
+    padding: 10px 0;
+    padding: 5px;
+    background-color: #99CCFF;
+    color:#fff;
+  }
+  tr {
+    text-align: center;
+    width: 40%;
+    padding: 20px 0;
+    background-color: #fff;
+    color:#3a3a3a;
+    &:hover {
+      background-color: #d4faff;
+    }
+  }
+}
+
+// トップページ情報関連表示 //
+.information {
+  @extend .content-width;
+  @extend .mb-lg;
+  text-decoration: none;
+
+  &__inner {
+    @extend .flex;
+  }
+
+  &__title {
+    @extend .font-lr;
+    @extend .mb-sm;
+    text-align: center;
+  }
+
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+  }
+}
+
+// トップページ情報テーブル表示 //
+.information_table {
+  @extend .font-md;
+  @extend .content-width;
+  border-collapse: collapse;
+  margin: 0 auto;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 15px -6px #00000073;
+  tr {
+    background-color: #fff;
+  }
+  tr,td {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+  }
+  th {
+    width: 40%;
+    padding: 10px 0;
+    padding: 5px;
+    background-color: #0099FF;
+    color:#fff;
+  }
+  tr {
+    text-align: center;
+    width: 40%;
+    padding: 20px 0;
+    background-color: #fff;
+    color:#3a3a3a;
+    &:hover {
+      background-color: #d4faff;
+    }
+  }
+}
+
+// トップページユーザー関連表示 //
+.record {
+  @extend .content-width;
+  @extend .mb-lg;
+  text-decoration: none;
+
+  &__inner {
+    @extend .flex;
+  }
+
+  &__title {
+    @extend .font-lr;
+    @extend .mb-sm;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: $cBgGray;
+    position: relative;
+    z-index: 0;
+  }
+
+  &__box {
+    position: relative;
+  }
+
+  &__img {
+    position: relative;
+    width: 120px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    border-radius: 50%;
+
+    & > img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+}
+
+// ロゴ関連表示 //
+.logo {
+  font-size: 42px;
+  display: flex;
+
+  &__img {
+    width: 0.7em;
+  }
+
+  &__world {
+    color: $cWineRed;
+  }
+}
+
+// フッダー関連表示 //
+.footer {
+  @extend .content-width;
+  @extend .font-sm;
+  padding: 30px 0;
+  text-align: center;
 
   &__nav {
     @extend .flex;
     justify-content: space-between;
     align-items: center;
-    text-align: center;
   }
 
   &__ul {
@@ -146,9 +384,9 @@ main {
   &__li {
     padding: 0;
     margin: 10px;
-    
+
     & > a {
-      color: #535353;
+      color: $cSubTitle;
     }
   }
 
@@ -157,6 +395,350 @@ main {
     justify-content: center;
   }
 }
+
+// マイページ関連表示 //
+.profile {
+  @extend .content-width;
+  @extend .mb-lg;
+  margin-top: 16px;
+  text-decoration: none;
+
+  // &__head {
+  // }
+
+  &__detail {
+    text-align: center
+  }
+
+  // &__menu {
+  // }
+
+  // &__tabs {
+  // }
+
+  &__follow {
+    @extend .flex;
+  }
+
+  &__group {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: $cBgGray;
+    position: relative;
+    z-index: 0;
+    &__img {
+      width: 120px;
+      overflow: hidden;
+      margin-bottom: 5px;
+      border-radius: 50%;
+    }
+    &__name {
+      position: relative;
+      @extend .font-lr;
+      margin: auto
+    }
+  }
+  &__link {
+    & > a {
+      color: $cBlack;
+      text-align: center;
+    }
+  }
+  &__inner {
+    @extend .flex;
+  }
+
+  &__title {
+    @extend .font-lr;
+    @extend .mb-sm;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: $cBgGray;
+    position: relative;
+    z-index: 0;
+  }
+
+  &__box {
+    position: relative;
+  }
+
+  &__img {
+    position: relative;
+    text-align: center;
+    width: 200px;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 5px;
+    border-radius: 50%;
+
+    & > img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+}
+
+// マイページタブ関連表示 //
+.tab-area {
+  display: flex;
+  justify-content: space-around;
+  background-color: #222e3e;
+  cursor: pointer;
+  .tab {
+    width: 33%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    border-right: 1px solid #50637b;
+    border-left: 1px solid #222e3e;
+  }
+  .tab.active {
+    background-color: #ccc;
+    color: #222e3e;
+    border: none;
+  }
+}
+.content-area {
+  @extend .font-sm;
+  text-align: center;
+  margin-top: 25px;
+  .content {
+    display: none;
+  }
+  .content.show {
+    display: block;
+  }
+}
+
+// イベント詳細ページ関連表示 //
+.event_show {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__inner {
+    @extend .flex;
+  }
+
+  &__map {
+    & > #map {
+      height: 300px;
+      width: 100%;
+    }
+  }
+
+  &__title {
+    @extend .font-lr;
+    text-align: center;
+  }
+
+  &__list {
+    @extend .font-sm;
+    @extend .mb-sm;
+    margin-top: 16px;
+    text-align: center;
+    & > tbody {
+      & > tr {
+        & > th,td {
+          padding: 4px;
+        }
+      }
+    }
+  }
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+  }
+  &__comment {
+    @extend .font-sm;
+    text-align: center;
+  }
+  &__comment-list {
+    @extend .font-sm;
+    text-align: left;
+    & > p {
+      margin-bottom: 0px;
+    }
+    & > hr {
+      margin: 5px;
+    }
+  }
+}
+
+// カレンダーページ関連表示 //
+.calender {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__title {
+    @extend .font-lr;
+    text-align: center;
+  }
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+  }
+  &__comment {
+    display: none;;
+  }
+  &__explain {
+    text-align: right;
+    margin-top: 2px;
+  }
+}
+
+.calendar-heading {
+  text-align: center;
+  padding: 5px;
+}
+
+.table-striped {
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+// カレンダー詳細ページ関連表示 //
+.calender-show {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__contain {
+    margin-top: 10px;
+  }
+
+  &__subtitle {
+    @extend .mb-sm;
+    & > p {
+      @extend .font-lr;
+      text-align: left;
+      color: $cBlue;
+    }
+    & > span {
+      @extend .font-sm;
+      text-align: left;
+    }
+  }
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+  }
+}
+
+// 情報詳細ページ関連表示 //
+.information-show {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__contain {
+    margin-top: 10px;
+  }
+
+  &__subtitle {
+    @extend .mb-sm;
+    & > p {
+      @extend .font-lr;
+      text-align: left;
+      color: $cBlue;
+    }
+    & > span {
+      @extend .font-sm;
+      text-align: left;
+    }
+  }
+  &__video {
+    text-align: center;
+    flex-basis: 100%;
+    & > iframe {
+      @extend .content-width;
+      width: 100%;
+      height: 200px;
+    }
+  }
+  &__confirmation {
+    text-align: center;
+    flex-basis: 100%;
+  }
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+  }
+}
+
+// 一覧ページ関連表示 //
+.mainlist {
+  @extend .content-width;
+  @extend .mb-lg;
+
+  &__contain {
+    margin-top: 10px;
+    & > table {
+      & > thead {
+        & > tr {
+          & > th {
+            text-align: center;
+          }
+        }
+      }
+      & > tbody {
+        & > tr {
+          & > td {
+            & > a {
+              color: $cBlack;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 入力関連表示 //
+.new_edit {
+  @extend .content-form-width;
+  @extend .mb-lg;
+
+  &__form {
+    margin-top: 10px;
+    & > form {
+      & > label {
+        margin-top: 10px;
+      }
+    }
+  }
+  &__btn {
+    text-align: center;
+    flex-basis: 100%;
+    // margin-top: 10px;
+  }
+  &__span {
+    color: $cRed;
+    font-size: 0.9em;
+  }
+  &__link {
+    & > a {
+      color: $cBlack;
+    }
+  }
+}
+
+.label-form {
+  margin-top: 5px;
+}
+
+/* debug関係 */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
 
 .side {
   display: none;
@@ -220,3 +802,4 @@ main {
     }
   }
 }
+

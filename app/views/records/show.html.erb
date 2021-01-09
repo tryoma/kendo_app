@@ -1,18 +1,38 @@
 <% provide(:title, "稽古日記") %>
-
-<h2><%= @record.start_time %>の日記</h2>
-<div class="container">
-  <div class="">
-    <p>タイトル：<%= @record.title %></p>
-    <p>内容：<%= @record.content %></p>
-    <%= link_to "編集", 
-      edit_user_record_path(user_id: @user, id: @record.id), 
-      method: :get,
-      class: "btn btn-primary" %>
-    <%= link_to "削除", 
-      user_record_path(user_id: @user, id: @record.id), 
-      method: :delete,
-      data: { confirm: "日記を削除しますか？" },
-      class: "btn btn-danger" %>
-  </div>
+<div id="main-content">
+  <main>
+    <section class="calender-show">
+      <div>
+        <h2 class="main-title center"><%= l @record.start_time, format: :middle %>の日記</h2>
+      </div>
+      <div class="calender-show__contain">
+        <div class="calender-show__subtitle">
+          <p>タイトル</p>
+          <span><%= @record.title %></span>
+        </div>
+        <div class="calender-show__subtitle">
+          <p>内容</p>
+          <span><%= @record.content %></span>
+        </div>
+        <div class="calender-show__subtitle">
+          <p>稽古内容</p>
+          <span><%= @record.content %></span>
+        </div>
+        <div class="calender-show__subtitle">
+          <p>写真</p>
+          <span><%= @record.content %></span>
+        </div>
+        <div class="calender-show__btn">
+        <% if @user == current_user %>
+          <%= link_to edit_user_record_path(user_id: @user, id: @record.id), data: {"turbolinks" => false}, method: :get,class: "btn btn-primary" do %>
+            編集
+          <% end %>
+          <%= link_to user_record_path(user_id: @user, id: @record.id), data: {"turbolinks" => false}, method: :delete,data: { confirm: "日記を削除しますか？" },class: "btn btn-danger" do %>
+            削除
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>

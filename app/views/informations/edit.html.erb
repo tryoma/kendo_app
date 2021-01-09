@@ -1,27 +1,33 @@
 <% provide(:title, '情報編集') %>
 <% provide(:button_text, '編集') %>
-<h1>情報編集</h1>
+<div id="main-content">
+  <main>
+    <section class="new_edit">
+      <div>
+        <h2 class="main-title center">情報編集</h2>
+      </div>
+      <div class = "new_edit__form">
+        <%= form_with(model: @information, url: information_path, local: true,method: :patch) do |f| %>
+          <%= render 'shared/error_messages', object: @information %>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @information, url: information_path, local: true,method: :patch) do |f| %>
-    <%= render 'shared/error_messages', object: @information %>
+          <%= f.label :title, class: "label-form" %>
+          <%= f.text_field :title, class: "form-control" %>
 
-    <%= f.label :title, class: "label-form" %>
-    <%= f.text_field :title, class: "form-control" %>
+          <%= f.label :body, class: "label-form" %>
+          <%= f.text_field :body, class: "form-control" %>
 
-    <%= f.label :body, class: "label-form" %>
-    <%= f.text_field :body, class: "form-control" %>
+          <%= f.label :limited, class: "label-form" %>
+          <%= f.date_field :limited, class: "form-control" %>
 
-    <%= f.label :limited, class: "label-form" %>
-    <%= f.date_field :limited, class: "form-control" %>
+          <%= f.label :youtube_url, class: "label-form" %>
+          <%= f.text_field :youtube_url, class: "form-control" %>
 
-    <%= f.label :youtube_url, class: "label-form" %>
-    <%= f.text_field :youtube_url, class: "form-control" %>
-
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-
-    <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
-  <% end %>
-  </div>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <div class = "new_edit__btn">
+            <%= f.submit yield(:button_text), class: "btn" %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </main>
 </div>

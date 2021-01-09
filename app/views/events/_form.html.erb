@@ -26,9 +26,10 @@
   <%= f.select :level, Event.levels.keys, {}, class: "form-control" %>
 
   <%= f.label :comment, class: "label-form" %>
-  <%= f.text_field :comment, class: "form-control", placeholder: "例)初開催です！どなたでも！楽しくやりましょう！"%>
+  <%= f.text_field :comment, class: "form-control", placeholder: "例)初開催です！楽しくやりましょう！"%>
 
   <%= f.hidden_field :user_id, :value => current_user.id %>
-
-  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-form" %>
+  <div class = "new_edit__btn">
+    <%= f.submit yield(:button_text), class: "btn" %>
+  </div>
 <% end %>

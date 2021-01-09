@@ -2,12 +2,9 @@
 <header class="header">
   <div class="header__inner">
     <div class="logo">
-      <%
-=begin%>
- <img src="assets/logo.svg" alt="" class="logo__img"> 
-<%
-=end%>
-      <span><%= link_to "Ken App", root_path ,data: {"turbolinks" => false} %></span>
+      <%= link_to root_path ,data: {"turbolinks" => false} do %>
+        <span class = "white">Ken App</span>
+      <% end %>
     </div>
     <button class="mobile-menu__btn">
       <span></span>

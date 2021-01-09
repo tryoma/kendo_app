@@ -1,35 +1,53 @@
 <% provide(:title, "情報") %>
-<h1><%= @information.title %></h1>
-
-<div class="information-show">
-  <div class="information-map">
-  </div>
-  <div class="information-information-list">
-    <p><%= @information.body %></p>
-    <p><%= @information.limited %></p>
-  </div>
-  <div class="information-video">
-  <% unless @information.youtube.nil? %>
-    <iframe width="750" height="500" src="https://www.youtube.com/embed/<%= @information.youtube %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  <% end %>
-  </div>
-  <div class="information-confirmation">
-    <% if user_signed_in? %>
-      <% if @information.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
-          <p><span>お気に入り解除: </span><%=link_to @information.favorites.count, information_favorites_path(@information.id), method: :delete %></p>
-      <% else %>
-          <p><span>お気に入り登録: </span><%=link_to @information.favorites.count, information_favorites_path(@information.id), method: :post %></p>
-      <% end %>
-    <% else %>
-      <p><span>お気に入り数: </span><%= @information.favorites.count %></p>
-    <% end %>
-  </div>
-  <div class="information-editing">
-    <% if @information.user == current_user %>
-      <%= link_to "編集", edit_information_path(@information) %>
-      <%= link_to "削除", information_path(@information), method: :delete,
-                data: { confirm: "削除してよろしいですか？" },
-                class: "btn btn-danger" %>
-    <% end %>
-  </div>
+<div id="main-content">
+  <main>
+    <section class="information-show">
+      <div>
+        <h2 class="main-title center"><%= @information.title %></h2>
+      </div>
+      <div class="information-show__contain">
+        <div class="information-show__subtitle">
+          <p>内容</p>
+          <span><%= @information.body %></span>
+        </div>
+        <% unless @information.youtube.nil? %>
+          <div class="information-show__subtitle mb">
+            <p>動画</p>
+          </div>
+          <div class="information-show__video">
+            <iframe src="https://www.youtube.com/embed/<%= @information.youtube %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        <% end %>
+        <div class="information-show__confirmation">
+          <% if user_signed_in? %>
+            <% if @information.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
+                <p><span>お気に入り解除しますか？: </span>
+                <%=link_to information_favorites_path(@information.id), data: {"turbolinks" => false}, method: :delete do %>
+                  <i class="far fa-thumbs-up"></i><span><%= @information.favorites.count %></span>
+                <% end %>
+            <% else %>
+                <p>
+                  <span>お気に入り登録しませんか？: </span>
+                  <%=link_to information_favorites_path(@information.id), data: {"turbolinks" => false}, method: :post do %>
+                    <i class="far fa-thumbs-up"></i><span><%= @information.favorites.count %></span>
+                  <% end %>
+                </p>
+            <% end %>
+          <% else %>
+            <p><span>お気に入り数: </span><%= @information.favorites.count %></p>
+          <% end %>
+        </div>
+        <div class="information-show__btn">
+          <% if @information.user == current_user %>
+            <%= link_to edit_information_path(@information), data: {"turbolinks" => false}, class: "btn btn-danger" do %>
+              編集
+            <% end %>
+            <%= link_to information_path(@information), data: {"turbolinks" => false}, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" do %>
+              削除
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>

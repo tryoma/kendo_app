@@ -1,30 +1,40 @@
 <% provide(:title, "Users") %>
-<h1>ユーザー一覧</h1>
-
-<div class="col-md-10 col-md-offset-1">
-  <%= will_paginate %>
-  <table class="table table-condensed table-hover" id="table-main">
-    <thead>
-      <tr>
-        <th><%= User.human_attribute_name :user_name %></th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to user.user_name, user %></td>
-        <td>
-          <% if current_user.admin? %>
-            <% if current_user != user %>
-            <%= link_to "削除", user, method: :delete,
-                data: { confirm: "削除してよろしいですか？" },
-                class: "btn btn-danger" %>
+<div id="main-content">
+  <main>
+    <section class="manylist">
+      <div>
+        <h2 class="main-title center">ユーザー一覧</h2>
+      </div>
+      <div class = "mainlist__contain">
+        <%= will_paginate %>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th><%= User.human_attribute_name :id %></th>
+              <th><%= User.human_attribute_name :user_name %></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= link_to user.user_name, user, data: {"turbolinks" => false} %></td>
+                <td>
+                  <% if current_user.admin? %>
+                    <% if current_user != user %>
+                      <%= link_to user, method: :delete, data: {"turbolinks" => false}, data: { confirm: "削除してよろしいですか？" } do %>
+                      <span class = "red">削除</span>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
             <% end %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-  <%= will_paginate %>
+          </tbody>
+        </table>
+        <%= will_paginate %>
+      </div>
+    </section>
+  </main>
 </div>
