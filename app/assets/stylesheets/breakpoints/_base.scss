@@ -438,11 +438,13 @@ p {
       @extend .font-lr;
       margin: auto
     }
-    &__follow {
-      
+  }
+  &__link {
+    & > a {
+      color: $cBlack;
+      text-align: center;
     }
   }
-
   &__inner {
     @extend .flex;
   }
@@ -713,6 +715,11 @@ p {
   &__span {
     color: $cRed;
     font-size: 0.9em;
+  }
+  &__link {
+    & > a {
+      color: $cBlack;
+    }
   }
 }
 

@@ -78,7 +78,7 @@
             </div>
             <div class="content">
               <% if @favorite_informations.any? %>
-                  <%= render 'informations', users: @favorite_informations %>
+                  <%= render 'informations', informations: @favorite_informations %>
               <% else %>
                 <div class='no-content'>
                   まだお気入り情報はありません

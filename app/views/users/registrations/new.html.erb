@@ -1,34 +1,38 @@
-<h2>Sign up</h2>
+<% provide(:title, "Sign up") %>
+<div id="main-content">
+  <main>
+    <section class="new_edit">
+      <div>
+        <h2 class="main-title center">新規登録画面</h2>
+      </div>
+      <div class = "new_edit__form">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "users/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+            <%= f.label :user_name, class: "label-form"  %><br />
+            <%= f.text_field :user_name, autofocus: true, class: "form-control" %>
 
-  <div class="field">
-    <%= f.label :user_name %><br />
-    <%= f.text_field :user_name, autofocus: true %>
-  </div>
+            <%= f.label :email, class: "label-form"  %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+            <%= f.label :password, class: "label-form"  %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> 文字以上としてください)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+            <%= f.label :password_confirmation, class: "label-form"  %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+          <div class = "new_edit__btn">
+            <%= f.submit "Sign up", class: 'btn' %>
+          </div>
+        <% end %>
+        <div class = "new_edit__link">
+          <%= render "users/shared/links" %>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
