@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :members, :only => [:create, :update, :destroy]
-    resources :comments, :only => [:create, :destroy]
+    resources :comments, :only => [:create, :destroy, :index]
   end
   
   resources :informations do
