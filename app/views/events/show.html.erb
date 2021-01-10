@@ -73,30 +73,15 @@
           <% end %>
         </div>
         <div class="event_show__comment">
-          <% if current_user.present? %>
-            <%= form_with(model:[@event, @comment]) do |f| %>
-              <p>
-                <%= f.label :body,"コメント" %>
-                <%= f.text_field :body %>
-              </p>
-              <%= f.submit "投稿する" %>
+          <div>
+            <h4>コメント</h4>
+            <div id="comments_area">
+              <%= render partial: 'comments/index', locals: { comments: @comments } %>
+            </div>  
+            <% if user_signed_in? %>
+              <%= render partial: 'comments/form', locals: { comment: @comment, event: @event } %>
             <% end %>
-          <% end %>
-        </div>
-        <div class="event_show__comment-list">
-          <% @comments.each do |comment| %>
-            <hr>
-            <p>
-              <span><%= comment.user.profile.name %>: <br></span>
-              <%= comment.body %>
-              <% if comment.user == current_user %>
-                <%= link_to event_comment_path(@event.id, comment.id), data: {"turbolinks" => false}, method: :delete,
-                        data: { confirm: "削除してよろしいですか？" } do %>
-                  <span>削除</span>
-                <% end %>
-              <% end %>
-            </p>
-          <% end %>
+          </div>
         </div>
       </div>
     </section>
