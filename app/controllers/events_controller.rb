@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = @event.comments.includes(:user).order(created_at: :desc)
+    @comments = @event.comments.includes(:user).order(created_at: :asc)
   end
   
   def new

@@ -10,6 +10,7 @@
 // マイページ関連表示 //
 // マイページタブ関連表示 //
 // イベント詳細ページ関連表示 //
+// イベント詳細ページ吹き出し関連表示 //
 // カレンダーページ関連表示 //
 // カレンダー詳細ページ関連表示 //
 // 情報詳細ページ関連表示 //
@@ -553,7 +554,7 @@ p {
   }
   &__comment {
     @extend .font-sm;
-    text-align: center;
+    // text-align: center;
   }
   &__comment-list {
     @extend .font-sm;
@@ -566,6 +567,71 @@ p {
     }
   }
 }
+
+// イベント詳細ページ吹き出し関連表示 //
+.balloon_l,
+.balloon_r{
+  margin: 5px 0;
+  display:flex;
+  justify-content: flex-start;
+  align-items: flex-start; 
+  // align-items: center; 
+}
+.balloon_r{
+  justify-content:flex-end;
+}
+.faceicon img{
+  width: 40px; 
+  height: auto;
+  border-radius:50%;
+}
+.balloon_r .faceicon{
+  margin-left:25px;
+}
+.balloon_l .faceicon{
+  margin-right:25px;
+}
+.balloon_r .faceicon{
+  order:2 !important;
+}
+.says {
+  max-width:500px; 
+  width: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 10px;
+  border-radius: 12px;
+  background: $cBgGray;
+  box-sizing:border-box;
+  margin:0 !important;
+  line-height:1.5;
+}
+.says p{
+  margin:8px 0 0 !important; 
+}
+.says span{
+  & > a {
+    color: #F0D0D0;
+  }
+}
+.says p:first-child{
+  margin-top:0 !important;
+}
+.says:after {
+  content: "";
+  position: absolute;
+  border: 10px solid transparent;
+}
+.balloon_l .says:after {
+  left: -26px;
+  border-right: 22px solid $cBgGray;
+}
+.balloon_r .says:after {
+  right: -26px;
+  border-left: 22px solid $cBgGray;
+}
+
 
 // カレンダーページ関連表示 //
 .calender {
