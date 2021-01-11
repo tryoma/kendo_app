@@ -10,7 +10,7 @@
           <p>内容</p>
           <span><%= @information.body %></span>
         </div>
-        <% unless @information.youtube.nil? %>
+        <% unless @information.youtube.empty? %>
           <div class="information-show__subtitle mb">
             <p>動画</p>
           </div>

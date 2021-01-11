@@ -23,14 +23,17 @@
           <span><%= @record.content %></span>
         </div>
         <div class="calender-show__btn">
-        <% if @user == current_user %>
-          <%= link_to edit_user_record_path(user_id: @user, id: @record.id), data: {"turbolinks" => false}, method: :get,class: "btn btn-primary" do %>
-            編集
+          <% if @user == current_user %>
+            <%= link_to edit_user_record_path(user_id: @user, id: @record.id), data: {"turbolinks" => false}, method: :get, class: "btn btn-primary" do %>
+              編集
+            <% end %>
+            <%= link_to user_record_path(user_id: @user, id: @record.id), data: {"turbolinks" => false}, method: :delete,data: { confirm: "日記を削除しますか？" }, class: "btn btn-danger" do %>
+              削除
+            <% end %>
           <% end %>
-          <%= link_to user_record_path(user_id: @user, id: @record.id), data: {"turbolinks" => false}, method: :delete,data: { confirm: "日記を削除しますか？" },class: "btn btn-danger" do %>
-            削除
+          <%= link_to user_records_path(user_id: @user), data: {"turbolinks" => false}, class: "btn" do %>
+            カレンダー
           <% end %>
-        <% end %>
         </div>
       </div>
     </section>
