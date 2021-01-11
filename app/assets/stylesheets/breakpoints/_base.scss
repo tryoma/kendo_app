@@ -133,7 +133,7 @@ p {
   left: 0;
   width: 100%;
   height: $navHeight;
-  background-color: rgb(90, 87, 87);
+  background-color: $cBlack;
   display: flex;
   align-items: center;
   z-index: 100;
@@ -237,7 +237,7 @@ p {
     width: 40%;
     padding: 10px 0;
     padding: 5px;
-    background-color: #99CCFF;
+    background-color: $cBlue;
     color:#fff;
   }
   tr {
@@ -324,7 +324,7 @@ p {
     @extend .font-lr;
     @extend .mb-sm;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 15px;
     background-color: $cBgGray;
     position: relative;
@@ -353,14 +353,6 @@ p {
 .logo {
   font-size: 42px;
   display: flex;
-
-  &__img {
-    width: 0.7em;
-  }
-
-  &__world {
-    color: $cWineRed;
-  }
 }
 
 // フッダー関連表示 //
@@ -405,18 +397,13 @@ p {
   margin-top: 16px;
   text-decoration: none;
 
-  // &__head {
-  // }
-
   &__detail {
     text-align: center
   }
-
-  // &__menu {
-  // }
-
-  // &__tabs {
-  // }
+  
+  &__menu {
+    text-align: center
+  }
 
   &__follow {
     @extend .flex;
@@ -503,6 +490,7 @@ p {
     border: none;
   }
 }
+
 .content-area {
   @extend .font-sm;
   text-align: center;
@@ -804,70 +792,6 @@ p {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
-}
-
-
-.side {
-  display: none;
-  position: fixed;
-  top: 70%;
-  transform: translateY(-50%);
-  transition: all .3s ease-in;
-
-  & .tween-animate-title {
-    color: $cBlack;
-    text-decoration: none !important;
-    margin: 0 40px;
-    vertical-align: middle;
-    letter-spacing: 2px;
-  }
-
-  &.left {
-    left: -50px;
-
-    &.inview {
-      left: 50px;
-    }
-
-    & .side__inner {
-      transform-origin: top left;
-      transform: rotate(-90deg);
-    }
-  }
-  &.right {
-    right: -50px;
-
-    &.inview {
-      right: 50px;
-    }
-
-    & .side__inner {
-      transform-origin: top right;
-      transform: rotate(90deg);
-    }
-  }
-}
-
-.icon {
-  position: relative;
-
-  @include p-base($left: -20px, $top: 50%, $width: 1em, $height: 1em) {
-    transform: translateY(-50%);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-
-  &.twitter{
-    &::before {
-      background-image: url(../images/twitter.svg);
-    }
-  }
-  &.fb{
-    &::before {
-      background-image: url(../images/facebook.svg);
-    }
-  }
 }
 
 // Device_フラッシュ表示 //
