@@ -30,8 +30,9 @@
             <%= t.label :description, class: "label-form" %>
             <%= t.text_field :description, class: "form-control" %>
 
-            <%= t.label :avatar, class: "label-form"  %>
-            <%= t.file_field :avatar, class: "form-control" %>
+            <%= t.label :image, class: "label-form"  %>
+            <%= t.file_field :image, class: "form-control" %>
+            <%= t.hidden_field :image_cache %>
 
             <%= t.hidden_field :user_id, :value => current_user.id %>
           <% end %>

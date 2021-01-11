@@ -4,10 +4,10 @@
     <section class="profile">
       <div class="profile__head">
         <div class="profile__img">
-          <% if @user.profile.avatar.nil? %>                                                              
-            <%= image_tag @user.profile.avatar.url %>
+          <% if @user.profile.image.present? %>                                                              
+            <%= image_tag @user.profile.image.url %>
           <% else %>
-            <%= image_tag "/assets/default.png", class: 'avatar-img big-img' %>
+            <%= image_tag "default.png" %>
           <% end %>
         </div>
 
