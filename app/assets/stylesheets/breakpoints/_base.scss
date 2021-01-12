@@ -102,7 +102,7 @@ main {
   z-index: -1;
 }
 
-.container {
+.containers {
   padding-top: 100px;
 }
 
@@ -154,7 +154,7 @@ p {
     margin-left: 20px;
 
     & > a {
-      color: $cBlack;
+      color: $cWhite;
       text-decoration: none !important;
       text-transform: uppercase;
     }
@@ -176,7 +176,7 @@ p {
 
 // トップページ写真イメージ関連表示 //
 .main_image {
-  height: 500px;
+  width: 100%;
   overflow: hidden;
 
   & > img {
@@ -729,6 +729,7 @@ p {
   &__contain {
     margin-top: 10px;
     & > table {
+      @extend .content-width;
       & > thead {
         & > tr {
           & > th {
