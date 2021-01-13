@@ -6,39 +6,91 @@ Stylesheet: 600px以上のタブレットやモニタで適用
 .flex {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
-.houses {
-    &__item {
-        flex-basis: 50%;
-        margin-bottom: 60px;
+.content-show-width {
+    width: 80%;
+    margin: 0 auto;
+    max-width: $contentMaxWidth;
+}
+
+// カレンダー詳細ページ関連表示 //
+.calender-show {
+    &__contain {
+        margin-top: 10px;
+        @extend .content-show-width;
     }
 }
 
-.popular {
-    &__container {
-        justify-content: space-between;
-    }
-
-    &__item {
-        flex-basis: 47%;
+// 情報詳細ページ関連表示 //
+.information-show {
+    &__contain {
+        margin-top: 10px;
+        @extend .content-show-width;
     }
 }
 
-.travel {
+// イベント詳細ページ関連表示 //
+.event_show {
+    @extend .content-show-width;
+  
     &__inner {
-        padding: 50px;
+      @extend .flex;
     }
-    &__texts,
-    &__img {
-        flex-basis: 47%;
+  
+    &__map {
+      & > #map {
+        height: 300px;
+        width: 480px;
+      }
     }
-
-    &__texts {
-        display: flex;
-        align-items: flex-end;
+    &__comment {
+    @extend .font-sm;
+    width:300px;
+    // text-align: center;
     }
 }
+
+
+.record {
+    @extend .content-width;
+    @extend .mb-lg;
+    text-decoration: none;
+  
+    &__inner {
+      @extend .flex;
+    }
+  
+    &__title {
+      @extend .font-lr;
+      @extend .mb-sm;
+      display: flex;
+      justify-content: space-around;
+      padding: 15px;
+      background-color: $cBgGray;
+      position: relative;
+      z-index: 0;
+      width: 250px;
+    }
+  
+    &__box {
+      position: relative;
+    }
+  
+    &__img {
+      position: relative;
+      width: 120px;
+      overflow: hidden;
+      margin-bottom: 5px;
+      border-radius: 50%;
+  
+      & > img {
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+  }
 
 .footer {
     & .logo {

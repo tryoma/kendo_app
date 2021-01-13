@@ -230,8 +230,9 @@ p {
     background-color: #fff;
   }
   tr,td {
-    padding: 5px 0;
+    padding: 5px 5px;
     border-bottom: 1px solid #eee;
+    white-space: nowrap;
   }
   th {
     width: 40%;
@@ -288,8 +289,9 @@ p {
     background-color: #fff;
   }
   tr,td {
-    padding: 5px 0;
+    padding: 5px 5px;
     border-bottom: 1px solid #eee;
+    white-space: nowrap;
   }
   th {
     width: 40%;

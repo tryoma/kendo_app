@@ -86,9 +86,9 @@
         <h2 class="main-title">稽古日記更新</h2>
         <p class="sub-title">お気に入りのユーザーを見つけよう</p>
       </div>
-      <% @records.each do |record| %>
-        <%= link_to user_path(id:record.user_id), data: {"turbolinks" => false} do %>
-          <div class="record__inner">
+      <div class="record__inner">
+        <% @records.each do |record| %>
+          <%= link_to user_path(id:record.user_id), data: {"turbolinks" => false} do %>
             <div class="record__title">
               <div class="record__img">
                 <img src="assets/default.png" alt="" />
@@ -98,9 +98,9 @@
                 <p><%= record.title %></p>
               </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </section>
   </main>
 </div>
