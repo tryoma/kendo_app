@@ -3,12 +3,12 @@ class CommentsController < ApplicationController
 
   def create
     @event = Event.find(params[:event_id])
-    @comment = Comment.new(comment_params)
+    @comment = @event.comments.build(comment_params)
     if @comment.save
-      redirect_to event_path(@event)
+      render :index
     else
       flash[:alert] = 'コメントを入力してください。'
-      redirect_to event_path(@event)
+      render :index
     end
   end
 
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:alert] = '削除しました'
-    redirect_to event_path(params[:event_id])
+    render :index
   end
 
   private

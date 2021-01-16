@@ -49,45 +49,38 @@
           <p>あと<%= @event.estimate_people -  @event.members.count %>人参加可能です</p>
         </div>
         <div class="event_show__btn">
-          <% unless @event.owner == current_user %>
-            <% unless current_user.members.find_by(event_id: @event.id)%>
-              <%= link_to '参加しますか？',event_members_path(@event), data: {"turbolinks" => false}, method: :post,
-                data: { confirm: "このイベントに参加しますか？" },
-                class: "btn btn-primary" %>
+          <% if current_user.present? %>
+            <% unless @event.owner == current_user %>
+              <% unless current_user.members.find_by(event_id: @event.id)%>
+                <%= link_to '参加しますか？',event_members_path(@event), data: {"turbolinks" => false}, method: :post,
+                  data: { confirm: "このイベントに参加しますか？" },
+                  class: "btn btn-primary" %>
+              <% else %>
+                <%= link_to '参加取りやめ',event_member_path(@event), data: {"turbolinks" => false}, method: :delete,
+                  data: { confirm: "このイベントを参加取りやめますか？" },
+                  class: "btn btn-danger" %>
+              <% end %>
             <% else %>
-              <%= link_to '参加取りやめ',event_member_path(@event), data: {"turbolinks" => false}, method: :delete,
-                data: { confirm: "このイベントを参加取りやめますか？" },
+              <%= link_to "編集",edit_event_path(@event), data: {"turbolinks" => false}, class: "btn btn-primary" %>
+              <%= link_to "削除",event_path(@event), data: {"turbolinks" => false}, method: :delete,
+                data: { confirm: "削除してよろしいですか？" },
                 class: "btn btn-danger" %>
             <% end %>
           <% else %>
-            <%= link_to "編集",edit_event_path(@event), data: {"turbolinks" => false}, class: "btn btn-primary" %>
-            <%= link_to "削除",event_path(@event), data: {"turbolinks" => false}, method: :delete,
-              data: { confirm: "削除してよろしいですか？" },
-              class: "btn btn-danger" %>
+            <%= link_to '参加しますか？',event_members_path(@event), data: {"turbolinks" => false}, method: :post,
+                  data: { confirm: "このイベントに参加しますか？" },
+                  class: "btn btn-primary" %>
           <% end %>
         </div>
         <div class="event_show__comment">
-          <%= form_with(model:[@event, @comment]) do |f| %>
-            <p>
-              <%= f.label :body,"コメント" %>
-              <%= f.text_field :body %>
-            </p>
-            <%= f.submit "投稿する" %>
-          <% end %>
-        </div>
-        <div class="event_show__comment-list">
-          <% @comments.each do |comment| %>
-            <hr>
-            <p>
-              <span><%= comment.user.profile.name %>: <br></span>
-              <%= comment.body %>
-              <% if comment.user == current_user %>
-                <%= link_to event_comment_path(@event.id, comment.id), data: {"turbolinks" => false}, method: :delete,
-                        data: { confirm: "削除してよろしいですか？" } do %>
-                  <span>削除</span>
-                <% end %>
-              <% end %>
-            </p>
+          <div>
+            <h2 class="event_show__title">コメント</h2>
+          </div>
+          <div id="comments_area">
+            <%= render partial: 'comments/index', locals: { comments: @comments } %>
+          </div>  
+          <% if user_signed_in? %>
+            <%= render partial: 'comments/form', locals: { comment: @comment, event: @event } %>
           <% end %>
         </div>
       </div>

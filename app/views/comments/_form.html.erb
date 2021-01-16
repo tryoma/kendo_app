@@ -1,0 +1,8 @@
+<%= form_with(model: [event, comment] ) do |form| %>
+  <div>
+    <%= form.text_area :body, class: "form-control" %>
+  </div>
+  <div class="event_show__btn">
+    <%= form.submit "コメントをする", class: "btn" %>
+  </div>
+<% end %>

@@ -10,7 +10,7 @@
           <p>内容</p>
           <span><%= @information.body %></span>
         </div>
-        <% unless @information.youtube.nil? %>
+        <% if @information.youtube.present?  %>
           <div class="information-show__subtitle mb">
             <p>動画</p>
           </div>
@@ -46,6 +46,9 @@
               削除
             <% end %>
           <% end %>
+          <div class = "new_edit__btn">
+            <%= link_to "戻る", :back, data: {"turbolinks" => false}, class: "btn" %>
+        </div>
         </div>
       </div>
     </section>

@@ -30,8 +30,9 @@
             <%= t.label :description, class: "label-form" %>
             <%= t.text_field :description, class: "form-control" %>
 
-            <%= t.label :avatar, class: "label-form"  %>
-            <%= t.file_field :avatar, class: "form-control" %>
+            <%= t.label :image, class: "label-form"  %>
+            <%= t.file_field :image, class: "form-control" %>
+            <%= t.hidden_field :image_cache %>
 
             <%= t.hidden_field :user_id, :value => current_user.id %>
           <% end %>
@@ -39,6 +40,9 @@
             <%= f.submit yield(:button_text), class: "btn" %>
           </div>
         <% end %>
+        <div class = "new_edit__btn">
+          <%= link_to "戻る", :back, data: {"turbolinks" => false}, class: "btn" %>
+        </div>
       </div>
     </section>
   </main>

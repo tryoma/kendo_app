@@ -1,0 +1,37 @@
+<% comments.each do |comment| %>
+  <% unless comment.id.nil? %>
+    <% if comment.user == @event.owner %>
+      <div class="balloon_r">
+        <div class="faceicon">
+          <% if comment.user.profile.image.present? %>
+            <%= image_tag(comment.user.profile.image.url)%>
+          <% else %>
+            <%= image_tag "default.png" %>
+          <% end %>
+        </div>
+        <p class="says">
+          <%= comment.body %>
+          <% if comment.user == current_user %>
+            <span><%= link_to '削除', event_comment_path(comment.event_id, comment.id), method: :delete, data: { confirm: "このコメントを削除しますか？" }, remote: true %></span>
+          <% end %>
+        </p>
+      </div>
+    <% else %>
+      <div class="balloon_l">
+        <div class="faceicon">
+          <% if comment.user.profile.image.present? %>
+            <%= image_tag(comment.user.profile.image.url)%>
+          <% else %>
+            <%= image_tag "default.png" %>
+          <% end %>
+        </div>
+        <p class="says">
+          <%= comment.body %>
+          <% if comment.user == current_user %>
+            <span><%= link_to '削除', event_comment_path(comment.event_id, comment.id), method: :delete, data: { confirm: "このコメントを削除しますか？" }, remote: true %></span>
+          <% end %>
+        </p>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

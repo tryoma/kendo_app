@@ -10,11 +10,13 @@
 // マイページ関連表示 //
 // マイページタブ関連表示 //
 // イベント詳細ページ関連表示 //
+// イベント詳細ページ吹き出し関連表示 //
 // カレンダーページ関連表示 //
 // カレンダー詳細ページ関連表示 //
 // 情報詳細ページ関連表示 //
 // 一覧ページ関連表示 //
 // 入力関連表示 //
+// Device_フラッシュ表示 //
 
 
 /******************************************************************
@@ -100,7 +102,7 @@ main {
   z-index: -1;
 }
 
-.container {
+.containers {
   padding-top: 100px;
 }
 
@@ -131,7 +133,7 @@ p {
   left: 0;
   width: 100%;
   height: $navHeight;
-  background-color: rgb(90, 87, 87);
+  background-color: $cBlack;
   display: flex;
   align-items: center;
   z-index: 100;
@@ -149,10 +151,11 @@ p {
   }
 
   &__li {
-    margin-left: 20px;
+    margin-right: 20px;
+    white-space: nowrap;
 
     & > a {
-      color: $cBlack;
+      color: $cWhite;
       text-decoration: none !important;
       text-transform: uppercase;
     }
@@ -174,7 +177,7 @@ p {
 
 // トップページ写真イメージ関連表示 //
 .main_image {
-  height: 500px;
+  width: 100%;
   overflow: hidden;
 
   & > img {
@@ -228,14 +231,15 @@ p {
     background-color: #fff;
   }
   tr,td {
-    padding: 5px 0;
+    padding: 5px 5px;
     border-bottom: 1px solid #eee;
+    white-space: nowrap;
   }
   th {
     width: 40%;
     padding: 10px 0;
     padding: 5px;
-    background-color: #99CCFF;
+    background-color: $cBlue;
     color:#fff;
   }
   tr {
@@ -286,8 +290,9 @@ p {
     background-color: #fff;
   }
   tr,td {
-    padding: 5px 0;
+    padding: 5px 5px;
     border-bottom: 1px solid #eee;
+    white-space: nowrap;
   }
   th {
     width: 40%;
@@ -313,33 +318,28 @@ p {
   @extend .content-width;
   @extend .mb-lg;
   text-decoration: none;
-
   &__inner {
     @extend .flex;
   }
-
   &__title {
     @extend .font-lr;
     @extend .mb-sm;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 15px;
     background-color: $cBgGray;
     position: relative;
     z-index: 0;
   }
-
   &__box {
     position: relative;
   }
-
   &__img {
     position: relative;
     width: 120px;
     overflow: hidden;
     margin-bottom: 5px;
     border-radius: 50%;
-
     & > img {
       object-fit: cover;
       width: 100%;
@@ -351,14 +351,6 @@ p {
 .logo {
   font-size: 42px;
   display: flex;
-
-  &__img {
-    width: 0.7em;
-  }
-
-  &__world {
-    color: $cWineRed;
-  }
 }
 
 // フッダー関連表示 //
@@ -403,18 +395,13 @@ p {
   margin-top: 16px;
   text-decoration: none;
 
-  // &__head {
-  // }
-
   &__detail {
     text-align: center
   }
-
-  // &__menu {
-  // }
-
-  // &__tabs {
-  // }
+  
+  &__menu {
+    text-align: center
+  }
 
   &__follow {
     @extend .flex;
@@ -468,9 +455,9 @@ p {
     position: relative;
     text-align: center;
     width: 200px;
+    height: 200px;
     overflow: hidden;
-    margin: auto;
-    margin-bottom: 5px;
+    margin: auto ;
     border-radius: 50%;
 
     & > img {
@@ -501,6 +488,7 @@ p {
     border: none;
   }
 }
+
 .content-area {
   @extend .font-sm;
   text-align: center;
@@ -553,7 +541,7 @@ p {
   }
   &__comment {
     @extend .font-sm;
-    text-align: center;
+    // text-align: center;
   }
   &__comment-list {
     @extend .font-sm;
@@ -566,6 +554,71 @@ p {
     }
   }
 }
+
+// イベント詳細ページ吹き出し関連表示 //
+.balloon_l,
+.balloon_r{
+  margin: 5px 0;
+  display:flex;
+  justify-content: flex-start;
+  align-items: flex-start; 
+  // align-items: center; 
+}
+.balloon_r{
+  justify-content:flex-end;
+}
+.faceicon img{
+  width: 40px; 
+  height: auto;
+  border-radius:50%;
+}
+.balloon_r .faceicon{
+  margin-left:25px;
+}
+.balloon_l .faceicon{
+  margin-right:25px;
+}
+.balloon_r .faceicon{
+  order:2 !important;
+}
+.says {
+  max-width:500px; 
+  width: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 10px;
+  border-radius: 12px;
+  background: $cBgGray;
+  box-sizing:border-box;
+  margin:0 !important;
+  line-height:1.5;
+}
+.says p{
+  margin:8px 0 0 !important; 
+}
+.says span{
+  & > a {
+    color: #F0D0D0;
+  }
+}
+.says p:first-child{
+  margin-top:0 !important;
+}
+.says:after {
+  content: "";
+  position: absolute;
+  border: 10px solid transparent;
+}
+.balloon_l .says:after {
+  left: -26px;
+  border-right: 22px solid $cBgGray;
+}
+.balloon_r .says:after {
+  right: -26px;
+  border-left: 22px solid $cBgGray;
+}
+
 
 // カレンダーページ関連表示 //
 .calender {
@@ -674,6 +727,7 @@ p {
   &__contain {
     margin-top: 10px;
     & > table {
+      @extend .content-width;
       & > thead {
         & > tr {
           & > th {
@@ -739,67 +793,22 @@ p {
   box-sizing:         border-box;
 }
 
-
-.side {
-  display: none;
-  position: fixed;
-  top: 70%;
-  transform: translateY(-50%);
-  transition: all .3s ease-in;
-
-  & .tween-animate-title {
-    color: $cBlack;
-    text-decoration: none !important;
-    margin: 0 40px;
-    vertical-align: middle;
-    letter-spacing: 2px;
-  }
-
-  &.left {
-    left: -50px;
-
-    &.inview {
-      left: 50px;
-    }
-
-    & .side__inner {
-      transform-origin: top left;
-      transform: rotate(-90deg);
-    }
-  }
-  &.right {
-    right: -50px;
-
-    &.inview {
-      right: 50px;
-    }
-
-    & .side__inner {
-      transform-origin: top right;
-      transform: rotate(90deg);
-    }
-  }
+// Device_フラッシュ表示 //
+$ng_alert_bg_color: #f2dede;
+$ng_alert_border_color: #eed3d7;
+$ng_alert_color: #b94a48;
+$ok_alert_bg_color: #dff0d8;
+$ok_alert_border_color: #d6e9c6;
+$ok_alert_color: #468847;
+.alert-alert {
+  background-color: $ng_alert_bg_color;
+  border-color: $ng_alert_border_color;
+  color: $ng_alert_color;
+  text-align: left;
 }
-
-.icon {
-  position: relative;
-
-  @include p-base($left: -20px, $top: 50%, $width: 1em, $height: 1em) {
-    transform: translateY(-50%);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-
-  &.twitter{
-    &::before {
-      background-image: url(../images/twitter.svg);
-    }
-  }
-  &.fb{
-    &::before {
-      background-image: url(../images/facebook.svg);
-    }
-  }
+.alert-notice {
+  background-color: $ok_alert_bg_color;
+  border-color: $ok_alert_border_color;
+  color: $ok_alert_color;
+  text-align: left;
 }
-

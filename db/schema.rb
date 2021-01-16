@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_080628) do
 
   create_table "profiles", force: :cascade do |t|
     t.string "name"
-    t.string "avatar"
+    t.string "image"
     t.string "grade"
     t.date "birthday"
     t.string "prefecture"
