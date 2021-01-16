@@ -1,104 +1,74 @@
+// カレンダー詳細ページ関連表示 //
+// 情報詳細ページ関連表示 //
+// 情報詳細ページ関連表示 //
+// イベント詳細ページ関連表示 //
+// トップページユーザー関連表示 //
+// フッダー関連表示 //
+
 /******************************************************************
 
 Stylesheet: 600px以上のタブレットやモニタで適用
 
 ******************************************************************/
 .flex {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .content-show-width {
-    width: 80%;
-    margin: 0 auto;
-    max-width: $contentMaxWidth;
+  width: 80%;
+  margin: 0 auto;
+  max-width: $contentMaxWidth;
 }
 
 // カレンダー詳細ページ関連表示 //
 .calender-show {
-    &__contain {
-        margin-top: 10px;
-        @extend .content-show-width;
-    }
+  &__contain {
+      margin-top: 10px;
+      @extend .content-show-width;
+  }
 }
 
 // 情報詳細ページ関連表示 //
 .information-show {
-    &__contain {
-        margin-top: 10px;
-        @extend .content-show-width;
-    }
+  &__contain {
+      margin-top: 10px;
+      @extend .content-show-width;
+  }
 }
 
 // イベント詳細ページ関連表示 //
 .event_show {
-    @extend .content-show-width;
-  
-    &__inner {
-      @extend .flex;
-    }
-  
-    &__map {
-      & > #map {
-        height: 300px;
-        width: 480px;
-      }
-    }
-    &__comment {
-    @extend .font-sm;
-    width:300px;
-    // text-align: center;
-    }
-}
-
-
-.record {
-    @extend .content-width;
-    @extend .mb-lg;
-    text-decoration: none;
-  
-    &__inner {
-      @extend .flex;
-    }
-  
-    &__title {
-      @extend .font-lr;
-      @extend .mb-sm;
-      display: flex;
-      justify-content: space-around;
-      padding: 15px;
-      background-color: $cBgGray;
-      position: relative;
-      z-index: 0;
-      width: 250px;
-    }
-  
-    &__box {
-      position: relative;
-    }
-  
-    &__img {
-      position: relative;
-      width: 120px;
-      overflow: hidden;
-      margin-bottom: 5px;
-      border-radius: 50%;
-  
-      & > img {
-        object-fit: cover;
-        width: 100%;
-      }
+  @extend .content-show-width;
+  &__map {
+    & > #map {
+      height: 300px;
+      width: 480px;
     }
   }
+  &__comment {
+  width:300px;
+  }
+}
 
+// トップページユーザー関連表示 //
+.record {
+  &__title {
+    width: 250px;
+  }
+  &__box {
+    position: relative;
+  }
+}
+
+// フッダー関連表示 //
 .footer {
-    & .logo {
-        justify-content: flex-start;
-    }
-
-    &__li {
-        margin-left: 0;
-        margin-right: 30px;
-    }
+  & .logo {
+      justify-content: flex-start;
+  }
+  &__li {
+      margin-left: 0;
+      margin-right: 30px;
+  }
 }
