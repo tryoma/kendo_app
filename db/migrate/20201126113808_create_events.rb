@@ -2,8 +2,8 @@ class CreateEvents < ActiveRecord::Migration[6.0]
   def change
     create_table :events do |t|
       t.date :event_day
-      t.datetime :start_time
-      t.datetime :finish_time
+      t.time :start_time
+      t.time :finish_time
       t.integer :prefecture, null: false, default: 0
       t.string :place
       t.string :address, null: false
