@@ -1,22 +1,29 @@
-user = User.create!(user_name: "Sample User",
+# 管理者ユーザー
+user = User.create!(
+  user_name: "Sample User",
   email: "sample@email.com",
   password: "password",
   password_confirmation: "password",
   admin: true)
-
 user.build_profile
 user.profile.name = user.user_name
 user.save
 
 
-user = User.create!(user_name: "Sample User1",
+user = User.create!(
+  user_name: "Sample User1",
   email: "sample1@email.com",
   password: "password",
   password_confirmation: "password",
   admin: false)
-
-user.build_profile
-user.profile.name = user.user_name
+user.build_profile(
+  name: user.user_name,
+  image: File.open('./app/assets/images/test1.jpg'),
+  grade: "4段",
+  birthday: "1990-12-25",
+  prefecture: "佐賀県",
+  dojo: "佐賀道場",
+  description: "佐賀出身の剣道野郎です！よろしく！")
 user.save
 
 
@@ -26,14 +33,14 @@ user.save
                 start_time: "11:00",
                 finish_time: "12:00",
                 prefecture: 0,
-                place: "ディズニーランド",
-                address: "千葉県浦安市舞浜",
-                latitude: 35.6308022 ,
-                longitude: 139.8828549,
-                estimate_people: 5 ,
-                level: 0 ,
-                comment: "ミッキーと一緒に稽古しよう！",
-                user_id: 2 )
+                place: "日本武道館",
+                address: "東京都千代田区北の丸公園２−３",
+                latitude: 35.6933838 ,
+                longitude: 139.7498689,
+                estimate_people: 10 ,
+                level: 3 ,
+                comment: "いい会場で楽しくやりましょう！",
+                user_id: 1 )
 end
 
 4.times do |n|
