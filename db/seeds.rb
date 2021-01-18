@@ -9,7 +9,7 @@ user.build_profile
 user.profile.name = user.user_name
 user.save
 
-5.times do |n|
+10.times do |n|
   name = Faker::Name.name
   date  = Faker::Date.between(from: '1985-1-1', to: '2000-12-31')
   prefectures = ["福岡","佐賀","長崎","大分","熊本","宮崎","鹿児島","沖縄"]
@@ -77,7 +77,7 @@ Information.create!(title: "勉強になります！",
                     youtube:"21DG9jt_Yks",
                     user_id: 2 )
 
-Information.create!(title: "さすが高段者は違います。",
+Information.create!(title: "高段者は違います!",
                     body: "八段の先生方はやはり格が違いますね。。。お年は召しておられるのになんであんな動きができるんでしょう。私は４段ですが、こんな動きは出来ません。さすがとしか言えません。。。",
                     limited: '2021-12-31',
                     youtube:"c1yK8kxliBM",
