@@ -2,7 +2,7 @@ class Information < ApplicationRecord
   belongs_to :user
   has_many :favorites
 
-  validates :title, presence: true, length: { maximum: 50 }
+  validates :title, presence: true, length: { maximum: 10 }
   validates :body, presence: true, length: { maximum: 200 }
   validates :limited, presence: true
   validates :youtube_url, allow_blank: true,

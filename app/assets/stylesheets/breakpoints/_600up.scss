@@ -36,6 +36,14 @@ Stylesheet: 600px以上のタブレットやモニタで適用
       margin-top: 10px;
       @extend .content-show-width;
   }
+  &__video {
+    text-align: center;
+    flex-basis: 100%;
+    & > iframe {
+      width: 100%;
+      height: 400px;
+    }
+  }
 }
 
 // イベント詳細ページ関連表示 //

@@ -65,16 +65,43 @@ end
                 user_id: user_id )
 end
 
-4.times do |n|
-  date  = Faker::Date.between(from: '2020-12-25', to: '2021-12-25')
-  title = "お役たち情報#{n}" 
-  body = "#{n}号店オープン！"
-  date2  = Faker::Date.between(from: '2020-12-25', to: '2021-12-25')
-  Information.create!(title: title,
-                      body: body,
-                      limited: date2,
-                      user_id: 1 )
-end
+Information.create!(title: "剣道選手権大会結果",
+                    body: "決勝は國友錬太朗(福岡・警察)と松﨑賢士郎(茨城・筑波大3年)が対戦し、両選手とも互角の展開で延長戦となり、最後は國友が鋭く攻めてコテを決め優勝を果たした。國友は第62回大会、第64回大会で決勝へ進出も日本一には手が届かず、三度目の正直で悲願の天皇杯を手にした。",
+                    limited: '2021-12-31',
+                    youtube:"RWImBV6NYt8",
+                    user_id: 1 )
+
+Information.create!(title: "勉強になります！",
+                    body: "結構前の動画になりますけど、剣道一本集です。高校生と思えない感じです。見ていて気持ちよくストレス発散にもなりますよ！",
+                    limited: '2021-12-31',
+                    youtube:"21DG9jt_Yks",
+                    user_id: 2 )
+
+Information.create!(title: "さすが高段者は違います。",
+                    body: "八段の先生方はやはり格が違いますね。。。お年は召しておられるのになんであんな動きができるんでしょう。私は４段ですが、こんな動きは出来ません。さすがとしか言えません。。。",
+                    limited: '2021-12-31',
+                    youtube:"c1yK8kxliBM",
+                    user_id: 3 )
+
+Information.create!(title: "ミライモンスター",
+                    body: "全国大会で3年負けなしの高校剣道会最強高校・九州学院高等学校剣道部主将。全国大会13連覇を目指し残る玉竜旗とインターハイ制覇を目指すが、今年熊本地震発生。学校は閉鎖、剣道部も休部。そのなか大会に挑む。というタイトルで梶谷さんが特集されてます。面白かったですよ。",
+                    limited: '2021-12-31',
+                    youtube:"2bCiIb4I6ac",
+                    user_id: 4 )
+
+Information.create!(title: "炎の体育会TV",
+                    body: "体育会TV剣道部ファンの皆さんお待たせしました！
+                    今回の２時間SPでは、体育会剣道部が･･･フランスの美女剣士と対決！さらに･･･渡辺リーダーの応援に泉ピン子さんが来てくれました☆体育会TV初の外国人剣士との対決は、土曜よる７時からの体育会TVで☆",
+                    limited: '2021-12-31',
+                    youtube:"6P-O8C_tXWo",
+                    user_id: 1 )
+  
+Information.create!(title: "大園桃子上手い",
+                    body: "「スイカ割り剣道」では高山一実vs大園桃子の剣道経験者同士の対決がとても見応えがありましたし、バナナマン・日村を剣でシバいたり途中で転んじゃったりした山下美月からは“アイドルバラエティを全うする意志”が感じられて「さすがだな」と唸りました。",
+                    limited: '2021-12-31',
+                    youtube:"CVMyivsvvqE",
+                    user_id: 1 )
+
 
 4.times do |n|
   date  = Faker::Date.between(from: '2020-12-25', to: '2021-12-25')
