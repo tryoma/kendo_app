@@ -9,6 +9,7 @@ user.build_profile
 user.profile.name = user.user_name
 user.save
 
+# 一般ユーザー
 10.times do |n|
   name = Faker::Name.name
   date  = Faker::Date.between(from: '1985-1-1', to: '2000-12-31')
@@ -31,7 +32,7 @@ user.save
   user.save
 end
 
-
+# イベント
 10.times do
   date  = Faker::Date.between(from: '2021-2-1', to: '2021-12-31')
   m = rand(0..8)
@@ -50,7 +51,7 @@ end
   longitude = longitudes[n]
   estimate_people = rand(4..20)
   level = rand(0..5)
-  user_id = rand(1..5)
+  user_id = rand(1..10)
   Event.create!(event_day: date,
                 start_time: start_time,
                 finish_time: finish_time,
@@ -65,6 +66,7 @@ end
                 user_id: user_id )
 end
 
+# 情報
 Information.create!(title: "剣道選手権大会結果",
                     body: "決勝は國友錬太朗(福岡・警察)と松﨑賢士郎(茨城・筑波大3年)が対戦し、両選手とも互角の展開で延長戦となり、最後は國友が鋭く攻めてコテを決め優勝を果たした。國友は第62回大会、第64回大会で決勝へ進出も日本一には手が届かず、三度目の正直で悲願の天皇杯を手にした。",
                     limited: '2021-12-31',
@@ -102,7 +104,7 @@ Information.create!(title: "大園桃子上手い",
                     youtube:"CVMyivsvvqE",
                     user_id: 1 )
 
-
+# 日記
 10.times do
   date  = Faker::Date.between(from: '2021-1-1', to: '2021-1-20')
   titles = ["投稿します!", "寒稽古最高！", "祝合格！", "祝優勝！", "素振り100本", "お腹いっぱい", "試合でした！"]

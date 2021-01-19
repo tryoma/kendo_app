@@ -5,10 +5,10 @@ class MembersController < ApplicationController
     @event = Event.find(params[:event_id])
     @member = @event.members.new(user_id:current_user.id)
     if @member.save
-      flash[:success] = "OK"
+      flash[:success] = "参加予定しました。"
       redirect_to @event
     else 
-      flash[:success] = "NG"
+      flash[:danger] = "参加できませんでした。"
       redirect_to @event
     end
   end
