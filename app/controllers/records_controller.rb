@@ -7,8 +7,8 @@ class RecordsController < ApplicationController
     to = Date.today
     from_year = to.beginning_of_year
     from_month = to.beginning_of_month
-    @this_year_count = Record.where(start_time:from_year..to, practice: true).count
-    @this_month_count = Record.where(start_time:from_month..to, practice: true).count
+    @this_year_count = @user.records.where(start_time:from_year..to, practice: true).count
+    @this_month_count = @user.records.where(start_time:from_month..to, practice: true).count
   end
 
   def show

@@ -333,10 +333,15 @@ p {
   }
   &__box {
     position: relative;
+    margin: auto;
+    & > p {
+      text-align: center;
+    }
   }
   &__img {
     position: relative;
     width: 120px;
+    height: 120px;
     overflow: hidden;
     margin-bottom: 5px;
     border-radius: 50%;
@@ -351,6 +356,9 @@ p {
 .logo {
   font-size: 42px;
   display: flex;
+  & > img {
+    margin-right: 5px;
+  }
 }
 
 // フッダー関連表示 //
