@@ -96,13 +96,13 @@ Information.create!(title: "炎の体育会TV",
                     今回の２時間SPでは、体育会剣道部が･･･フランスの美女剣士と対決！さらに･･･渡辺リーダーの応援に泉ピン子さんが来てくれました☆体育会TV初の外国人剣士との対決は、土曜よる７時からの体育会TVで☆",
                     limited: '2021-12-31',
                     youtube:"6P-O8C_tXWo",
-                    user_id: 1 )
+                    user_id: 5 )
   
 Information.create!(title: "大園桃子上手い",
                     body: "「スイカ割り剣道」では高山一実vs大園桃子の剣道経験者同士の対決がとても見応えがありましたし、バナナマン・日村を剣でシバいたり途中で転んじゃったりした山下美月からは“アイドルバラエティを全うする意志”が感じられて「さすがだな」と唸りました。",
                     limited: '2021-12-31',
                     youtube:"CVMyivsvvqE",
-                    user_id: 1 )
+                    user_id: 6 )
 
 # 日記
 10.times do
@@ -119,3 +119,13 @@ Information.create!(title: "大園桃子上手い",
                  practice: true,
                  user_id: m )
 end
+
+5.times do |m|
+  9.times do |n|
+    Favorite.create!(user_id: n + 2 ,
+                    information_id: m + 1 )
+  end
+end
+
+
+
