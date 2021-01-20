@@ -46,6 +46,20 @@ Stylesheet: 600px以上のタブレットやモニタで適用
   }
 }
 
+// マイページ関連表示 //
+.profile {
+  &__follow {
+    justify-content: center;
+  }
+  &__group {
+    &__name {
+      & > p {
+        padding-left: 5px;
+      }
+    }
+  }
+}
+
 // イベント詳細ページ関連表示 //
 .event_show {
   @extend .content-show-width;

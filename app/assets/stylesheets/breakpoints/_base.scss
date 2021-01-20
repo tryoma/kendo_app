@@ -424,9 +424,10 @@ p {
     background-color: $cBgGray;
     position: relative;
     z-index: 0;
-    margin-bottom: 5px;
+    margin: 5px;
     &__img {
       width: 120px;
+      height: 120px;
       overflow: hidden;
       margin-bottom: 5px;
       border-radius: 50%;
