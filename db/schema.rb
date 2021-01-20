@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2020_12_20_080628) do
 
   create_table "events", force: :cascade do |t|
     t.date "event_day"
-    t.datetime "start_time"
-    t.datetime "finish_time"
+    t.time "start_time"
+    t.time "finish_time"
     t.integer "prefecture", default: 0, null: false
     t.string "place"
     t.string "address", null: false

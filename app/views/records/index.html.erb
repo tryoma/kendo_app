@@ -33,15 +33,15 @@
         <div class="calender__explain">
           <span><i class="fas fa-calendar-check blue"></i>:日記OK  <i class="fas fa-check-circle blue"></i>:稽古OK<span>
         </div>
+        <div class="calender__title">
+          <p>今月の稽古回数 <span class = "blue"><%= @this_month_count %> 回</span></p>
+          <p>今年の稽古回数 <span class = "blue"><%= @this_year_count %> 回</span></p>
+        </div>
         <div class='calender__btn'>
           <% if current_user == @user %>
             <%= link_to '稽古日記を入力',new_user_record_path(@user), data: {"turbolinks" => false}, class: "btn"%>
           <% end %>
-        </div>
-
-        <div class="calender__title">
-          <p>今月の稽古回数 <span class = "blue"><%= @this_month_count %> 回</span></p>
-          <p>今年の稽古回数 <span class = "blue"><%= @this_year_count %> 回</span></p>
+            <%= link_to "戻る", :back, data: {"turbolinks" => false}, class: 'btn' %>
         </div>
       </div>
     </section>

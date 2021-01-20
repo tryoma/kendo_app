@@ -82,6 +82,9 @@
           <% if user_signed_in? %>
             <%= render partial: 'comments/form', locals: { comment: @comment, event: @event } %>
           <% end %>
+          <div class = "new_edit__btn">
+            <%= link_to "戻る", :back, data: {"turbolinks" => false}, class: "btn" %>
+          </div>
         </div>
       </div>
     </section>
