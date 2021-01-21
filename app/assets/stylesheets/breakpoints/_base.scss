@@ -219,6 +219,13 @@ p {
   }
 }
 
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 5px 0;
+  border-radius: 4px;
+}
+
 // トップページイベントテーブル表示 //
 .event_table {
   @extend .font-md;
