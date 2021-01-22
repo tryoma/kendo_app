@@ -39,11 +39,14 @@
             <% end %>
           </div>
         <% end %>
-        <div class="event__btn">
-          <%= link_to new_event_path, method: :get, data: {"turbolinks" => false}  do %>
-            <button class="btn filled">新規作成</button>
-          <% end %>
-        </div>
+      </div>
+      <div class="text-center">
+        <%= will_paginate @events, :previous_label => ' &lt 前へ', :next_label => '次へ &gt'%>
+      </div>
+      <div class="event__btn">
+        <%= link_to new_event_path, method: :get, data: {"turbolinks" => false}  do %>
+          <button class="btn filled">新規作成</button>
+        <% end %>
       </div>
     </section>
     <section class="information">
@@ -73,14 +76,13 @@
             <% end %>
           </div>
         <% end %>
-        <div class="information__btn">
-          <%= link_to new_information_path, method: :get, data: {"turbolinks" => false} do %>
-            <button class="btn filled">新規作成</button>
-          <% end %>
-        </div>
+      </div>
+      <div class="information__btn">
+        <%= link_to new_information_path, method: :get, data: {"turbolinks" => false} do %>
+          <button class="btn filled">新規作成</button>
+        <% end %>
       </div>
     </section>
-
     <section class="record">
       <div>
         <h2 class="main-title">稽古日記更新</h2>
