@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     resource :profile, :only => [:edit, :update]
     resources :records
     resource :relationships, only: [:create, :destroy]
-      get :follows, on: :member 
-      get :followers, on: :member 
+    get :follows, on: :member 
+    get :followers, on: :member 
   end
 
   resources :events do
