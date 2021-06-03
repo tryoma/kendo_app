@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
     end
   end
 
-private
+  private
 
   def set_profile
     @user = User.find(params[:user_id])

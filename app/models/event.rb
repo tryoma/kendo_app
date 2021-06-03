@@ -21,11 +21,13 @@ class Event < ApplicationRecord
     
     def date_before_start
       return if event_day.blank?
+
       errors.add(:event_day, "は今日以降の稽古日にしてください") if event_day < Date.today
     end
 
     def finish_time_before_start_time
       return if start_time.blank? || finish_time.blank?
+      
       errors.add(:finish_time, "は開始時間以降のにしてください") if finish_time < start_time
     end
   
@@ -51,5 +53,4 @@ class Event < ApplicationRecord
      "上級：５段〜６段": 4, 
      "最上級：７段〜": 5
   },_suffix: true
-
 end

@@ -53,6 +53,7 @@ class InformationsController < ApplicationController
   end
 
   private
+  
     def information_params
       params.require(:information).permit(:title, :body, :limited, :youtube_url, :user_id)
     end

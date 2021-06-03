@@ -39,5 +39,4 @@ RSpec.describe Profile, type: :model do
     profile.dojo = "あ" * 50
     expect(profile).to be_valid
   end
-
 end

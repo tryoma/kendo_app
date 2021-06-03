@@ -52,6 +52,7 @@ class RecordsController < ApplicationController
   end
 
   private
+
   def record_params
     params.require(:record).permit(:start_time, :title, :content, :practice)
   end

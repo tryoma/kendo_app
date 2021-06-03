@@ -123,8 +123,7 @@ end
 # お気に入り登録
 5.times do |m|
   9.times do |n|
-    Favorite.create!(user_id: n + 2 ,
-                    information_id: m + 1 )
+    Favorite.create!(user_id: n + 2, information_id: m + 1 )
   end
 end
 
@@ -133,8 +132,6 @@ end
   8.times do |m|
     bodys = ["参加していいですか？","レベル違いですかね？","そうでもないと思いますよ。","別に構いませんよ。","この会話噛み合ってますか？","いいと思います。","そうですね-","ホントですか！？"]
     body = bodys.sample
-    Comment.create!(event_id: n + 1 ,
-                   user_id: m + 1 ,
-                   body: body)                
+    Comment.create!(event_id: n + 1, user_id: m + 1, body: body)                
   end
 end
