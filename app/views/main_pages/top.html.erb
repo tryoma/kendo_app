@@ -93,11 +93,7 @@
           <%= link_to user_path(id:record.user_id), data: {"turbolinks" => false} do %>
             <div class="record__title">
               <div class="record__img">
-              <% if record.user.profile.photo.attached? %>
-                <%= image_tag record.user.profile.photo %>
-              <% else %>
-                <%= image_tag "default.png" %>
-              <% end %>
+                <%= image_tag record.user.profile.photo_image.variant(combine_options:{gravity: :center, resize:"640x640^",crop:"640x640+0+0"}).processed %>
               </div>
               <div class="record__box">
                 <p class="blue"><%= record.user.profile.name %></p>
