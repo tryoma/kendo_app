@@ -63,9 +63,5 @@ ja:
           comment: コメント
         relationship: 
           user_id: ユーザーID
-          follow_id: ユーザーID
-
-
-          
-        
+          follow_id: ユーザーID      
         
