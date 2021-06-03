@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Record, type: :model do
-  let(:record){FactoryBot.create(:record)}
+  let(:record) { FactoryBot.create(:record) }
 
   it "有効なファクトリを持つこと" do
     expect(record).to be_valid
@@ -21,7 +21,7 @@ RSpec.describe Record, type: :model do
   it "タイトルが101文字以上であれば無効" do
     record.title = "あ" * 101
     record.valid?
-    expect(record.errors[:title]).to include(I18n.t('errors.messages.too_long',count: 100))
+    expect(record.errors[:title]).to include(I18n.t('errors.messages.too_long', count: 100))
   end
 
   it "タイトルが100文字であれば有効" do
@@ -32,7 +32,7 @@ RSpec.describe Record, type: :model do
   it "内容が401文字以上であれば無効" do
     record.content = "あ" * 401
     record.valid?
-    expect(record.errors[:content]).to include(I18n.t('errors.messages.too_long',count: 400))
+    expect(record.errors[:content]).to include(I18n.t('errors.messages.too_long', count: 400))
   end
 
   it "内容が100文字であれば有効" do

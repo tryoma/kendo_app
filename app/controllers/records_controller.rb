@@ -7,8 +7,8 @@ class RecordsController < ApplicationController
     to = Date.today
     from_year = to.beginning_of_year
     from_month = to.beginning_of_month
-    @this_year_count = @user.records.where(start_time:from_year..to, practice: true).count
-    @this_month_count = @user.records.where(start_time:from_month..to, practice: true).count
+    @this_year_count = @user.records.where(start_time: from_year..to, practice: true).count
+    @this_month_count = @user.records.where(start_time: from_month..to, practice: true).count
   end
 
   def show
@@ -37,8 +37,8 @@ class RecordsController < ApplicationController
   def update
     @record = @user.records.find(params[:id])
     if @record.update(record_params)
-       redirect_to user_records_path(@user.id)
-       flash[:success] = "稽古日記を編集しました！"
+      redirect_to user_records_path(@user.id)
+      flash[:success] = "稽古日記を編集しました！"
     else
       render :edit
       flash[:denger] = "稽古日記を投稿できませんでした"

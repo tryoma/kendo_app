@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Member, type: :model do
-  let(:member){FactoryBot.create(:member)}
+  let(:member) { FactoryBot.create(:member) }
 
   it "有効なファクトリを持つこと" do
     expect(member).to be_valid

@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :admin_user, only: [:index]
-  
+
   def index
     @events = Event.paginate(page: params[:page])
   end
@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     @comment = Comment.new
     @comments = @event.comments.includes(:user).order(created_at: :asc)
   end
-  
+
   def new
     @event = Event.new
   end
@@ -26,15 +26,14 @@ class EventsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @event.update_attributes(event_params)
       flash[:success] = "稽古会情報を更新しました。"
       redirect_to @event
     else
-      render :edit      
+      render :edit
     end
   end
 

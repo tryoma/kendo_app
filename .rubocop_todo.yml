@@ -83,187 +83,80 @@
 # Offense count: 9
 # Cop supports --auto-correct.
 # Configuration parameters: Width, IgnoredPatterns.
-Layout/IndentationWidth:
-  Exclude:
-    - 'app/controllers/events_controller.rb'
-    - 'app/controllers/informations_controller.rb'
-    - 'app/controllers/profiles_controller.rb'
-    - 'app/controllers/records_controller.rb'
-    - 'app/controllers/users/registrations_controller.rb'
-    - 'app/models/event.rb'
 
 # Offense count: 6
 # Cop supports --auto-correct.
 # Configuration parameters: AllowDoxygenCommentStyle, AllowGemfileRubyComment.
-Layout/LeadingCommentSpace:
-  Exclude:
-    - 'Gemfile'
-    - 'app/controllers/informations_controller.rb'
-    - 'app/models/user.rb'
-    - 'config/initializers/geocoder.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: symmetrical, new_line, same_line
-Layout/MultilineMethodCallBraceLayout:
-  Exclude:
-    - 'db/seeds.rb'
 
 # Offense count: 62
 # Cop supports --auto-correct.
-Layout/SpaceAfterColon:
-  Exclude:
-    - 'app/controllers/members_controller.rb'
-    - 'app/controllers/records_controller.rb'
-    - 'app/controllers/users_controller.rb'
-    - 'app/models/event.rb'
-    - 'db/seeds.rb'
 
 # Offense count: 89
 # Cop supports --auto-correct.
-Layout/SpaceAfterComma:
-  Exclude:
-    - 'app/controllers/main_pages_controller.rb'
-    - 'app/models/event.rb'
-    - 'app/models/user.rb'
-    - 'db/seeds.rb'
-    - 'spec/models/comment_spec.rb'
-    - 'spec/models/event_spec.rb'
-    - 'spec/models/information_spec.rb'
-    - 'spec/models/profile_spec.rb'
-    - 'spec/models/record_spec.rb'
 
 # Offense count: 5
 # Cop supports --auto-correct.
 # Configuration parameters: AllowForAlignment, EnforcedStyleForExponentOperator.
 # SupportedStylesForExponentOperator: space, no_space
-Layout/SpaceAroundOperators:
-  Exclude:
-    - 'app/controllers/profiles_controller.rb'
-    - 'db/seeds.rb'
 
 # Offense count: 11
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces.
 # SupportedStyles: space, no_space
 # SupportedStylesForEmptyBraces: space, no_space
-Layout/SpaceBeforeBlockBraces:
-  Exclude:
-    - 'app/controllers/users_controller.rb'
-    - 'spec/models/comment_spec.rb'
-    - 'spec/models/event_spec.rb'
-    - 'spec/models/favorite_spec.rb'
-    - 'spec/models/information_spec.rb'
-    - 'spec/models/member_spec.rb'
-    - 'spec/models/profile_spec.rb'
-    - 'spec/models/record_spec.rb'
-    - 'spec/models/relationship_spec.rb'
 
 # Offense count: 7
 # Cop supports --auto-correct.
-Layout/SpaceBeforeComma:
-  Exclude:
-    - 'config/initializers/geocoder.rb'
-    - 'db/seeds.rb'
 
 # Offense count: 4
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBrackets.
 # SupportedStyles: space, no_space, compact
 # SupportedStylesForEmptyBrackets: space, no_space
-Layout/SpaceInsideArrayLiteralBrackets:
-  Exclude:
-    - 'config/environments/production.rb'
-    - 'db/seeds.rb'
 
 # Offense count: 18
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces, SpaceBeforeBlockParameters.
 # SupportedStyles: space, no_space
 # SupportedStylesForEmptyBraces: space, no_space
-Layout/SpaceInsideBlockBraces:
-  Exclude:
-    - 'app/controllers/users_controller.rb'
-    - 'spec/models/comment_spec.rb'
-    - 'spec/models/event_spec.rb'
-    - 'spec/models/favorite_spec.rb'
-    - 'spec/models/information_spec.rb'
-    - 'spec/models/member_spec.rb'
-    - 'spec/models/profile_spec.rb'
-    - 'spec/models/record_spec.rb'
-    - 'spec/models/relationship_spec.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces.
 # SupportedStyles: space, no_space, compact
 # SupportedStylesForEmptyBraces: space, no_space
-Layout/SpaceInsideHashLiteralBraces:
-  Exclude:
-    - 'app/models/event.rb'
 
 # Offense count: 9
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: space, no_space
-Layout/SpaceInsideParens:
-  Exclude:
-    - 'db/seeds.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: final_newline, final_blank_line
-Layout/TrailingEmptyLines:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-    - 'spec/support/capybara.rb'
 
 # Offense count: 35
 # Cop supports --auto-correct.
 # Configuration parameters: AllowInHeredoc.
-Layout/TrailingWhitespace:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/events_controller.rb'
-    - 'app/controllers/favorites_controller.rb'
-    - 'app/controllers/informations_controller.rb'
-    - 'app/controllers/main_pages_controller.rb'
-    - 'app/controllers/members_controller.rb'
-    - 'app/controllers/users/sessions_controller.rb'
-    - 'app/models/event.rb'
-    - 'app/models/user.rb'
-    - 'config/application.rb'
-    - 'config/routes.rb'
-    - 'db/migrate/20201124105827_devise_create_users.rb'
-    - 'db/seeds.rb'
-    - 'spec/models/user_spec.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Lint/NonDeterministicRequireOrder:
-  Exclude:
-    - 'spec/rails_helper.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: AllowUnusedKeywordArguments, IgnoreEmptyMethods, IgnoreNotImplementedMethods.
-Lint/UnusedMethodArgument:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
 
 # Offense count: 1
-Lint/UselessAssignment:
-  Exclude:
-    - 'app/controllers/relationships_controller.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: AllowComments.
-Lint/UselessMethodDefinition:
-  Exclude:
-    - 'app/controllers/users/registrations_controller.rb'
 
 # Offense count: 1
 # Configuration parameters: IgnoredMethods, CountRepeatedAttributes.
@@ -294,35 +187,14 @@ Metrics/PerceivedComplexity:
 # Offense count: 20
 # Configuration parameters: AllowedChars.
 # AllowedChars: ©
-Style/AsciiComments:
-  Exclude:
-    - 'Gemfile'
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/informations_controller.rb'
-    - 'app/models/user.rb'
-    - 'config/initializers/geocoder.rb'
-    - 'db/seeds.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Style/BlockComments:
-  Exclude:
-    - 'spec/spec_helper.rb'
 
 # Offense count: 8
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: nested, compact
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'app/controllers/users/confirmations_controller.rb'
-    - 'app/controllers/users/omniauth_callbacks_controller.rb'
-    - 'app/controllers/users/passwords_controller.rb'
-    - 'app/controllers/users/registrations_controller.rb'
-    - 'app/controllers/users/sessions_controller.rb'
-    - 'app/controllers/users/unlocks_controller.rb'
-    - 'test/channels/application_cable/connection_test.rb'
-    - 'test/test_helper.rb'
 
 # Offense count: 39
 # Configuration parameters: AllowedConstants.
@@ -333,20 +205,9 @@ Style/Documentation:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: compact, expanded
-Style/EmptyMethod:
-  Exclude:
-    - 'app/controllers/events_controller.rb'
-    - 'app/controllers/profiles_controller.rb'
 
 # Offense count: 5
 # Cop supports --auto-correct.
-Style/ExpandPathArguments:
-  Exclude:
-    - 'bin/bundle'
-    - 'bin/rails'
-    - 'bin/rake'
-    - 'bin/rspec'
-    - 'spec/rails_helper.rb'
 
 # Offense count: 114
 # Cop supports --auto-correct.
@@ -357,24 +218,14 @@ Style/FrozenStringLiteralComment:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Style/GlobalStdStream:
-  Exclude:
-    - 'config/environments/production.rb'
 
 # Offense count: 6
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, UseHashRocketsWithSymbolValues, PreferHashRocketsForNonAlnumEndingSymbols.
 # SupportedStyles: ruby19, hash_rockets, no_mixed_keys, ruby19_no_mixed_keys
-Style/HashSyntax:
-  Exclude:
-    - 'config/routes.rb'
 
 # Offense count: 4
 # Cop supports --auto-correct.
-Style/IdenticalConditionalBranches:
-  Exclude:
-    - 'app/controllers/comments_controller.rb'
-    - 'app/controllers/members_controller.rb'
 
 # Offense count: 3
 # Cop supports --auto-correct.
@@ -474,10 +325,6 @@ Style/SymbolProc:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyleForMultiline.
 # SupportedStylesForMultiline: comma, consistent_comma, no_comma
-Style/TrailingCommaInArguments:
-  Exclude:
-    - 'config/initializers/geocoder.rb'
-    - 'spec/models/user_spec.rb'
 
 # Offense count: 4
 # Cop supports --auto-correct.

@@ -42,12 +42,11 @@ end
 
 group :development do
   gem 'listen', '~> 3.2'
+  gem 'rubocop', '~> 1.16', require: false
   gem 'spring'
+  gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
-  #Rspecの起動時間を早くする
-  gem 'rubocop', '~> 1.16', require: false
-  gem 'spring-commands-rspec'
 end
 
 group :test do

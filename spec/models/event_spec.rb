@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  let(:event){FactoryBot.create(:event)}
+  let(:event) { FactoryBot.create(:event) }
 
   it "有効なファクトリを持つこと" do
     expect(event).to be_valid
@@ -124,7 +124,7 @@ RSpec.describe Event, type: :model do
   it "コメントが100文字以上であれば無効" do
     event.comment = "あ" * 101
     event.valid?
-    expect(event.errors[:comment]).to include(I18n.t('errors.messages.too_long',count: 100))
+    expect(event.errors[:comment]).to include(I18n.t('errors.messages.too_long', count: 100))
   end
 
   it "ユーザーIDがなければ無効" do
