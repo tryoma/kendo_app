@@ -9,7 +9,6 @@ class ProfilesController < ApplicationController
       redirect_to @user
       flash[:success] = "#{@profile.name}のプロフィールを更新しました。"
     else
-      flash[:alert] = "だめでした。"
       render :edit
     end
   end

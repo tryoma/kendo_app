@@ -4,26 +4,14 @@
     <section class="profile">
       <div class="profile__head">
         <div class="profile__img">                                          
-            <%= image_tag @user.profile.photo_image.variant(combine_options:{gravity: :center, resize:"640x640^",crop:"640x640+0+0"}).processed %>
+            <%= image_tag @user.profile.photo_image %>
         </div>
         <div class="profile__detail">
-          <% if @user.profile.name.present? %>
-            <p class = "font-lg"><%= @user.profile.name %></p>
-          <% else %>
-            <p class = "font-lg">ユーザー名：未設定</p>
-          <% end %>
-          <% if @user.profile.grade.present? %>
-            <p>段位：<%= @user.profile.grade %></p>
-          <% end %>
-          <% if @user.profile.prefecture.present? %>
-            <p>出身地：<%= @user.profile.prefecture %></p>
-          <% end %>
-          <% if @user.profile.dojo.present? %>
-            <p>出身道場：<%= @user.profile.dojo %></p>
-          <% end %>
-          <% if @user.profile.description.present? %>
-            <p>自己紹介：<%= @user.profile.description %></p>
-          <% end %>
+          <p class = "font-lg"><%= @user.profile.name.present? ? @user.profile.name : "ユーザー名：未設定" %></p>
+          <p>段位：<%= @user.profile.grade.present? ? @user.profile.grade : "未設定" %></p>
+          <p>出身地：<%= @user.profile.prefecture.present? ? @user.profile.prefecture : "未設定" %></p>
+          <p>出身道場：<%= @user.profile.dojo.present? ? @user.profile.dojo : "未設定" %></p>
+          <p>自己紹介：<%= @user.profile.description.present? ? @user.profile.description : "未設定" %></p>
         </div>
         <div class="profile__menu">
           <% if @user == current_user %>
@@ -160,7 +148,6 @@
     </section>
   </main>
 </div>
-
 
 <script>
   $(function() {
