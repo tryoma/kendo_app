@@ -8,8 +8,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @owner_events = Event.where(owner:@user)
-    @member_events = @user.members.map{|member| member.event}
+    @owner_events = Event.where(owner: @user)
+    @member_events = @user.members.map { |member| member.event }
     @favorite_informations = @user.favorite_informations
     @followings = @user.followings
     @followers = @user.followers
@@ -26,5 +26,4 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-
 end

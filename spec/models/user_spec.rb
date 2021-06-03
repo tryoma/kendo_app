@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  
   it "有効なファクトリを持つこと" do
     expect(FactoryBot.build(:user)).to be_valid
   end
@@ -10,7 +9,7 @@ RSpec.describe User, type: :model do
     user = User.new(
       user_name: "Aaron",
       email: "test@example.com",
-      password: "password",
+      password: "password"
     )
     expect(user).to be_valid
   end

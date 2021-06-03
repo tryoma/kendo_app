@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Profile, type: :model do
-  let(:profile){FactoryBot.create(:profile)}
+  let(:profile) { FactoryBot.create(:profile) }
 
   it "有効なファクトリを持つこと" do
     expect(profile).to be_valid
@@ -21,7 +21,7 @@ RSpec.describe Profile, type: :model do
   it "自己紹介が101文字以上であれば無効" do
     profile.description = "あ" * 101
     profile.valid?
-    expect(profile.errors[:description]).to include(I18n.t('errors.messages.too_long',count: 100))
+    expect(profile.errors[:description]).to include(I18n.t('errors.messages.too_long', count: 100))
   end
 
   it "自己紹介が100文字であれば有効" do
@@ -32,12 +32,11 @@ RSpec.describe Profile, type: :model do
   it "出身道場が51文字以上であれば無効" do
     profile.dojo = "あ" * 51
     profile.valid?
-    expect(profile.errors[:dojo]).to include(I18n.t('errors.messages.too_long',count: 50))
+    expect(profile.errors[:dojo]).to include(I18n.t('errors.messages.too_long', count: 50))
   end
 
   it "出身道場が50文字であれば有効" do
     profile.dojo = "あ" * 50
     expect(profile).to be_valid
   end
-
 end

@@ -15,17 +15,16 @@ class RelationshipsController < ApplicationController
   end
 
   def follows
-    @users = user.followings
+    @users = @user.followings
   end
 
   def followers
-    @users = user.followers
+    @users = @user.followers
   end
 
   private
 
   def set_user
-    user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
-
 end

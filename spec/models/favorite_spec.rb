@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Favorite, type: :model do
-  let(:favorite){FactoryBot.create(:favorite)}
+  let(:favorite) { FactoryBot.create(:favorite) }
 
   it "有効なファクトリを持つこと" do
     expect(favorite).to be_valid

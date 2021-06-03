@@ -4,12 +4,8 @@ class CommentsController < ApplicationController
   def create
     @event = Event.find(params[:event_id])
     @comment = @event.comments.build(comment_params)
-    if @comment.save
-      render :index
-    else
-      flash[:alert] = 'コメントを入力してください。'
-      render :index
-    end
+    flash[:alert] = 'コメントを入力してください。' unless @comment.save?
+    render :index
   end
 
   def destroy
@@ -20,6 +16,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def comment_params
     params.require(:comment).permit(:body).merge(user_id: current_user.id, event_id: params[:event_id])
   end
