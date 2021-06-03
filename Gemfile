@@ -20,21 +20,15 @@ gem 'will_paginate'
 # gem 'turbolinks', '~> 5'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'jbuilder', '~> 2.7'
-
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-
-gem 'carrierwave'
 gem 'mini_magick'
-
 gem 'simple_calendar', '~> 2.0'
-
 gem 'geocoder'
-
 gem 'font-awesome-sass'
-
 gem 'dotenv-rails'
+gem 'active_decorator'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -93,8 +93,8 @@
           <%= link_to user_path(id:record.user_id), data: {"turbolinks" => false} do %>
             <div class="record__title">
               <div class="record__img">
-              <% if record.user.profile.image.present? %>
-                <%= image_tag record.user.profile.image.url %>
+              <% if record.user.profile.photo.attached? %>
+                <%= image_tag record.user.profile.photo %>
               <% else %>
                 <%= image_tag "default.png" %>
               <% end %>

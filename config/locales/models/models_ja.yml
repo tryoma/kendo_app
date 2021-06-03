@@ -43,7 +43,7 @@ ja:
           practice: 稽古の有無
         profile:
           name: 名前
-          image: プロフィール画像
+          photo: プロフィール画像
           grade: 段位・級
           birthday: 誕生日
           prefecture: 出身地

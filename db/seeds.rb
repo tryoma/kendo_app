@@ -19,19 +19,19 @@ user.save
                       password: "password",
                       password_confirmation: "password",
                       admin: false)
-  user.build_profile(name: user.user_name,
-                     image: File.open("./app/assets/images/test#{n}.jpg"),
+  profile = user.build_profile(name: user.user_name,
                      grade: "4段",
                      birthday: date,
                      prefecture: "#{prefecture}県",
                      dojo: "#{prefecture}道場",
                      description: "#{prefecture}出身の剣道大好き野郎です！よろしく！")
+  profile.photo.attach(io: File.open(Rails.root.join("./app/assets/images/test#{n}.jpg")), filename: "test#{n}.jpg")
   user.save
 end
 
 # event
 10.times do
-  date = Faker::Date.between(from: '2021-2-1', to: '2021-12-31')
+  date = Faker::Date.between(from: '2021-7-1', to: '2021-12-31')
   m = rand(0..8)
   start_times = ["10:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"]
   start_time = start_times[m]
@@ -103,7 +103,7 @@ Information.create!(title: "大園桃子上手い",
 
 # daiary
 10.times do
-  date = Faker::Date.between(from: '2021-1-1', to: '2021-1-20')
+  date = Faker::Date.between(from: '2021-5-1', to: '2021-5-20')
   titles = ["投稿します!", "寒稽古最高！", "祝合格！", "祝優勝！", "素振り100本", "お腹いっぱい", "試合でした！"]
   contents = ["初投稿です。今日からKen-appはじめました。剣道の情報がいっぱい学べて最高です。今日から毎日投稿頑張ります。あと稽古も頑張ります！", "大学の寒稽古がスタートしました。朝4時起き、5時稽古スタート。。。。道場の床が氷みたいに冷たく死にそうです。残り6日間耐えれるか。。。", "念願の5段に合格しました。今回でのべ10回目の挑戦でした。稽古を真面目にやってきてよかったです。これからも精進続けて6段目指します！", "地方大会でみごと優勝。決勝戦での一本は自分自身でしびれました。まさかあのタイミングで、あの技を出せるとは。今日は自分で自分を褒めてやりたいです。", "試合で負けたので素振り100本やってきた。なんで負けたのかを反省しながら一本一本振った。次こそは勝つ。", "稽古終わりに剣友とバイキングにいってきました。久しぶりにあんなにいっぱい食べたな。稽古後はお腹が空いてしまう。お腹いっぱいです。よし寝よう。", "結果はベスト8。目標にしていたベスト4には一歩及ばなかったけど、今のベストは尽くせた感じ。次の大会は三ヶ月後。次こそは表彰台に登りたい。明日からまた稽古頑張るぞ。"]
   n = rand(0..6)

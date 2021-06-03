@@ -3,6 +3,5 @@ class Profile < ApplicationRecord
   validates :name, presence: true
   validates :description, length: { maximum: 100 }
   validates :dojo, length: { maximum: 50 }
-
-  mount_uploader :image, ImageUploader
+  has_one_attached :photo
 end
