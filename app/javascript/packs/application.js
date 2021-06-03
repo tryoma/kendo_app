@@ -26,7 +26,3 @@ import "bootstrap"
 //= require turbolinks
 //= require_tree . 
 //= require activestorage
-
-
-
-console.log('hoge')

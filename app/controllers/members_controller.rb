@@ -19,5 +19,4 @@ class MembersController < ApplicationController
     flash[:success] = "とりやめました"
     redirect_to event_url(params[:event_id])
   end
-  
 end

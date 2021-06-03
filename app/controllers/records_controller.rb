@@ -51,7 +51,6 @@ class RecordsController < ApplicationController
     redirect_to user_records_path(@user.id)
   end
 
-
   private
   def record_params
     params.require(:record).permit(:start_time, :title, :content, :practice)
@@ -60,5 +59,4 @@ class RecordsController < ApplicationController
   def set_user
     @user = User.find(params[:user_id])
   end
-
 end
