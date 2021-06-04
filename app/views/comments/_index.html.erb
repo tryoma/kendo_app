@@ -3,11 +3,7 @@
     <% if comment.user == @event.owner %>
       <div class="balloon_r">
         <div class="faceicon">
-          <% if comment.user.profile.image.present? %>
-            <%= image_tag(comment.user.profile.image.url)%>
-          <% else %>
-            <%= image_tag "default.png" %>
-          <% end %>
+          <%= image_tag comment.user.profile.photo_image %>
         </div>
         <p class="says">
           <%= comment.body %>
@@ -19,11 +15,7 @@
     <% else %>
       <div class="balloon_l">
         <div class="faceicon">
-          <% if comment.user.profile.image.present? %>
-            <%= image_tag(comment.user.profile.image.url)%>
-          <% else %>
-            <%= image_tag "default.png" %>
-          <% end %>
+          <%= image_tag comment.user.profile.photo_image %>
         </div>
         <p class="says">
           <%= comment.body %>
