@@ -203,6 +203,11 @@ p {
   @extend .content-width;
   @extend .mb-lg;
 
+  &__search {
+    @extend .flex;
+    width: 30%;
+  }
+
   &__inner {
     @extend .flex;
   }
@@ -320,6 +325,11 @@ p {
       background-color: #d4faff;
     }
   }
+}
+
+.m_search {
+  @extend .content-width;
+  margin-bottom: 10px
 }
 
 // トップページユーザー関連表示 //
@@ -836,4 +846,8 @@ $ok_alert_color: #468847;
   border-color: $ok_alert_border_color;
   color: $ok_alert_color;
   text-align: left;
+}
+
+.mt-1 {
+  margin-top: 5px;
 }
