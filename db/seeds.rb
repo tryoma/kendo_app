@@ -1,12 +1,13 @@
 # Admin_user
-user = User.create!(user_name: "管理者様",
+admin_user = User.create!(user_name: "管理者様",
                     email: "sample@email.com",
                     password: "password",
                     password_confirmation: "password",
                     admin: true)
-user.build_profile
-user.profile.name = user.user_name
-user.save
+admin_profile = admin_user.build_profile
+admin_profile.name = admin_user.user_name
+admin_profile.photo.attach(io: File.open(Rails.root.join("./app/assets/images/test1.jpg")), filename: "test1.jpg")
+admin_user.save
 
 # general_user
 10.times do |n|
@@ -20,11 +21,11 @@ user.save
                       password_confirmation: "password",
                       admin: false)
   profile = user.build_profile(name: user.user_name,
-                     grade: "4段",
-                     birthday: date,
-                     prefecture: "#{prefecture}県",
-                     dojo: "#{prefecture}道場",
-                     description: "#{prefecture}出身の剣道大好き野郎です！よろしく！")
+                               grade: "4段",
+                               birthday: date,
+                               prefecture: "#{prefecture}県",
+                               dojo: "#{prefecture}道場",
+                               description: "#{prefecture}出身の剣道大好き野郎です！よろしく！")
   profile.photo.attach(io: File.open(Rails.root.join("./app/assets/images/test#{n}.jpg")), filename: "test#{n}.jpg")
   user.save
 end

@@ -840,12 +840,14 @@ $ok_alert_color: #468847;
   border-color: $ng_alert_border_color;
   color: $ng_alert_color;
   text-align: left;
+  margin-bottom: 0px;
 }
 .alert-notice {
   background-color: $ok_alert_bg_color;
   border-color: $ok_alert_border_color;
   color: $ok_alert_color;
   text-align: left;
+  margin-bottom: 0px;
 }
 
 .mt-1 {

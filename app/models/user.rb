@@ -19,4 +19,18 @@ class User < ApplicationRecord
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
   end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.user_name = "ゲストユーザー"
+      profile = user.build_profile(name: user.user_name,
+                                   grade: "4段",
+                                   birthday: '1985-1-1',
+                                   prefecture: "佐賀県",
+                                   dojo: "ゲスト道場",
+                                   description: "佐賀県出身のゲストです！よろしく！")
+      profile.photo.attach(io: File.open(Rails.root.join("./app/assets/images/test1.jpg")), filename: "test1.jpg")
+    end
+  end
 end
