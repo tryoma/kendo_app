@@ -37,6 +37,7 @@ end
 group :development do
   gem 'listen', '~> 3.2'
   gem 'rubocop', '~> 1.16', require: false
+  gem 'rubocop-rails'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
