@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>500エラー</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .rails-default-error-page {
@@ -55,12 +55,14 @@
 </head>
 
 <body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
+  <!-- This file lives in public/404.html -->
   <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <div id="main">
+      <div class="fof">
+        <h1>Error 500</h1>
+        <p>ページが表示できません。ご不便をおかけして申し訳ありません。</p>
+        <a href="/">トップページへ</p>
+      </div>
   </div>
 </body>
 </html>
