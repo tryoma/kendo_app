@@ -7,9 +7,6 @@
         </div>
         <p class="says">
           <%= comment.body %>
-          <% if comment.user == current_user %>
-            <span><%= link_to '削除', event_comment_path(comment.event_id, comment.id), method: :delete, data: { confirm: "このコメントを削除しますか？" }, remote: true %></span>
-          <% end %>
         </p>
       </div>
     <% else %>
@@ -19,9 +16,6 @@
         </div>
         <p class="says">
           <%= comment.body %>
-          <% if comment.user == current_user %>
-            <span><%= link_to '削除', event_comment_path(comment.event_id, comment.id), method: :delete, data: { confirm: "このコメントを削除しますか？" }, remote: true %></span>
-          <% end %>
         </p>
       </div>
     <% end %>
