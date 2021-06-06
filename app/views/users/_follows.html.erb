@@ -2,14 +2,10 @@
   <% users.each do |user|%>
     <div class='profile__group'>
       <div class='profile__group__img'>
-        <% if user.profile.image.present? %>
-          <%= link_to image_tag(user.profile.image.url), user %>
-        <% else %>
-          <%= link_to image_tag("default.png"), user %>
-        <% end %>
+        <%= link_to image_tag(user.profile.photo_image), user %>
       </div>
       <div class='profile__group__name'>
-        <p class="blue"><%= user.user_name%></p>
+        <p class="blue"><%= link_to user.user_name, user %></p>
       </div>
     </div>
   <% end %>

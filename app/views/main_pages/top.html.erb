@@ -6,11 +6,12 @@
   <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
   <main>
     <section class="event">
+    <div id="event"></div>
       <div>
         <h2 class="main-title">稽古会&nbsp<i class="fas fa-running"></i></h2>
         <p class="sub-title">お気に入りの稽古会を見つけよう</p>
       </div>
-      <%= search_form_for @q, url: root_path do |f| %>
+      <%= search_form_for @q, url: root_path(anchor: 'event'), id: 'event' do |f| %>
         <div class="row m_search">
           <div class="form-inline align-items-center mx-auto">
             <div class="col-auto">
