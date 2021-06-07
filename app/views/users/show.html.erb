@@ -21,6 +21,9 @@
             <%= link_to user_records_path(@user), data: {"turbolinks" => false} do %>
               <button class="btn filled">稽古日記</button>
             <% end %>
+            <%= link_to lists_path, data: {"turbolinks" => false} do %>
+              <button class="btn filled">TODO</button>
+            <% end %>
           <% else %>
             <%= link_to user_records_path(@user), data: {"turbolinks" => false} do %>
               <button class="btn filled">稽古日記</button>

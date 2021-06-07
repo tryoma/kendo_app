@@ -27,7 +27,7 @@
           <%= yield %>
           <%= debug(params) if Rails.env.development? %>
         </div>
-        <%= render 'layouts/footer' %> 
+        <%= render 'layouts/footer' unless params[:controller] == "lists" && params[:action] == "show" %> 
       </div>
       <%= render 'layouts/header2' %>
     </div>
