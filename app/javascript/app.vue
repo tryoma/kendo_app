@@ -22,6 +22,9 @@
                 <button @click="deleteList(list.id, index)">削除</button>
               </div>
             </div>
+            <div class='calender__btn'>
+              <a href="javascript:history.back()" class = 'btn'>戻る</a>
+            </div>
           </div>
         </section>
       </main>
