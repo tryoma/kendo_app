@@ -8,9 +8,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @owner_events = Event.includes(:owner).where(owner: @user)
+    @owner_events = Event.where(owner: @user)
     @member_events = @user.members.map { |member| member.event }
-    @favorite_informations = @user.favorite_informations
+    @favorite_informations = @user.favorite_informations.preload(:user)
     @followings = @user.followings
     @followers = @user.followers
   end
