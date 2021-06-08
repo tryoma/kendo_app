@@ -31,6 +31,7 @@ gem 'dotenv-rails'
 gem 'active_decorator'
 gem 'ransack'
 gem 'jp_prefecture'
+gem 'line-bot-api'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
