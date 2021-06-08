@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/callback', to: 'linebot#callback'
   root 'main_pages#top'
 
   devise_for :users, controllers: {
