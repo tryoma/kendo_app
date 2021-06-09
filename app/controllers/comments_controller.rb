@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     @event = Event.find(params[:event_id])
     @comment = @event.comments.build(comment_params)
-    flash[:alert] = 'コメントを入力してください。' unless @comment.save
+    flash[:alert] = 'コメントが入力されていません。。' unless @comment.save
     render :index
   end
 

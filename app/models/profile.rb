@@ -9,14 +9,18 @@ class Profile < ApplicationRecord
   private
 
   def photo_type
-    if !photo.blob.content_type.in?(%('image/jpeg image/png'))
-      errors.add(:photo, 'はjpegまたはpng形式でアップロードしてください')
+    if photo.attached?
+      if !photo.blob.content_type.in?(%('image/jpeg image/png'))
+        errors.add(:photo, 'はjpegまたはpng形式でアップロードしてください')
+      end
     end
   end
 
   def photo_size
-    if photo.blob.byte_size > 5.megabytes
-      errors.add(:photo, "は1つのファイル5MB以内にしてください")
+    if photo.attached?
+      if photo.blob.byte_size > 5.megabytes
+        errors.add(:photo, "は1つのファイル5MB以内にしてください")
+      end
     end
   end
 end
