@@ -13,14 +13,14 @@ RSpec.describe Information, type: :model do
     expect(information.errors[:title]).to include(I18n.t('errors.messages.blank'))
   end
 
-  it "タイトルが51文字以上であれば無効" do
+  it "タイトルが11文字以上であれば無効" do
     information.title = "あ" * 51
     information.valid?
-    expect(information.errors[:title]).to include(I18n.t('errors.messages.too_long', count: 50))
+    expect(information.errors[:title]).to include(I18n.t('errors.messages.too_long', count: 10))
   end
 
-  it "タイトルが50文字以下であれば有効" do
-    information.title = "あ" * 50
+  it "タイトルが10文字以下であれば有効" do
+    information.title = "あ" * 10
     expect(information).to be_valid
   end
 
