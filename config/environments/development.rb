@@ -1,7 +1,7 @@
 Rails.application.configure do
   config.after_initialize do
-    Bullet.enable        = false
-    Bullet.alert         = false
+    Bullet.enable        = true
+    Bullet.alert         = true
     Bullet.bullet_logger = false
     Bullet.console       = false
   # Bullet.growl         = false

@@ -42,7 +42,7 @@
             <%= link_to edit_information_path(@information), data: {"turbolinks" => false}, class: "btn btn-danger" do %>
               編集
             <% end %>
-            <%= link_to information_path(@information), data: {"turbolinks" => false}, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" do %>
+            <%= link_to information_path(@information.id), method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" do %>
               削除
             <% end %>
           <% end %>

@@ -23,9 +23,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+    resource.profile.name = resource.user_name
+    resource.save
+  end
 
   # DELETE /resource
   # def destroy

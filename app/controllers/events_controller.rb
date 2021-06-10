@@ -31,7 +31,7 @@ class EventsController < ApplicationController
   def edit; end
 
   def update
-    if @event.update_attributes(event_params)
+    if @event.update(event_params)
       flash[:success] = "稽古会情報を更新しました。"
       redirect_to @event
     else
@@ -41,7 +41,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    flash[:success] = "#{@event.event_day}のデータを削除しました。"
+    flash[:success] = "#{@event.place}の稽古会を削除しました。"
     if current_user.admin?
       redirect_to events_url
     else
