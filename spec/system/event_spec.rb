@@ -53,12 +53,21 @@ RSpec.describe "Event", type: :system do
       page.accept_confirm do
         click_link '削除'
       end
-      
+
       expect(page).to have_content "#{@event.place}の稽古会を削除しました。"
       expect(current_path).to eq "/users/#{@user.id}"
     end
+
+    it "主催予定のイベントをマイページで確認できる" do
+      login(@user)
+      visit '/'
+      click_on "#{@event.place}"
+      visit "/users/#{@user.id}"
+
+      expect(page).to have_content "#{@event.place}"
+    end
   end
-  
+
   describe '管理者ユーザー' do
     it "イベント一覧からイベントを削除できる" do
       login(@admin_user)

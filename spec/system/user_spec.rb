@@ -84,7 +84,7 @@ RSpec.describe "User", type: :system do
       expect(page).to have_content '出身地：未設定'
     end
   end
-  
+
   describe '管理者ユーザー' do
     it "ログインができる" do
       visit '/'

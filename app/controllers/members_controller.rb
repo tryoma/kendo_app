@@ -15,7 +15,7 @@ class MembersController < ApplicationController
   def destroy
     @member = Member.find_by(event_id: params[:event_id], user_id: current_user.id)
     @member.destroy
-    flash[:success] = "とりやめました"
+    flash[:success] = "取りやめました。"
     redirect_to event_url(params[:event_id])
   end
 end
