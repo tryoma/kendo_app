@@ -31,7 +31,7 @@ class EventsController < ApplicationController
   def edit; end
 
   def update
-    if @event.update_attributes(event_params)
+    if @event.update(event_params)
       flash[:success] = "稽古会情報を更新しました。"
       redirect_to @event
     else

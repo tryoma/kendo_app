@@ -1,6 +1,6 @@
 class InformationsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :admin_user, only: [:index, :destroy]
+  before_action :admin_user, only: [:index]
 
   def index
     @informations = Information.paginate(page: params[:page])
@@ -33,12 +33,12 @@ class InformationsController < ApplicationController
 
   def update
     @information = Information.find(params[:id])
-    @information.update_attributes(information_params)
+    @information.update(information_params)
     url = params[:information][:youtube_url]
     url = url.last(11)
     @information.youtube = url
     if @information.save
-      flash[:success] = "稽古会情報を更新しました。"
+      flash[:success] = "情報を更新しました。"
       redirect_to @information
     else
       render :edit
