@@ -22,7 +22,7 @@
                 <td><%= link_to information.title, information, data: {"turbolinks" => false} %></td>
                 <td>
                   <% if current_user.admin? %>
-                    <%= link_to information_path(information.id), method: :delete, data: {"turbolinks" => false}, data: { confirm: "削除してよろしいですか？" } do %>
+                    <%= link_to information_path(information.id), method: :delete, data: { confirm: "削除してよろしいですか？" } do %>
                     <span class = "red">削除</span>
                     <% end %>
                   <% end %>

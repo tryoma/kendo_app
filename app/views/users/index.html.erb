@@ -23,7 +23,7 @@
                 <td>
                   <% if current_user.admin? %>
                     <% if current_user != user %>
-                      <%= link_to user, method: :delete, data: {"turbolinks" => false}, data: { confirm: "削除してよろしいですか？" } do %>
+                      <%= link_to user, method: :delete, data: { confirm: "削除してよろしいですか？" } do %>
                       <span class = "red">削除</span>
                       <% end %>
                     <% end %>

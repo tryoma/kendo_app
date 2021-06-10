@@ -41,7 +41,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    flash[:success] = "#{@event.event_day}のデータを削除しました。"
+    flash[:success] = "#{@event.place}の稽古会を削除しました。"
     if current_user.admin?
       redirect_to events_url
     else

@@ -107,6 +107,18 @@ RSpec.describe "User", type: :system do
       expect(page).to have_content "#{@admin_user.user_name}"
     end
 
+    it "ユーザー一覧からユーザーを削除できる" do
+      login(@admin_user)
+      visit '/'
+      visit '/users'
+      page.accept_confirm do
+        click_on '削除'
+      end
+
+      expect(page).to have_content "#{@user.user_name}のデータを削除しました。"
+      expect(current_path).to eq "/users"
+    end
+
     it "稽古会一覧に遷移できる" do
       login(@admin_user)
       visit '/'
