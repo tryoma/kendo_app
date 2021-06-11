@@ -1,6 +1,6 @@
-class CreateInformations < ActiveRecord::Migration[6.0]
+class CreateInformation < ActiveRecord::Migration[6.0]
   def change
-    create_table :informations do |t|
+    create_table :information do |t|
       t.string :title
       t.string :body
       t.date :limited
