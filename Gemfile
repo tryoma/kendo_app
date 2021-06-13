@@ -54,6 +54,7 @@ group :test do
   gem 'launchy', '~> 2.4.3'
   gem 'poltergeist'
   gem 'rspec-rails', '~> 3.8.0'
+  gem "rspec_junit_formatter"
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
