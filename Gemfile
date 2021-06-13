@@ -10,7 +10,7 @@ gem 'faker'
 gem 'jquery-rails'
 gem "jquery-ui-rails"
 gem 'puma', '~> 4.1'
-gem 'rails', '~> 6.1.3.1', '>= 6.0.3.4'
+gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'rails-i18n'
 gem 'sass-rails', '>= 6'
 gem 'mysql2'
