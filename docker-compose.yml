@@ -1,0 +1,33 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0.25
+    volumes:
+      - .:/app_name
+    environment:
+      MYSQL_DATABASE: kendoapp_development
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - '3306:3306'
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/kendoapp
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+    environment:
+      - EDITOR=vim
+
+volumes:
+  mysql:
+  bundle:
+  node_modules:
+  tmp-data:
