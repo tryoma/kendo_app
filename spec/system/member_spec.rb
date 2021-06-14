@@ -10,7 +10,7 @@ RSpec.describe "Member", type: :system do
   end
 
   describe '登録済みユーザー' do
-    it "イベントに参加しメンバーになれる" do
+    xit "イベントに参加しメンバーになれる" do
       login(@other_user)
       visit '/'
       click_on "#{@event.place}"
@@ -23,7 +23,7 @@ RSpec.describe "Member", type: :system do
       expect(current_path).to eq "/events/#{@event.id}"
     end
 
-    it "イベントの参加をキャンセルできる" do
+    xit "イベントの参加をキャンセルできる" do
       login(@other_user)
       visit '/'
       click_on "#{@event.place}"
@@ -44,7 +44,7 @@ RSpec.describe "Member", type: :system do
       expect(current_path).to eq "/events/#{@event.id}"
     end
 
-    it "参加予定のイベントをマイページで確認できる" do
+    xit "参加予定のイベントをマイページで確認できる" do
       login(@other_user)
       visit '/'
       click_on "#{@event.place}"

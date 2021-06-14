@@ -7,7 +7,7 @@ RSpec.describe "List", type: :system do
   end
 
   describe '登録済みユーザー' do
-    it "新規TODOを作成できる" do
+    xit "新規TODOを作成できる" do
       login(@user)
       visit '/'
       visit "/users/#{@user.id}"
@@ -19,7 +19,7 @@ RSpec.describe "List", type: :system do
       expect(current_path).to eq '/lists'
     end
 
-    it "TODOを削除できる" do
+    xit "TODOを削除できる" do
       login(@user)
       visit '/'
       visit "/users/#{@user.id}"

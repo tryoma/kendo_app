@@ -12,7 +12,7 @@ RSpec.describe "Event", type: :system do
   end
 
   describe '登録済みユーザー' do
-    it "新規イベントが作成できる" do
+    xit "新規イベントが作成できる" do
       login(@user)
       visit '/'
       visit '/events/new'
@@ -45,7 +45,7 @@ RSpec.describe "Event", type: :system do
       expect(current_path).to eq "/events/#{@event.id}"
     end
 
-    it "イベントが削除できる" do
+    xit "イベントが削除できる" do
       login(@user)
       visit '/'
       visit "/users/#{@user.id}"
@@ -69,7 +69,7 @@ RSpec.describe "Event", type: :system do
   end
 
   describe '管理者ユーザー' do
-    it "イベント一覧からイベントを削除できる" do
+    xit "イベント一覧からイベントを削除できる" do
       login(@admin_user)
       visit '/'
       visit '/events'
