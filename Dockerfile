@@ -11,8 +11,9 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   build-essential \
   nodejs \
   yarn && \
+  apt-get install -y vim && \
   apt-get clean && \
-  rm --recursive --force /var/lib/apt/lists/*
+  rm --recursive --force /var/lib/apt/lists/* 
 
 # create working directory
 RUN mkdir $APP_ROOT
@@ -32,5 +33,6 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
+RUN ["apt-get", "install", "-y", "vim"]
 # Start the main process
 CMD ["rails", "server", "-b", "0.0.0.0"]
