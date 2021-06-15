@@ -32,6 +32,7 @@ gem 'active_decorator'
 gem 'ransack'
 gem 'line-bot-api'
 gem "aws-sdk-s3", require: false
+gem "mimemagic", "~> 0.3.10"
 
 group :development, :test do
   gem 'sqlite3'
