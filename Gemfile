@@ -13,7 +13,6 @@ gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'rails-i18n'
 gem 'sass-rails', '>= 6'
-gem 'mysql2'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 4.0'
 gem 'will_paginate'
@@ -34,6 +33,7 @@ gem 'line-bot-api'
 gem "aws-sdk-s3", require: false
 
 group :development, :test do
+  gem 'sqlite3', '1.3.13'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'bullet'
 end
@@ -56,6 +56,10 @@ group :test do
   gem 'rspec-rails', '~> 3.8.0'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+end
+
+group :production do
+  gem 'pg', '0.20.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
