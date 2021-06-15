@@ -1,0 +1,67 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      event: 稽古
+      information: 情報
+      record: 記録
+      profile: プロフィール
+      member: メンバー
+      favorite: お気に入り
+      comment: コメント
+      relationship: フォロー
+    attributes:
+        user:
+          id: ID
+          name: 名前
+          email: メールアドレス
+          password: パスワード
+          password_confirmation: パスワード再入力
+          created_at: 作成日
+          updated_at: 更新日
+        event:
+          event_day: 稽古日
+          start_time: 開始時間
+          finish_time: 終了時間
+          prefecture: 都道府県
+          place: 場所
+          address: 住所
+          latitude: 緯度
+          longitude: 軽度
+          estimate_people: 想定人数
+          level: レベル
+          comment: コメント
+        information:
+          title: タイトル
+          body: 内容
+          limited: 期限
+          youtube_url: Youtube_URL
+        record: 
+          start_time: 日付
+          title: タイトル
+          content: 本文
+          practice: 稽古の有無
+        profile:
+          name: 名前
+          photo: プロフィール画像
+          grade: 段位・級
+          birthday: 誕生日
+          prefecture: 出身地
+          dojo: 道場
+          description: 自己紹介
+        member:
+          event_id: 稽古ID
+          user_id: ユーザーID
+          first_agree: 予定
+          second_agree: 実績
+        favorites:
+          user_id: ユーザーID
+          information_id: 情報ID
+        comment: 
+          user_id: ユーザーID
+          event_id: 稽古ID
+          comment: コメント
+        relationship: 
+          user_id: ユーザーID
+          follow_id: ユーザーID      
+        

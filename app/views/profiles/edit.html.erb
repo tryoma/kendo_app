@@ -1,0 +1,48 @@
+<% provide(:title, 'プロフィール編集') %>
+<% provide(:button_text, '編集') %>
+<div id="main-content">
+  <main>
+    <section class="new_edit">
+      <div>
+        <h2 class="main-title center">プロフィール編集</h2>
+      </div>
+      <div class = "new_edit__form">
+        <%= form_with(model: @user, url: user_profile_path(@user), local: true, method: :patch) do |f| %>
+          <%= render 'shared/error_messages', object: @user.profile %>
+
+          <%= f.fields_for @user.profile do |t| %>
+
+            <%= t.label :name, class: "label-form" %>
+            <%= t.text_field :name, class: "form-control" %>
+
+            <%= t.label :grade, class: "label-form" %>
+            <%= t.text_field :grade, class: "form-control" %>
+
+            <%= t.label :birthday, class: "label-form" %>
+            <%= t.date_field :birthday, class: "form-control" %>
+            
+            <%= t.label :prefecture, class: "label-form" %>
+            <%= t.text_field :prefecture, class: "form-control" %>
+
+            <%= t.label :dojo, class: "label-form" %>
+            <%= t.text_field :dojo, class: "form-control" %>
+
+            <%= t.label :description, class: "label-form" %>
+            <%= t.text_field :description, class: "form-control" %>
+
+            <%= t.label :photo, class: "label-form"  %>
+            <%= t.file_field :photo, class: "form-control" %>
+
+            <%= t.hidden_field :user_id, :value => current_user.id %>
+          <% end %>
+          <div class = "new_edit__btn">
+            <%= f.submit yield(:button_text), class: "btn" %>
+          </div>
+        <% end %>
+        <div class = "new_edit__btn">
+          <%= link_to "戻る", :back, data: {"turbolinks" => false}, class: "btn" %>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

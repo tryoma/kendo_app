@@ -1,0 +1,123 @@
+<% provide(:title, "稽古会") %>
+<div id="main-content">
+  <main>
+    <section class="event_show">
+      <div>
+        <h2 class="main-title center"><%= @event.place %>の稽古会</h2>
+      </div>
+      <div class="event_show__inner">
+        <div class="event_show__map">
+          <div id="map"></div>
+        </div>
+        <table class="event_show__list table">
+          <tr>
+            <th>稽古日</th>
+            <td><%= l @event.event_day, format: :long %></td>
+          </tr>
+          <tr>
+            <th>開始時間</th>
+            <td><%= l @event.start_time, format: :time %></td>
+          </tr>
+          <tr>
+            <th>終了時間</th>
+            <td><%= l @event.finish_time, format: :time %></td>
+          </tr>
+          <tr>
+            <th>都道府県</th>
+            <td><%= @event.prefecture %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= @event.address %></td>
+          </tr>
+          <tr>
+            <th>レベル</th>
+            <td><%= @event.level %></td>
+          </tr>
+          <tr>
+            <th>主催者</th>
+            <td><%= @event.owner.profile.name %></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td></td>
+          </tr>
+        </table>
+        <div class="event_show__title">
+          <p><%= @event.comment %></p>
+          <p>現在 <span class = red><%= @event.members.count %>人</span>/<%= @event.estimate_people %>人 </p>
+          <p>あと<%= @event.estimate_people -  @event.members.count %>人参加可能です</p>
+        </div>
+        <div class="event_show__btn">
+          <% if current_user.present? %>
+            <% unless @event.owner == current_user %>
+              <% unless current_user.members.find_by(event_id: @event.id)%>
+                <%= link_to '参加しますか？',event_members_path(@event), method: :post,
+                  data: { confirm: "このイベントに参加しますか？" },
+                  class: "btn btn-primary" %>
+              <% else %>
+                <%= link_to '参加取りやめ',event_member_path(@event), method: :delete,
+                  data: { confirm: "このイベントを参加取りやめますか？" },
+                  class: "btn btn-danger" %>
+              <% end %>
+            <% else %>
+              <%= link_to "編集",edit_event_path(@event), class: "btn btn-primary" %>
+              <%= link_to "削除",event_path(@event), method: :delete,
+                data: { confirm: "削除してよろしいですか？" },
+                class: "btn btn-danger" %>
+            <% end %>
+          <% else %>
+            <%= link_to '参加しますか？',event_members_path(@event), method: :post,
+                  data: { confirm: "このイベントに参加しますか？" },
+                  class: "btn btn-primary" %>
+          <% end %>
+        </div>
+        <div class="event_show__comment">
+          <div>
+            <h2 class="event_show__title">コメント</h2>
+          </div>
+          <div id="comments_area">
+            <%= render partial: 'comments/index', locals: { comments: @comments } %>
+          </div>  
+          <% if user_signed_in? %>
+            <%= render partial: 'comments/form', locals: { comment: @comment, event: @event } %>
+          <% end %>
+          <div class = "new_edit__btn">
+            <%= link_to "戻る", :back, class: "btn" %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script type="text/javascript">
+  function initMap() {
+    let test ={lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+    let map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 16, 
+              center: test
+              });
+    let transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    let contentString = '住所：<%= @event.place %>';
+    let infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    let marker = new google.maps.Marker({
+                  position:test,
+                  map: map,
+                  title: contentString
+                });
+
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+</script>
+
+<script async defer
+              src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLEMAP'] %>&callback=initMap">
+</script>

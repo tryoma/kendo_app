@@ -1,0 +1,74 @@
+// ヘッダー関連表示 //
+// イベント詳細ページ関連表示 //
+// イベント詳細ページ関連表示 //
+// トップページユーザー関連表示 //
+// フッダー関連表示 //
+
+/******************************************************************
+
+Stylesheet: 960px以上のモニタで適用
+
+******************************************************************/
+.font-sm {
+  font-size: 16px;
+}
+.font-md {
+  font-size: 19px;
+}
+.font-lr {
+  font-size: 23px;
+}
+.font-lg {
+  font-size: 30px;
+}
+// .mb-lg {
+//   margin-bottom: 150px !important;
+// }
+.pb-lg {
+  padding-bottom: 150px !important;
+}
+
+// ヘッダー関連表示 //
+.header {
+  &__nav {
+    display: block;
+  }
+  & .logo {
+    margin-left: 20px;
+  }
+}
+.mobile-menu {
+  &__btn {
+    display: none;
+  }
+}
+
+// イベント詳細ページ関連表示 //
+.event_show {
+  &__map {
+    & > #map {
+      height: 400px;
+      width: 760px;
+    }
+  }
+  &__comment {
+    width:400px;
+  }
+}
+
+// トップページユーザー関連表示 //
+.record {
+  &__title {
+    width: 300px;
+  }
+  &__box {
+    position: relative;
+  }
+}
+
+// フッダー関連表示 //
+.footer {
+  &__li {
+    justify-content: flex-start;
+  }
+}

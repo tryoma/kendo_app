@@ -1,0 +1,24 @@
+{
+  "editor.codeActionsOnSave": null,
+
+  "editor.fontLigatures": null,
+
+  "json.schemas": [],
+
+  // rubocop
+  "ruby.lint": {
+    "rubocop": true
+  },
+  "rufo.exe": "rufo",  // can be an absolute path
+  "rufo.useBundler": false,
+
+  // prettierを使用のため追加
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // "editor.formatOnSave": true,
+
+  // ファイルの最後に改行を自動で追加
+  "files.insertFinalNewline": true,
+
+  // コードの定義場所へジャンプ
+  "ruby.intellisense": "rubyLocate"
+}

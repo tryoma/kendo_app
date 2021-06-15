@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KendoApp</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title><%= full_title(yield(:title)) %></title>
+    <%= favicon_link_tag('korvue-brands.svg') %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kameron:wght@400;700&family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="description" content="This site is a test site.">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+    <%= render 'layouts/shim' %>
+    <script src="https://kit.fontawesome.com/484e6509e8.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <%= yield %>
+    <div id="global-container">
+      <div id="container">
+        <%= render 'layouts/header1' %>
+        <div class="containers">
+          <%= render "layouts/flash_messages" %>
+          <%= yield %>
+          <%= debug(params) if Rails.env.development? %>
+        </div>
+        <%= render 'layouts/footer' unless params[:controller] == "lists" && params[:action] == "show" %> 
+      </div>
+      <%= render 'layouts/header2' %>
+    </div>
   </body>
 </html>

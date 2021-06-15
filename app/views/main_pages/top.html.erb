@@ -1,0 +1,128 @@
+<% provide(:title, "Top") %>
+<div id="main-content">
+  <div class="main_image">
+    <img src="assets/kendo.png" alt="" />
+  </div>
+  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn" %>
+  <main>
+    <section class="event">
+    <div id="event"></div>
+      <div>
+        <h2 class="main-title">稽古会&nbsp<i class="fas fa-running"></i></h2>
+        <p class="sub-title">お気に入りの稽古会を見つけよう</p>
+      </div>
+      <%= search_form_for @q, url: root_path(anchor: 'event'), id: 'event' do |f| %>
+        <div class="row m_search">
+          <div class="form-inline align-items-center mx-auto">
+            <div class="col-auto">
+              <%= f.date_field :event_day_gteq, include_blank: true, class: 'form-control'%>
+              <span>から</span>
+              <%= f.date_field :event_day_lteq, include_blank: true, class: 'form-control'%>
+            </div>
+            <div class="col-auto">
+              <%= f.submit '検索', class: 'form-control mt-1' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="event__inner">
+        <% @search_records.each do |event| %>
+        <div class="event__title">
+          <%= link_to event_path(event.id), data: {"turbolinks" => false} do %>
+          <p><%= event.place %>の稽古会</p>
+          <table class="event_table">
+            <tr>
+              <th>日時</th>
+              <td><%= l event.event_day, format: :long %></td>
+            </tr>
+            <tr>
+              <th>都道府県</th>
+              <td><%= event.prefecture %></td>
+            </tr>
+            <tr>
+              <th>開始時間</th>
+              <td><%= l event.start_time, format: :time %></td>
+            </tr>
+            <tr>
+              <th>終了時間</th>
+              <td><%= l event.finish_time, format: :time %></td>
+            </tr>
+            <tr>
+              <th>主催者</th>
+              <td><%= event.owner.user_name %></td>
+            </tr>
+            <tr>
+              <th>レベル</th>
+              <td><%= event.level %></td>
+            </tr>
+          </table>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+      <div class="text-center">
+        <%= will_paginate @search_records, :previous_label => ' &lt 前へ', :next_label => '次へ &gt'%>
+      </div>
+      <div class="event__btn">
+        <%= link_to new_event_path, method: :get, data: {"turbolinks" => false}  do %>
+        <button class="btn filled">新規作成</button>
+        <% end %>
+      </div>
+    </section>
+    <section class="information">
+      <div>
+        <h2 class="main-title">情報&nbsp<i class="fas fa-info"></i></h2>
+        <p class="sub-title">お気に入りの情報を見つけよう</p>
+      </div>
+      <div class="information__inner">
+        <% @informations.each do |information| %>
+        <div class="information__title">
+          <%= link_to information_path(information.id), data: {"turbolinks" => false} do %>
+          <p><%= information.title %></p>
+          <table class="information_table">
+            <tr>
+              <th>情報源</th>
+              <td><%= information.user.profile.name %></td>
+            </tr>
+            <tr>
+              <th>更新日時</th>
+              <td><%= l information.updated_at, format: :time %></td>
+            </tr>
+            <tr>
+              <th>掲載期限</th>
+              <td><%= l information.limited, format: :long %></td>
+            </tr>
+          </table>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+      <div class="information__btn">
+        <%= link_to new_information_path, method: :get, data: {"turbolinks" => false} do %>
+        <button class="btn filled">情報新規作成</button>
+        <% end %>
+      </div>
+    </section>
+    <section class="record">
+      <div>
+        <h2 class="main-title">稽古日記更新&nbsp</h2>
+        <p class="sub-title">お気に入りのユーザーを見つけよう</p>
+      </div>
+      <div class="record__inner">
+        <% @records.each do |record| %>
+        <%= link_to user_path(id:record.user_id), data: {"turbolinks" => false} do %>
+        <div class="record__title">
+          <div class="record__img">
+            <%= image_tag record.user.profile.photo_image %>
+          </div>
+          <div class="record__box">
+            <p class="blue"><%= record.user.profile.name %></p>
+            <p><%= record.title %></p>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+    </section>
+  </main>
+</div>

@@ -1,0 +1,165 @@
+<% provide(:title, @user.user_name) %>
+<div id="main-content">
+  <main>
+    <section class="profile">
+      <div class="profile__head">
+        <div class="profile__img">                                          
+            <%= image_tag @user.profile.photo_image %>
+        </div>
+        <div class="profile__detail">
+          <p class = "font-lg"><%= @user.profile.name.present? ? @user.profile.name : "ユーザー名：未設定" %></p>
+          <p>段位：<%= @user.profile.grade.present? ? @user.profile.grade : "未設定" %></p>
+          <p>出身地：<%= @user.profile.prefecture.present? ? @user.profile.prefecture : "未設定" %></p>
+          <p>出身道場：<%= @user.profile.dojo.present? ? @user.profile.dojo : "未設定" %></p>
+          <p>自己紹介：<%= @user.profile.description.present? ? @user.profile.description : "未設定" %></p>
+        </div>
+        <div class="profile__menu">
+          <% if @user == current_user %>
+            <%= link_to edit_user_profile_path(@user.id), data: {"turbolinks" => false} do %>
+              <button class="btn filled">PF編集</button>
+            <% end %>
+            <%= link_to user_records_path(@user), data: {"turbolinks" => false} do %>
+              <button class="btn filled">稽古日記</button>
+            <% end %>
+            <%= link_to lists_path, data: {"turbolinks" => false} do %>
+              <button class="btn filled">TODO</button>
+            <% end %>
+          <% else %>
+            <%= link_to user_records_path(@user), data: {"turbolinks" => false} do %>
+              <button class="btn filled">稽古日記</button>
+            <% end %>
+            <%= render 'relationships/follow_button' , user: @user %>
+          <% end %>
+        </div>
+        <div class="profile__tabs">
+          <div class="tab-area">
+            <div class="tab active">
+              フォロー
+            </div>
+            <div class="tab">
+              フォロワー
+            </div>
+            <div class="tab">
+              お気入り情報
+            </div>
+          </div>
+          <div class="content-area">
+            <div class="content show">
+              <% if @followings.any? %>
+                  <%= render 'follows', users: @followings %>
+              <% else %>
+                <div class='no-content'>
+                  まだフォローしていません
+                </div>
+              <% end %>
+            </div>
+            <div class="content">
+              <% if @followers.any? %>
+                  <%= render 'follows', users: @followers %>
+              <% else %>
+                <div class='no-content'>
+                  まだフォローされていません
+                </div>
+              <% end %>
+            </div>
+            <div class="content">
+              <% if @favorite_informations.any? %>
+                  <%= render 'informations', informations: @favorite_informations %>
+              <% else %>
+                <div class='no-content'>
+                  まだお気入り情報はありません
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="record">
+      <div>
+        <h2 class="main-title">主催予定の稽古会&nbsp<i class="fas fa-running"></i></h2>
+      </div>
+      <div class="event__inner">
+        <% if @owner_events.count > 0 %>
+          <% @owner_events.each do |event| %>
+            <div class="event__title">
+              <%= link_to event_path(event.id), data: {"turbolinks" => false} do %>
+                <p><%= event.place %>の稽古会</p>
+                <table class="event_table">
+                  <tr>
+                    <th>日時</th>
+                    <td><%= l event.event_day, format: :long %></td>
+                  </tr>
+                  <tr>
+                    <th>開始時間</th>
+                    <td><%= l event.start_time, format: :time %></td>
+                  </tr>
+                  <tr>
+                    <th>終了時間</th>
+                    <td><%= l event.finish_time, format: :time %></td>
+                  </tr>
+                  <tr>
+                    <th>レベル</th>
+                    <td><%= event.level %></td>
+                  </tr>
+                </table>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <p>まだ稽古を主催していません</p>
+        <% end %>
+      </div>
+      <div>
+        <h2 class="main-title">参加予定の稽古会&nbsp<i class="fas fa-running"></i></h2>
+      </div>
+      <div class="event__inner">
+        <% if @member_events.count > 0 %>
+          <% @member_events.each do |event| %>
+            <div class="event__title">
+              <%= link_to event_path(event.id), data: {"turbolinks" => false} do %>
+                <p><%= event.place %>の稽古会</p>
+                <table class="event_table">
+                  <tr>
+                    <th>日時</th>
+                    <td><%= l event.event_day, format: :long %></td>
+                  </tr>
+                  <tr>
+                    <th>開始時間</th>
+                    <td><%= l event.start_time, format: :time %></td>
+                  </tr>
+                  <tr>
+                    <th>終了時間</th>
+                    <td><%= l event.finish_time, format: :time %></td>
+                  </tr>
+                  <tr>
+                    <th>主催者</th>
+                    <td><%= event.owner.user_name %></td>
+                  </tr>
+                  <tr>
+                    <th>レベル</th>
+                    <td><%= event.level %></td>
+                  </tr>
+                </table>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <p>まだ稽古に参加していません</p>
+        <% end %>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+  $(function() {
+    let tabs = $(".tab"); // tabのクラスを全て取得し、変数tabsに配列で定義
+    $(".tab").on("click", function() { // tabをクリックしたらイベント発火
+      $(".active").removeClass("active"); // activeクラスを消す
+      $(this).addClass("active"); // クリックした箇所にactiveクラスを追加
+      const index = tabs.index(this); // クリックした箇所がタブの何番目か判定し、定数indexとして定義
+      $(".content").removeClass("show").eq(index).addClass("show"); // showクラスを消して、contentクラスのindex番目にshowクラスを追加
+    })
+  })
+</script>

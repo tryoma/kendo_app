@@ -1,0 +1,33 @@
+<% provide(:title, "Password-Change") %>
+<div id="main-content">
+  <main>
+    <section class="new_edit">
+      <div>
+        <h2 class="main-title center">パスワード変更</h2>
+      </div>
+      <div class = "new_edit__form">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render 'shared/error_messages', object: resource %>
+          <%= f.hidden_field :reset_password_token %>
+
+            <%= f.label :password, "New password" %><br />
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+            <% end %>
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+
+            <%= f.label :password_confirmation, "Confirm new password" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+
+          <div class = "new_edit__btn">
+            <%= f.submit "Change my password", class: 'btn' %>
+          </div>
+        <% end %>
+        <div class = "new_edit__link">
+          <%= render "users/shared/links" %>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<%= render "users/shared/links" %>

@@ -1,0 +1,38 @@
+<%= form_with(model: @event, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: @event %>
+
+  <%= f.label :event_day, class: "label-form" %>
+  <%= f.date_field :event_day, class: "form-control" %>
+
+  <%= f.label :start_time, class: "label-form" %>
+  <%= f.time_field :start_time, class: "form-control" %>
+
+  <%= f.label :finish_time, class: "label-form" %>
+  <%= f.time_field :finish_time, class: "form-control" %>
+
+  <%= f.label :prefecture, class: "label-form" %>
+  <%= f.select :prefecture, Event.prefectures.keys, {}, class: "form-control" %>
+
+  <%= f.label :place, class: "label-form" %>
+  <%= f.text_field :place, class: "form-control", placeholder: "例)日本武道館" %>
+
+  <%= f.label :address, class: "label-form" %>
+  <%= f.text_field :address, class: "form-control", placeholder: "例)東京都千代田区北の丸公園2番3号" %>
+
+  <%= f.label :estimate_people, class: "label-form" %>
+  <%= f.number_field :estimate_people, class: "form-control", placeholder: "  人", min: 1 %>
+
+  <%= f.label :level, class: "label-form" %>
+  <%= f.select :level, Event.levels.keys, {}, class: "form-control" %>
+
+  <%= f.label :comment, class: "label-form" %>
+  <%= f.text_field :comment, class: "form-control", placeholder: "例)初開催です！楽しくやりましょう！"%>
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <div class = "new_edit__btn">
+    <%= f.submit yield(:button_text), class: "btn" %>
+  </div>
+<% end %>
+<div class = "new_edit__btn">
+  <%= link_to "戻る", :back, data: {"turbolinks" => false}, class: "btn" %>
+</div>

@@ -1,0 +1,45 @@
+<% provide(:title, "Log in") %>
+<div id="main-content">
+  <main>
+    <section class="new_edit">
+      <div>
+        <h2 class="main-title center"><%= current_user.user_name%> 編集画面</h2>
+      </div>
+      <div class = "new_edit__form">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render 'shared/error_messages', object: resource %>
+          <%= f.label :user_name, class: "label-form" %>
+          <%= f.text_field :user_name, autofocus: true, class: "form-control" %>
+
+          <%= f.label :email, class: "label-form" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <%= f.label :password, class: "label-form" %> <i>(変更なければ入力不要)</i><br>
+          <% if @minimum_password_length %>
+            <em><%= @minimum_password_length %> 文字以上としてください</em>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+
+          <%= f.label :password_confirmation, class: "label-form" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+
+          <%= f.label :current_password, class: "label-form" %>
+          <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+
+          <div class = "new_edit__btn">
+            <%= f.submit "Update", class: 'btn' %>
+          </div>
+        <% end %>
+        <h3 class = "center">退会しますか？</h3>
+        <div class = "new_edit__btn">
+          <%= button_to "退会", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn'  %>
+          <%= link_to "キャンセル", :back, data: {"turbolinks" => false}, class: 'btn'  %>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

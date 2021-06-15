@@ -1,0 +1,25 @@
+<% provide(:title, "Password") %>
+<div id="main-content">
+  <main>
+    <section class="new_edit">
+      <div>
+        <h2 class="main-title center">パスワードを忘れた方</h2>
+      </div>
+      <div class = "new_edit__form">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= render 'shared/error_messages', object: resource %>
+
+          <%= f.label :email, class: "label-form" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"%>
+
+          <div class = "new_edit__btn">
+            <%= f.submit "パスワード再送", class: 'btn' %>
+          </div>
+        <% end %>
+        <div class = "new_edit__link">
+          <%= render "users/shared/links" %>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

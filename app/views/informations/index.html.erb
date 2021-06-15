@@ -1,0 +1,38 @@
+<% provide(:title, "情報一覧") %>
+<div id="main-content">
+  <main>
+    <section class="manylist">
+      <div>
+        <h2 class="main-title center">情報一覧</h2>
+      </div>
+      <div class = "mainlist__contain">
+        <%= will_paginate %>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th><%= Information.human_attribute_name :id %></th>
+              <th><%= Information.human_attribute_name :title %></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @informations.each do |information| %>
+              <tr>
+                <td><%= information.id %></td>
+                <td><%= link_to information.title, information, data: {"turbolinks" => false} %></td>
+                <td>
+                  <% if current_user.admin? %>
+                    <%= link_to information_path(information.id), method: :delete, data: { confirm: "削除してよろしいですか？" } do %>
+                    <span class = "red">削除</span>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate %>
+      </div>
+    </section>
+  </main>
+</div>

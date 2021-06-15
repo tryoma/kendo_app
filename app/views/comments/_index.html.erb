@@ -1,0 +1,23 @@
+<% comments.each do |comment| %>
+  <% unless comment.id.nil? %>
+    <% if comment.user == @event.owner %>
+      <div class="balloon_r">
+        <div class="faceicon">
+          <%= image_tag comment.user.profile.photo_image %>
+        </div>
+        <p class="says">
+          <%= comment.body %>
+        </p>
+      </div>
+    <% else %>
+      <div class="balloon_l">
+        <div class="faceicon">
+          <%= image_tag comment.user.profile.photo_image %>
+        </div>
+        <p class="says">
+          <%= comment.body %>
+        </p>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
