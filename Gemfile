@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'bootstrap-sass'
@@ -7,7 +10,7 @@ gem 'faker'
 gem 'jquery-rails'
 gem "jquery-ui-rails"
 gem 'puma', '~> 4.1'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
+gem 'rails', '~> 6.1.3.1'
 gem 'rails-i18n'
 gem 'sass-rails', '>= 6'
 gem 'uglifier', '>= 1.3.0'
@@ -23,11 +26,13 @@ gem 'mini_magick'
 gem 'simple_calendar', '~> 2.0'
 gem 'geocoder'
 gem 'font-awesome-sass'
+gem 'image_processing', '~> 1.2'
 gem 'dotenv-rails'
 gem 'active_decorator'
 gem 'ransack'
 gem 'line-bot-api'
 gem "aws-sdk-s3", require: false
+gem "mimemagic", "~> 0.3.10"
 
 group :development, :test do
   gem 'sqlite3'

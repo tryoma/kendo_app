@@ -10,7 +10,7 @@ admin_profile.photo.attach(io: File.open(Rails.root.join("./app/assets/images/te
 admin_user.save
 
 # general_user
-10.times do |n|
+3.times do |n|
   name = Faker::Name.name
   date = Faker::Date.between(from: '1985-1-1', to: '2000-12-31')
   prefectures = ["福岡", "佐賀", "長崎", "大分", "熊本", "宮崎", "鹿児島", "沖縄"]
@@ -30,12 +30,12 @@ admin_user.save
   user.save
 end
 
-10.times do |n|
+3.times do |n|
   List.create(title: "todo-#{n}", is_done: false)
 end
 
 # event
-10.times do
+3.times do
   date = Faker::Date.between(from: '2021-7-1', to: '2021-12-31')
   m = rand(0..8)
   start_times = ["10:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"]
@@ -53,7 +53,7 @@ end
   longitude = longitudes[n]
   estimate_people = rand(4..20)
   level = rand(0..5)
-  user_id = rand(1..10)
+  user = User.find(rand(1..3))
   Event.create!(event_day: date,
                 start_time: start_time,
                 finish_time: finish_time,
@@ -65,7 +65,7 @@ end
                 estimate_people: estimate_people,
                 level: level,
                 comment: "#{place}で楽しくやりましょう！",
-                user_id: user_id)
+                owner: user)
 end
 
 # information
@@ -98,23 +98,23 @@ Information.create!(title: "炎の体育会TV",
                     今回の２時間SPでは、体育会剣道部が･･･フランスの美女剣士と対決！さらに･･･渡辺リーダーの応援に泉ピン子さんが来てくれました☆体育会TV初の外国人剣士との対決は、土曜よる７時からの体育会TVで☆",
                     limited: '2021-12-31',
                     youtube: "6P-O8C_tXWo",
-                    user_id: 5)
+                    user_id: 2)
 
 Information.create!(title: "大園桃子上手い",
                     body: "「スイカ割り剣道」では高山一実vs大園桃子の剣道経験者同士の対決がとても見応えがありましたし、バナナマン・日村を剣でシバいたり途中で転んじゃったりした山下美月からは“アイドルバラエティを全うする意志”が感じられて「さすがだな」と唸りました。",
                     limited: '2021-12-31',
                     youtube: "CVMyivsvvqE",
-                    user_id: 6)
+                    user_id: 3)
 
 # daiary
-10.times do
+3.times do
   date = Faker::Date.between(from: '2021-5-1', to: '2021-5-20')
   titles = ["投稿します!", "寒稽古最高！", "祝合格！", "祝優勝！", "素振り100本", "お腹いっぱい", "試合でした！"]
   contents = ["初投稿です。今日からKen-appはじめました。剣道の情報がいっぱい学べて最高です。今日から毎日投稿頑張ります。あと稽古も頑張ります！", "大学の寒稽古がスタートしました。朝4時起き、5時稽古スタート。。。。道場の床が氷みたいに冷たく死にそうです。残り6日間耐えれるか。。。", "念願の5段に合格しました。今回でのべ10回目の挑戦でした。稽古を真面目にやってきてよかったです。これからも精進続けて6段目指します！", "地方大会でみごと優勝。決勝戦での一本は自分自身でしびれました。まさかあのタイミングで、あの技を出せるとは。今日は自分で自分を褒めてやりたいです。", "試合で負けたので素振り100本やってきた。なんで負けたのかを反省しながら一本一本振った。次こそは勝つ。", "稽古終わりに剣友とバイキングにいってきました。久しぶりにあんなにいっぱい食べたな。稽古後はお腹が空いてしまう。お腹いっぱいです。よし寝よう。", "結果はベスト8。目標にしていたベスト4には一歩及ばなかったけど、今のベストは尽くせた感じ。次の大会は三ヶ月後。次こそは表彰台に登りたい。明日からまた稽古頑張るぞ。"]
   n = rand(0..6)
   title = titles[n]
   content = contents[n]
-  m = rand(1..10)
+  m = rand(1..3)
   Record.create!(start_time: date,
                  title: title,
                  content: content,
@@ -123,15 +123,15 @@ Information.create!(title: "大園桃子上手い",
 end
 
 # favorites
-5.times do |m|
-  9.times do |n|
+3.times do |m|
+  2.times do |n|
     Favorite.create!(user_id: n + 2, information_id: m + 1)
   end
 end
 
 # comments
-9.times do |n|
-  8.times do |m|
+3.times do |n|
+  2.times do |m|
     bodys = ["参加していいですか？", "レベル違いですかね？", "そうでもないと思いますよ。", "別に構いませんよ。", "この会話噛み合ってますか？", "いいと思います。", "そうですね-", "ホントですか！？"]
     body = bodys.sample
     Comment.create!(event_id: n + 1, user_id: m + 1, body: body)

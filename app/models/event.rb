@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  belongs_to :owner, class_name: 'User', foreign_key: :user_id
+  belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
   has_many :members
   has_many :users, through: :members
   has_many :comments, dependent: :destroy
