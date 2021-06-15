@@ -11,7 +11,6 @@ gem 'jquery-rails'
 gem "jquery-ui-rails"
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.1.3.1'
-gem 'sqlite3'
 gem 'rails-i18n'
 gem 'sass-rails', '>= 6'
 gem 'uglifier', '>= 1.3.0'
@@ -36,6 +35,7 @@ gem "aws-sdk-s3", require: false
 gem "mimemagic", "~> 0.3.10"
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'bullet'
 end
