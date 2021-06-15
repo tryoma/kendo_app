@@ -10,5 +10,5 @@
 * Rails
 * Git
 * html
-* Git
+* * Git(HTTPSからSSH通信へ変更)
 * javascript
