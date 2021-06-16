@@ -9,6 +9,33 @@
 Stylesheet: 960px以上のモニタで適用
 
 ******************************************************************/
+h1 {
+  font-size: 32px;
+}
+
+.main_image {
+  &__container {
+    top: 30%;
+    &___line {
+      display: flex;
+      justify-content: center;
+      padding-top: 30px;
+      & > img {
+        object-fit: cover;
+        width: 100px;
+      }
+    }
+  }
+}
+
+.btn-top {
+  padding: 10px 20px;
+}
+
+.subtitle {
+  font-size: 18px;
+}
+
 .font-sm {
   font-size: 16px;
 }
@@ -35,6 +62,14 @@ Stylesheet: 960px以上のモニタで適用
   }
   & .logo {
     margin-left: 20px;
+  }
+  &__inner {
+    max-width: initial;
+  }
+  &__li {
+    & > a {
+      font-size: 17px;
+    }
   }
 }
 .mobile-menu {

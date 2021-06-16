@@ -21,11 +21,11 @@
               <tr>
                 <td><%= event.id %></td>
                 <td>
-                  <%= link_to event, data: {"turbolinks" => false} do %>
+                  <%= link_to event do %>
                   <span><%= l event.event_day, format: :middle %></span>
                   <% end %>
                 </td>
-                <td><%= link_to event.place, event, data: {"turbolinks" => false} %></td>
+                <td><%= link_to event.place, event %></td>
                 <td>
                   <% if current_user.admin? %>
                     <%= link_to event_path(event.id), method: :delete, data: { confirm: "削除してよろしいですか？" } do %>

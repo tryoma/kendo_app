@@ -1,5 +1,5 @@
 # Admin_user
-admin_user = User.create!(user_name: "管理者様",
+admin_user = User.create!(user_name: "管理者",
                           email: "sample@email.com",
                           password: "password",
                           password_confirmation: "password",
@@ -10,8 +10,9 @@ admin_profile.photo.attach(io: File.open(Rails.root.join("./app/assets/images/te
 admin_user.save
 
 # general_user
-3.times do |n|
-  name = Faker::Name.name
+6.times do |n|
+  names = ["田中佑典", "太田ひろき", "池田はやと", "金子優子", "杉本太陽", "小籔太郎", "大麦雪", "南花子", "田久保良一"]
+  name = names.sample
   date = Faker::Date.between(from: '1985-1-1', to: '2000-12-31')
   prefectures = ["福岡", "佐賀", "長崎", "大分", "熊本", "宮崎", "鹿児島", "沖縄"]
   prefecture = prefectures.sample
@@ -53,7 +54,7 @@ end
   longitude = longitudes[n]
   estimate_people = rand(4..20)
   level = rand(0..5)
-  user = User.find(rand(1..3))
+  user = User.find(rand(2..6))
   Event.create!(event_day: date,
                 start_time: start_time,
                 finish_time: finish_time,
@@ -73,38 +74,38 @@ Information.create!(title: "剣道選手権大会結果",
                     body: "決勝は國友錬太朗(福岡・警察)と松﨑賢士郎(茨城・筑波大3年)が対戦し、両選手とも互角の展開で延長戦となり、最後は國友が鋭く攻めてコテを決め優勝を果たした。國友は第62回大会、第64回大会で決勝へ進出も日本一には手が届かず、三度目の正直で悲願の天皇杯を手にした。",
                     limited: '2021-12-31',
                     youtube: "RWImBV6NYt8",
-                    user_id: 1)
+                    user_id: 2)
 
 Information.create!(title: "勉強になります！",
                     body: "結構前の動画になりますけど、剣道一本集です。高校生と思えない感じです。見ていて気持ちよくストレス発散にもなりますよ！",
                     limited: '2021-12-31',
                     youtube: "21DG9jt_Yks",
-                    user_id: 2)
+                    user_id: 3)
 
 Information.create!(title: "高段者は違います!",
                     body: "八段の先生方はやはり格が違いますね。。。お年は召しておられるのになんであんな動きができるんでしょう。私は４段ですが、こんな動きは出来ません。さすがとしか言えません。。。",
                     limited: '2021-12-31',
                     youtube: "c1yK8kxliBM",
-                    user_id: 3)
+                    user_id: 4)
 
 Information.create!(title: "ミライモンスター",
                     body: "全国大会で3年負けなしの高校剣道会最強高校・九州学院高等学校剣道部主将。全国大会13連覇を目指し残る玉竜旗とインターハイ制覇を目指すが、今年熊本地震発生。学校は閉鎖、剣道部も休部。そのなか大会に挑む。というタイトルで梶谷さんが特集されてます。面白かったですよ。",
                     limited: '2021-12-31',
                     youtube: "2bCiIb4I6ac",
-                    user_id: 4)
+                    user_id: 5)
 
 Information.create!(title: "炎の体育会TV",
                     body: "体育会TV剣道部ファンの皆さんお待たせしました！
                     今回の２時間SPでは、体育会剣道部が･･･フランスの美女剣士と対決！さらに･･･渡辺リーダーの応援に泉ピン子さんが来てくれました☆体育会TV初の外国人剣士との対決は、土曜よる７時からの体育会TVで☆",
                     limited: '2021-12-31',
                     youtube: "6P-O8C_tXWo",
-                    user_id: 2)
+                    user_id: 6)
 
 Information.create!(title: "大園桃子上手い",
                     body: "「スイカ割り剣道」では高山一実vs大園桃子の剣道経験者同士の対決がとても見応えがありましたし、バナナマン・日村を剣でシバいたり途中で転んじゃったりした山下美月からは“アイドルバラエティを全うする意志”が感じられて「さすがだな」と唸りました。",
                     limited: '2021-12-31',
                     youtube: "CVMyivsvvqE",
-                    user_id: 3)
+                    user_id: 1)
 
 # daiary
 3.times do
@@ -114,7 +115,7 @@ Information.create!(title: "大園桃子上手い",
   n = rand(0..6)
   title = titles[n]
   content = contents[n]
-  m = rand(1..3)
+  m = rand(2..6)
   Record.create!(start_time: date,
                  title: title,
                  content: content,
@@ -123,8 +124,8 @@ Information.create!(title: "大園桃子上手い",
 end
 
 # favorites
-3.times do |m|
-  2.times do |n|
+5.times do |m|
+  4.times do |n|
     Favorite.create!(user_id: n + 2, information_id: m + 1)
   end
 end

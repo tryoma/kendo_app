@@ -15,17 +15,17 @@
         </div>
         <div class="profile__menu">
           <% if @user == current_user %>
-            <%= link_to edit_user_profile_path(@user.id), data: {"turbolinks" => false} do %>
+            <%= link_to edit_user_profile_path(@user.id) do %>
               <button class="btn filled">PF編集</button>
             <% end %>
-            <%= link_to user_records_path(@user), data: {"turbolinks" => false} do %>
+            <%= link_to user_records_path(@user) do %>
               <button class="btn filled">稽古日記</button>
             <% end %>
-            <%= link_to lists_path, data: {"turbolinks" => false} do %>
+            <%= link_to lists_path do %>
               <button class="btn filled">TODO</button>
             <% end %>
           <% else %>
-            <%= link_to user_records_path(@user), data: {"turbolinks" => false} do %>
+            <%= link_to user_records_path(@user) do %>
               <button class="btn filled">稽古日記</button>
             <% end %>
             <%= render 'relationships/follow_button' , user: @user %>
@@ -83,7 +83,7 @@
         <% if @owner_events.count > 0 %>
           <% @owner_events.each do |event| %>
             <div class="event__title">
-              <%= link_to event_path(event.id), data: {"turbolinks" => false} do %>
+              <%= link_to event_path(event.id) do %>
                 <p><%= event.place %>の稽古会</p>
                 <table class="event_table">
                   <tr>
@@ -117,7 +117,7 @@
         <% if @member_events.count > 0 %>
           <% @member_events.each do |event| %>
             <div class="event__title">
-              <%= link_to event_path(event.id), data: {"turbolinks" => false} do %>
+              <%= link_to event_path(event.id) do %>
                 <p><%= event.place %>の稽古会</p>
                 <table class="event_table">
                   <tr>

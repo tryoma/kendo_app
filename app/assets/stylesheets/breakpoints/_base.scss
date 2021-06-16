@@ -27,6 +27,11 @@ Stylesheet: ベーススタイル
 body {
   font-family: "Kameron", "Noto Sans JP", sans-serif;
 }
+
+h1 {
+  font-size: 22px;
+}
+
 img {
   max-width: 100%;
   vertical-align: bottom;
@@ -89,7 +94,9 @@ img {
 .red {
   color: $cRed;
 }
-
+.black {
+  color: $cBlack;
+}
 .white {
   color: $cWhite;
 }
@@ -139,6 +146,7 @@ p {
   display: flex;
   align-items: center;
   z-index: 100;
+  justify-content: space-between;
 
   &__nav {
     display: none;
@@ -157,6 +165,7 @@ p {
     white-space: nowrap;
 
     & > a {
+      @extend .font-lr;
       color: $cWhite;
       text-decoration: none !important;
       text-transform: uppercase;
@@ -165,7 +174,7 @@ p {
 
   & .logo {
     color: $cWhite;
-    font-size: 38px;
+    font-size: 42px;
     justify-content: center;
   }
   
@@ -181,22 +190,53 @@ p {
 .main_image {
   width: 100%;
   overflow: hidden;
+  position: relative;
+
+  &__container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    color: $cBlack;
+    font-size: 14px;
+    z-index: 2;
+    opacity: 1;
+    text-align: center;
+
+    &___title {
+      // left: 50%;
+      color: $cBlack;
+      font-size: 14px;
+      z-index: 2;
+      opacity: 1;
+      text-align: center;
+    }
+    &___btn {
+      padding-top: 2rem;
+    }
+    &___line {
+      display: none;
+    }
+  }
 
   & > img {
     width: 100%;
     height: 100%;
     max-width: 100%;
     object-fit: cover;
+    opacity: 0.2;
   }
-  &__title {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    color: $cBlue;
-    font-size: 25px;
-    z-index: 2;
-    opacity: 1;
-  }
+}
+
+.btn-top {
+  padding: 5px 15px;
+}
+
+.subtitle {
+  font-size: 14px;
 }
 // トップページイベント関連表示 //
 .event {
@@ -852,4 +892,10 @@ $ok_alert_color: #468847;
 
 .mt-1 {
   margin-top: 5px;
+}
+
+.mast {
+  color: $cRed;
+  font-size: 12px;
+  margin: 0 5px;
 }

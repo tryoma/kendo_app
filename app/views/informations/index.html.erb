@@ -19,7 +19,7 @@
             <% @informations.each do |information| %>
               <tr>
                 <td><%= information.id %></td>
-                <td><%= link_to information.title, information, data: {"turbolinks" => false} %></td>
+                <td><%= link_to information.title, information %></td>
                 <td>
                   <% if current_user.admin? %>
                     <%= link_to information_path(information.id), method: :delete, data: { confirm: "削除してよろしいですか？" } do %>
