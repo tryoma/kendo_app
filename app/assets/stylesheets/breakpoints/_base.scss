@@ -215,7 +215,7 @@ p {
       text-align: center;
     }
     &___btn {
-      padding-top: 2rem;
+      padding-top: 0.5rem;
     }
     &___line {
       display: none;
@@ -894,8 +894,59 @@ $ok_alert_color: #468847;
   margin-top: 5px;
 }
 
+.mt-2 {
+  margin-top: 50px;
+}
+
 .mast {
   color: $cRed;
   font-size: 12px;
   margin: 0 5px;
+}
+
+.form1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 32px;
+  &-group {
+    margin-bottom: 1rem;
+  }
+  &-control {
+    width: 300px;
+    min-height: 24px;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    padding: 4px 8px;
+  }
+}
+
+// button {
+//   width: 200px;
+// }
+
+.flex1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card1 {
+  width: 238px;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  margin: 16px;
+  &-body {
+    padding: 1.25rem;
+    text-align: center;
+  }
+  &-title {
+    margin-bottom: .75rem;
+    font-weight: 600;
+    span.done {
+      text-decoration: line-through;
+    }
+  }
 }

@@ -79,19 +79,12 @@ class EventsController < ApplicationController
   end
 
   def message(event)
-    {
+    { 
       type: 'flex',
       altText: '新しく稽古会が追加されました！確認してみましょう！',
-      contents: 
+      contents:
       {
         "type": "bubble",
-        "hero": {
-          "type": "image",
-          "url": "/images/kendo.png",
-          "size": "full",
-          "aspectRatio": "20:13",
-          "aspectMode": "cover"
-        },
         "body": {
           "type": "box",
           "layout": "vertical",
@@ -137,7 +130,7 @@ class EventsController < ApplicationController
                   "contents": [
                     {
                       "type": "text",
-                      "text": "日時",
+                      "text": "時間",
                       "color": "#aaaaaa",
                       "size": "sm",
                       "flex": 1
@@ -151,19 +144,6 @@ class EventsController < ApplicationController
                       "flex": 5
                     }
                   ]
-                },
-                {
-                  "type": "box",
-                  "layout": "baseline",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "#{event.comment}",
-                      "color": "#aaaaaa",
-                      "size": "sm"
-                    }
-                  ],
-                  "spacing": "sm"
                 }
               ]
             }
@@ -180,8 +160,8 @@ class EventsController < ApplicationController
               "height": "sm",
               "action": {
                 "type": "uri",
-                "label": "詳細確認",
-                "uri": "https://55812dc7eb90.ngrok.io/"
+                "label": "詳細地図",
+                "uri": "https://www.google.com/maps?q=" + "#{event.latitude}" + ',' + "#{event.longitude}"
               }
             },
             {
@@ -190,8 +170,8 @@ class EventsController < ApplicationController
               "height": "sm",
               "action": {
                 "type": "uri",
-                "label": "住所確認",
-                "uri": "https://www.google.com/maps?q=" + "#{event.latitude}" + ',' + "#{event.longitude}"
+                "label": "詳細確認",
+                "uri": "https://protected-shelf-24150.herokuapp.com/"
               }
             },
             {
@@ -199,7 +179,9 @@ class EventsController < ApplicationController
               "size": "sm"
             }
           ],
-          "flex": 0
+          "flex": 0,
+          "borderWidth": "light",
+          "borderColor": "#CCCCCC"
         }
       }
     }

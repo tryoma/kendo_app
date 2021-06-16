@@ -6,20 +6,20 @@
           <div>
             <h2 class="main-title center">TODOリスト</h2>
           </div>
-          <div class="form">
-            <div class="form-group">
-              <input v-model="title" placeholder="title" class="form-control">
+          <div class="form1">
+            <div class="form1-group">
+              <input v-model="title" placeholder="title" class="form1-control">
             </div>
-            <button @click="addList">メモを追加</button>
+            <button @click="addList" class = 'btn'>メモを追加</button>
           </div>
-          <div class="flex">
-            <div v-for="(list, index) in lists" :key="list.id" class="card">
-              <div class="card-body">
-                <div class="card-title">
+          <div class="flex1">
+            <div v-for="(list, index) in lists" :key="list.id" class="card1">
+              <div class="card1-body">
+                <div class="card1-title">
                   <input type="checkbox" v-model="list.is_done" v-on:click="update(list.id, index)">
                   <span v-bind:class="{done: list.is_done}">{{ list.title }}</span>
                 </div>
-                <button @click="deleteList(list.id, index)">削除</button>
+                <button @click="deleteList(list.id, index)" class = 'btn'>削除</button>
               </div>
             </div>
             <div class='calender__btn'>
@@ -82,48 +82,49 @@ export default {
 </script>
 
 <style lang="scss" scoped>
- .form {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   margin: 32px;
-   &-group {
-     margin-bottom: 1rem;
-   }
-   &-control {
-     width: 300px;
-     min-height: 24px;
-     font-size: 1rem;
-     border: 1px solid #ced4da;
-     padding: 4px 8px;
-   }
-  }
+//  .form1 {
+//    display: flex;
+//    flex-direction: column;
+//    justify-content: center;
+//    align-items: center;
+//    margin: 32px;
+//    &-group {
+//      margin-bottom: 1rem;
+//    }
+//    &-control {
+//      width: 300px;
+//      min-height: 24px;
+//      font-size: 1rem;
+//      border: 1px solid #ced4da;
+//      padding: 4px 8px;
+//    }
+//   }
 
-  button {
-    width: 200px;
-  }
+//   button {
+//     width: 200px;
+//   }
 
-  .flex {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+//   .flex1 {
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//   }
 
-  .card {
-    width: 238px;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-    margin: 16px;
-    &-body {
-      padding: 1.25rem;
-    }
-    &-title {
-      margin-bottom: .75rem;
-      font-weight: 600;
-      span.done {
-        text-decoration: line-through;
-      }
-    }
-  }
+//   .card1 {
+//     width: 238px;
+//     border: 1px solid rgba(0,0,0,.125);
+//     border-radius: .25rem;
+//     margin: 16px;
+//     &-body {
+//       padding: 1.25rem;
+//     }
+//     &-title {
+//       margin-bottom: .75rem;
+//       font-weight: 600;
+//       span.done {
+//         text-decoration: line-through;
+//       }
+//     }
+//   }
 </style>
