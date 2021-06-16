@@ -22,13 +22,13 @@
           <% if user_signed_in? %>
             <% if @information.favorited_by?(current_user) %> <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
                 <p><span>お気に入り解除しますか？: </span>
-                <%=link_to information_favorites_path(@information.id), data: {"turbolinks" => false}, method: :delete do %>
+                <%=link_to information_favorites_path(@information.id), method: :delete do %>
                   <i class="far fa-thumbs-up"></i><span><%= @information.favorites.count %></span>
                 <% end %>
             <% else %>
                 <p>
                   <span>お気に入り登録しませんか？: </span>
-                  <%=link_to information_favorites_path(@information.id), data: {"turbolinks" => false}, method: :post do %>
+                  <%=link_to information_favorites_path(@information.id), method: :post do %>
                     <i class="far fa-thumbs-up"></i><span><%= @information.favorites.count %></span>
                   <% end %>
                 </p>
@@ -39,7 +39,7 @@
         </div>
         <div class="information-show__btn">
           <% if @information.user == current_user %>
-            <%= link_to edit_information_path(@information), data: {"turbolinks" => false}, class: "btn btn-danger" do %>
+            <%= link_to edit_information_path(@information), class: "btn btn-danger" do %>
               編集
             <% end %>
             <%= link_to information_path(@information.id), method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" do %>
@@ -47,7 +47,7 @@
             <% end %>
           <% end %>
           <div class = "new_edit__btn">
-            <%= link_to "戻る", :back, data: {"turbolinks" => false}, class: "btn" %>
+            <%= link_to "戻る", :back, class: "btn" %>
           </div>
         </div>
       </div>

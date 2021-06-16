@@ -49,7 +49,7 @@ RSpec.describe "User", type: :system do
       expect(current_path).to eq root_path
     end
 
-    it "ユーザー情報編集ができる" do
+    it "ユーザー編集ができる" do
       login(@user)
       visit '/'
       visit "/users/edit.#{@user.id}"
@@ -137,7 +137,7 @@ RSpec.describe "User", type: :system do
       expect(page).to have_content "#{@information.title}"
     end
 
-    it "ユーザー情報編集ができる" do
+    it "ユーザー編集ができる" do
       login(@admin_user)
       visit '/'
       visit "/users/edit.#{@admin_user.id}"

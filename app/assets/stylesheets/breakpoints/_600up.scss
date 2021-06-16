@@ -10,6 +10,23 @@
 Stylesheet: 600px以上のタブレットやモニタで適用
 
 ******************************************************************/
+h1 {
+  font-size: 32px;
+}
+
+.main_image {
+  &__container {
+    top: 25%;
+  }
+}
+
+.btn-top {
+  padding: 10px 20px;
+}
+
+.subtitle {
+  font-size: 18px;
+}
 .flex {
   flex-direction: row;
   flex-wrap: wrap;

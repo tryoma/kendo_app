@@ -3,3 +3,20 @@
 Stylesheet: 480px以上(スマホの横向き)のモニタで適用
 
 ******************************************************************/
+h1 {
+  font-size: 28px;
+}
+
+.main_image {
+  &__container {
+    top: 25%;
+  }
+}
+
+.btn-top {
+  padding: 5px 15px;
+}
+
+.subtitle {
+  font-size: 16px;
+}

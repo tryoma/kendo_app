@@ -2,7 +2,7 @@
   <% informations.each do |information|%>
     <div class='profile__group'>
       <div class='profile__link'>
-        <%= link_to information, data: {"turbolinks" => false} do %>
+        <%= link_to information do %>
           <span><i class="fas fa-angle-right"></i> <%= information.title %> By <%= information.user.user_name %></span>
         <% end %>
       </div>

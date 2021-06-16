@@ -2,8 +2,17 @@
 <div id="main-content">
   <div class="main_image">
     <img src="assets/kendo.png" alt="" />
+    <div class="main_image__container">
+      <div class="main_image__container___title">
+        <h1>剣道を通して生活を豊かにする<br>剣道家のためのプラットフォーム</h1>
+        <p class="subtitle">KenAppは、稽古会を開ける、剣道情報を発信できる、そして剣道家としての成長を実感できる環境を提供します</p>
+      </div>
+      <div class="main_image__container___btn">
+        <%= link_to 'ゲストログイン(閲覧用)', users_guest_sign_in_path, method: :post, class: "btn btn-top" %>
+        <%= link_to 'ログイン', new_user_session_path, class: "btn btn-top" %>
+      </div>
+    </div>
   </div>
-  <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn" %>
   <main>
     <section class="event">
     <div id="event"></div>
@@ -28,7 +37,7 @@
       <div class="event__inner">
         <% @search_records.each do |event| %>
         <div class="event__title">
-          <%= link_to event_path(event.id), data: {"turbolinks" => false} do %>
+          <%= link_to event_path(event.id) do %>
           <p><%= event.place %>の稽古会</p>
           <table class="event_table">
             <tr>
@@ -64,7 +73,7 @@
         <%= will_paginate @search_records, :previous_label => ' &lt 前へ', :next_label => '次へ &gt'%>
       </div>
       <div class="event__btn">
-        <%= link_to new_event_path, method: :get, data: {"turbolinks" => false}  do %>
+        <%= link_to new_event_path, method: :get  do %>
         <button class="btn filled">新規作成</button>
         <% end %>
       </div>
@@ -77,7 +86,7 @@
       <div class="information__inner">
         <% @informations.each do |information| %>
         <div class="information__title">
-          <%= link_to information_path(information.id), data: {"turbolinks" => false} do %>
+          <%= link_to information_path(information.id) do %>
           <p><%= information.title %></p>
           <table class="information_table">
             <tr>
@@ -98,7 +107,7 @@
         <% end %>
       </div>
       <div class="information__btn">
-        <%= link_to new_information_path, method: :get, data: {"turbolinks" => false} do %>
+        <%= link_to new_information_path, method: :get do %>
         <button class="btn filled">情報新規作成</button>
         <% end %>
       </div>
@@ -110,7 +119,7 @@
       </div>
       <div class="record__inner">
         <% @records.each do |record| %>
-        <%= link_to user_path(id:record.user_id), data: {"turbolinks" => false} do %>
+        <%= link_to user_path(id:record.user_id) do %>
         <div class="record__title">
           <div class="record__img">
             <%= image_tag record.user.profile.photo_image %>
