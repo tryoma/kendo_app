@@ -16,6 +16,15 @@ h1 {
 .main_image {
   &__container {
     top: 30%;
+    &___line {
+      display: flex;
+      justify-content: center;
+      padding-top: 30px;
+      & > img {
+        object-fit: cover;
+        width: 100px;
+      }
+    }
   }
 }
 

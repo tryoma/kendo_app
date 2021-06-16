@@ -94,7 +94,9 @@ img {
 .red {
   color: $cRed;
 }
-
+.black {
+  color: $cBlack;
+}
 .white {
   color: $cWhite;
 }
@@ -214,6 +216,9 @@ p {
     }
     &___btn {
       padding-top: 2rem;
+    }
+    &___line {
+      display: none;
     }
   }
 
