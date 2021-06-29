@@ -8,9 +8,9 @@
 ## ポートフォリオURL
 * ゲストログイン(閲覧用)で閲覧可能です。
 
-　https://protected-shelf-24150.herokuapp.com/
+  https://protected-shelf-24150.herokuapp.com/
 ## 説明動画】
-　https://youtu.be/yiBlP_wcWHI
+  https://youtu.be/yiBlP_wcWHI
 
 ## 使用ツール
 * Ruby2.6.3
